@@ -1,31 +1,27 @@
 ---
-description: "Conventions for documentation navigation and agent entrypoints."
+description: "Conventions for scalable documentation navigation and agent entrypoints."
 ---
 
 # Documentation entrypoints
 
 ## Purpose
 
-An entrypoint tells a human or agent **where to begin, what to load next, and where the canonical material lives**. It should be short enough to scan without loading an entire documentation tree.
+An entrypoint tells a reader where to begin, which material to select next and where the authoritative instructions live. Keep it short and navigable rather than duplicating detailed procedures.
 
 ## Required structure
 
-- `README.md` at the repository root introduces purpose, setup and top-level navigation.
-- `docs/README.md` indexes documentation domains and their ownership.
-- Each major directory under `docs/` has a `README.md` that states its scope and links to its maintained documents.
-- `AGENTS.md` is an agent-facing entrypoint for work **inside this repository**; it must direct agents to relevant policies and guides, not duplicate every rule.
-- `catalog.json` indexes reusable assets under `src/`; it is not a substitute for documentation entrypoints.
+- Root `README.md` introduces purpose and links to documentation domains.
+- `docs/README.md` lists maintained domains.
+- Every directory under `docs/` has a `README.md` with direct links to each immediate document and child directory.
+- Root `AGENTS.md` is the agent entrypoint for **this repository**; it routes to policies and task-specific guides.
+- `catalog.json` is the entrypoint map for reusable `src/` assets, not a documentation index.
 
-## Linking rules
+## Linking and growth
 
-Keep links relative for files in this repository. Use descriptive link text, not vague labels. Make every new maintained document discoverable from the nearest directory entrypoint. Add a root-level link only when the content is a frequent starting point; avoid a flat global list of every page.
+Use repository-relative links and descriptive anchor text. Make each document reachable from its nearest directory README; reserve the root navigation for major domains. An entrypoint describes scope and reading order but does not reproduce full procedures.
 
-An entrypoint should identify scope, primary links and selection guidance. It must not contain full procedures already owned by linked documents. After moving or retiring a page, repair inbound links and avoid maintaining competing canonical paths.
-
-## Agent routing
-
-Agents should load `AGENTS.md`, then repository policies and only the documents needed for the task. They should resolve the nearest appropriate entrypoint before following specific links. A linked external page or asset never implicitly authorizes account changes, installations or writes.
+When moving or retiring files, update inbound links and the nearest index in one change. A link to external material does not authorize account changes, installations or writes.
 
 ## Review
 
-Test navigation from the root through the directory index to the target document. Confirm that every destination exists and the hierarchy has no dead ends. The current catalog validator does not perform a full Markdown link crawl.
+Run `python3 tools/validate_docs.py` to check directory index coverage and file-link existence. Manually inspect heading anchors, external URLs, rendered navigation and reader clarity; the script does not validate those.

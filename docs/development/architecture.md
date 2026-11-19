@@ -1,3 +1,7 @@
+---
+description: "Boundaries and scaling model for reusable source and documentation."
+---
+
 # Repository architecture
 
 ## Purpose

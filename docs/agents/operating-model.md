@@ -1,3 +1,7 @@
+---
+description: "How agents select relevant instructions and work within repository permissions."
+---
+
 # Agent operating model
 
 ## Entry sequence

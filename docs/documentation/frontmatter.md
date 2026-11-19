@@ -1,16 +1,16 @@
 ---
-description: "Rules for concise YAML frontmatter in catalog Markdown documents."
+description: "Rules for consistent YAML frontmatter in maintained catalog documentation."
 ---
 
 # Frontmatter rules
 
 ## Scope
 
-Use a YAML frontmatter block at the beginning of **new and substantially rewritten Markdown documents under `docs/`**. Existing files may adopt it progressively; do not rewrite unrelated documents solely to add metadata. Repository-level `README.md`, `AGENTS.md`, and reusable asset entrypoints under `src/` are outside this requirement unless their own contracts say otherwise.
+All maintained Markdown files under `docs/`, including directory entrypoints, use a frontmatter block. This requirement does not automatically apply to `src/` assets, root `README.md`, or root `AGENTS.md`.
 
 ## Format
 
-Place the opening `---` on the first line, followed by a short set of metadata fields and a closing `---`. Leave one blank line before the page's single H1 heading.
+Place `---` on the first line, followed by one metadata entry per line and closing `---`. Leave one blank line before exactly one H1.
 
 ```yaml
 ---
@@ -18,16 +18,16 @@ description: "How to select and review documentation entrypoints."
 ---
 ```
 
-- **Required:** `description` — a single nonempty, plain-English sentence describing when the document is useful.
-- **Optional:** `status` — `draft`, `active`, or `deprecated`, only if lifecycle tracking is meaningful.
-- **Optional:** `audience` — a short human-readable audience such as `maintainers` or `consumers`, when the audience is not obvious.
-- Do not add timestamps, author identifiers, generated fields, arbitrary tags or ownership fields without an established maintainer workflow that uses them.
-- Quote values containing punctuation and do not embed multiline instructions, secrets, or executable expressions in metadata.
+- **Required:** `description` — one nonempty, plain-English sentence describing the document's purpose.
+- **Optional:** `status` — `draft`, `active`, or `deprecated` when relevant.
+- **Optional:** `audience` — a short intended reader group where necessary.
+- Do not add timestamps, personal identifiers, generated metadata or unreviewed keys.
+- Use simple scalar values; do not embed executable content or multiline instructions.
 
-## Consistency rules
+## Consistency
 
-Frontmatter supports discovery; it does **not** override the visible text, a policy, or the manifest. Write one H1 after the metadata and use descriptive H2 headings. Keep the description accurate when a document changes. A reader must understand the document even if their renderer ignores frontmatter.
+Metadata aids discovery but never overrides policies, displayed text or the asset manifest. Keep the description accurate after substantive changes. Write a clear H1 and logical subordinate headings.
 
-## Review
+## Verification
 
-Confirm the delimiters, required description, valid optional values, H1, and language policy. The existing catalog validator does not parse documentation frontmatter; these are manual review requirements unless a dedicated check is added.
+The [documentation validator](../development/validation.md) checks supported flat frontmatter keys, required description and one H1. It is not a general YAML parser. Human review remains responsible for accuracy, meaningful summaries and language.

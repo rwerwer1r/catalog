@@ -1,3 +1,7 @@
+---
+description: "Entry point to requirements that apply across the catalog."
+---
+
 # Policies
 
 These policies govern maintained files and contributions in **rwerwer1r/catalog**.

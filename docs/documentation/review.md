@@ -7,26 +7,23 @@ description: "Review documentation for factual correctness, discoverability, saf
 ## Review order
 
 1. **Scope and ownership:** the page belongs to the correct directory and does not duplicate another canonical rule.
-2. **Accuracy:** commands, file paths, defaults, examples and claims match the current repository or are clearly labeled as proposals.
-3. **Reader completion:** the document explains prerequisites, actions, expected results, limitations and troubleshooting where relevant.
-4. **Navigation:** the nearest [entrypoint](entrypoints.md) links to it; relative links, headings and bundle membership are sound.
-5. **Metadata and language:** [frontmatter](frontmatter.md) applies when required; maintained prose follows the [English policy](../policies/language.md).
-6. **Safety:** examples contain no secrets or unapproved personal data; external writes, permissions and destructive actions are not hidden.
-7. **Change scope:** the diff does not introduce unrelated edits, conflicting versions or obsolete references.
+2. **Accuracy:** commands, file paths, defaults, examples and claims match current source or are labeled as proposals.
+3. **Reader completion:** prerequisites, actions, expected results, limitations and troubleshooting are clear where relevant.
+4. **Navigation:** nearest entrypoints, relative links, headings and bundle membership are coherent.
+5. **Metadata and language:** follow [frontmatter](frontmatter.md) and the [English policy](../policies/language.md).
+6. **Safety:** no secrets or personal data; external writes and destructive effects are disclosed.
+7. **Diff scope:** no unrelated edits, conflicting versions or stale references.
 
-## Verification evidence
-
-Inspect changed Markdown as rendered where possible. Follow local links from the root or nearest entrypoint, and inspect both target files and anchors for renamed headings. Execute documented non-destructive commands only when dependencies are present and authorization permits. If a command cannot be run, report it as **not run**, not passed.
-
-Use the existing catalog checks:
+## Mechanical verification
 
 ```sh
 python3 tools/validate_catalog.py
+python3 tools/validate_docs.py
 python3 -m unittest discover -s tests -v
 ```
 
-These commands check asset metadata and tests, **not** documentation link integrity or YAML frontmatter. Manual documentation review remains necessary until a dedicated validator is introduced.
+The document validator checks frontmatter structure, a single H1, local Markdown file targets and directory-index coverage. It does not check external links, anchors, technical accuracy, full Markdown rendering or downstream behavior. Review those separately.
 
 ## Review output
 
-Record the changed pages, review scope, actual checks and results, confirmed defects, and outstanding uncertainties. Do not treat a document-only PR or a passing CI job as proof that an agent or downstream workflow behaves correctly.
+Record changed files, actual checks and results, confirmed defects, and unresolved risks. A passing CI job proves only the checks actually executed.

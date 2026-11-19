@@ -1,3 +1,7 @@
+---
+description: "Template for documenting agent behavior checks and their evidence."
+---
+
 # Agent verification record
 
 Use this structure in a pull request, issue or review note when an asset changes agent instructions or downstream behavior.

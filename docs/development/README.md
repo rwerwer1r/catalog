@@ -1,3 +1,7 @@
+---
+description: "Entry point to the catalog development and validation guides."
+---
+
 # Development
 
 Development documentation for the growing reusable asset library.

@@ -1,3 +1,7 @@
+---
+description: "Entry point to agent operating procedures and verification guidance."
+---
+
 # AI agent operations
 
 This area documents **how agents work on and verify this repository**. It does not publish reusable agent assets; those live in [src/agents/](../../src/agents/README.md), [src/skills/](../../src/skills/README.md) and [src/rules/](../../src/rules/README.md).

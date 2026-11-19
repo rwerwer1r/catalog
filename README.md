@@ -21,7 +21,7 @@ The [manifest](catalog.json) lists published entrypoints. Consumers select and r
 - [Development](docs/development/README.md)
 - [Policies](docs/policies/README.md), including the [English language policy](docs/policies/language.md)
 - [AI agent operations](docs/agents/README.md) and [document-first harness](docs/agents/harness.md)
-- [Documentation authoring](docs/documentation/README.md): [frontmatter](docs/documentation/frontmatter.md), [entrypoints](docs/documentation/entrypoints.md) and [bundles](docs/documentation/bundles.md)
+- [Documentation handbook](docs/documentation/README.md): authoring, structure, review and maintenance
 
 English is the canonical language for maintained repository content.
 
@@ -31,7 +31,8 @@ Requires Python 3.11+ with no third-party dependencies:
 
 ```sh
 python3 tools/validate_catalog.py
+python3 tools/validate_docs.py
 python3 -m unittest discover -s tests -v
 ```
 
-CI runs packaging checks. See [validation](docs/development/validation.md) for scope and [agent verification](docs/agents/verification.md) for behavioral evidence requirements.
+CI checks packaging and document structure. See [validation](docs/development/validation.md) for scope and [agent verification](docs/agents/verification.md) for behavioral evidence requirements.

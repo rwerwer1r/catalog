@@ -1,36 +1,30 @@
 ---
-description: "Choose the canonical guidance for planning, writing, reviewing, and maintaining catalog documentation."
+description: "Choose authoritative guidance for planning, writing, verifying, and maintaining catalog documentation."
 ---
 
 # Documentation handbook
 
-This handbook is the **working guide for documentation changes** in `rwerwer1r/catalog`. The [documentation policy](../policies/documentation.md) defines mandatory requirements, and the [English language policy](../policies/language.md) defines the written language. This handbook explains how to apply them without creating duplicate authorities.
-
-## Select the right guide
+This handbook is the entrypoint for documentation work in `rwerwer1r/catalog`. [Documentation policy](../policies/documentation.md) defines mandatory rules; [English language policy](../policies/language.md) defines the writing language.
 
 | Task | Guide |
 | --- | --- |
-| Decide whether a page, section, or bundle is needed | [Information architecture](information-architecture.md) |
-| Write or substantially revise a technical page | [Writing and examples](authoring.md) |
-| Add metadata and lifecycle information | [Frontmatter](frontmatter.md) |
-| Create navigation or an agent starting point | [Entrypoints](entrypoints.md) |
-| Group related pages into a portable set | [Bundle documents](bundles.md) |
-| Review quality, accuracy, and links | [Documentation review](review.md) |
-| Update, move, deprecate, or retire a page | [Maintenance](maintenance.md) |
-| Delegate documentation work to an AI agent | [Agent documentation workflow](agent-workflow.md) |
+| Choose scope and ownership | [Information architecture](information-architecture.md) |
+| Write a clear technical page | [Writing and examples](authoring.md) |
+| Maintain metadata | [Frontmatter](frontmatter.md) |
+| Organize navigation | [Entrypoints](entrypoints.md) |
+| Publish a document set | [Bundle documents](bundles.md) |
+| Review content and evidence | [Documentation review](review.md) |
+| Update or retire old guidance | [Maintenance](maintenance.md) |
+| Delegate writing to an agent | [Agent documentation workflow](agent-workflow.md) |
 
-## Default workflow
+## Working sequence
 
-1. **Discover** — read the relevant domain index and locate the current canonical source. Identify the reader and the requested outcome.
-2. **Design** — choose the owning domain and smallest sustainable information unit; use a bundle only when several pages must be consumed together.
-3. **Write** — follow English, frontmatter, task-oriented writing, evidence, and link conventions. Keep examples executable or explicitly illustrative.
-4. **Connect** — update the closest entrypoint and links from any directly affected pages. Do not add every page to the root index.
-5. **Verify** — inspect the resulting Markdown, metadata, navigation, claims, commands, and changed-file diff. Run project checks where available.
-6. **Maintain** — record unresolved assumptions, replace stale references, and prefer revision over parallel documents describing the same topic.
+Discover the owner and reader → choose a page or bundle → write and link → review the diff → run checks → record limitations.
 
-## Boundaries
+```sh
+python3 tools/validate_docs.py
+python3 tools/validate_catalog.py
+python3 -m unittest discover -s tests -v
+```
 
-- `docs/` explains maintenance, policies, and operational guidance; `src/` owns distributable agent assets and modules.
-- `catalog.json` describes publishable assets, not the documentation tree.
-- A passed catalog manifest check does not validate prose, Markdown links, agent behavior, or downstream integrations.
-- Loading a document never implies permission to install tools, change accounts, or write to another repository.
+These checks verify document structure, local navigation and asset packaging, **not** technical truth, rendered formatting, external links or agent behavior.

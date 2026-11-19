@@ -1,3 +1,7 @@
+---
+description: "Canonical English-language requirements and technical exceptions."
+---
+
 # Language policy
 
 ## Default language
