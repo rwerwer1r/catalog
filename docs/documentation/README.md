@@ -1,24 +1,36 @@
 ---
-description: "Index of documentation authoring conventions for the catalog."
+description: "Choose the canonical guidance for planning, writing, reviewing, and maintaining catalog documentation."
 ---
 
-# Documentation authoring
+# Documentation handbook
 
-This area defines **how documentation is structured and discovered**. It is not a replacement for [repository policies](../policies/README.md), which remain authoritative for mandatory requirements.
+This handbook is the **working guide for documentation changes** in `rwerwer1r/catalog`. The [documentation policy](../policies/documentation.md) defines mandatory requirements, and the [English language policy](../policies/language.md) defines the written language. This handbook explains how to apply them without creating duplicate authorities.
 
-| Topic | When to read |
+## Select the right guide
+
+| Task | Guide |
 | --- | --- |
-| [Frontmatter](frontmatter.md) | Create or update Markdown metadata |
-| [Entrypoints](entrypoints.md) | Add a documentation area or change navigation |
-| [Bundle documents](bundles.md) | Publish a self-contained document set for a task or consumer |
+| Decide whether a page, section, or bundle is needed | [Information architecture](information-architecture.md) |
+| Write or substantially revise a technical page | [Writing and examples](authoring.md) |
+| Add metadata and lifecycle information | [Frontmatter](frontmatter.md) |
+| Create navigation or an agent starting point | [Entrypoints](entrypoints.md) |
+| Group related pages into a portable set | [Bundle documents](bundles.md) |
+| Review quality, accuracy, and links | [Documentation review](review.md) |
+| Update, move, deprecate, or retire a page | [Maintenance](maintenance.md) |
+| Delegate documentation work to an AI agent | [Agent documentation workflow](agent-workflow.md) |
 
-Follow the [English language policy](../policies/language.md) and [documentation policy](../policies/documentation.md). Maintain one canonical source per topic, link from the appropriate entrypoint, and validate internal links before merging.
+## Default workflow
 
-## Authoring workflow
+1. **Discover** — read the relevant domain index and locate the current canonical source. Identify the reader and the requested outcome.
+2. **Design** — choose the owning domain and smallest sustainable information unit; use a bundle only when several pages must be consumed together.
+3. **Write** — follow English, frontmatter, task-oriented writing, evidence, and link conventions. Keep examples executable or explicitly illustrative.
+4. **Connect** — update the closest entrypoint and links from any directly affected pages. Do not add every page to the root index.
+5. **Verify** — inspect the resulting Markdown, metadata, navigation, claims, commands, and changed-file diff. Run project checks where available.
+6. **Maintain** — record unresolved assumptions, replace stale references, and prefer revision over parallel documents describing the same topic.
 
-1. Identify the intended reader and the document's owning directory.
-2. Choose a single document or a bundle based on the reader's actual navigation needs.
-3. Add the required frontmatter and a clear first-level heading.
-4. Update the nearest entrypoint and any direct references to the moved or changed file.
-5. Review for duplication, stale instructions and accessibility without unrelated context.
-6. Run repository validation and record any manual checks separately.
+## Boundaries
+
+- `docs/` explains maintenance, policies, and operational guidance; `src/` owns distributable agent assets and modules.
+- `catalog.json` describes publishable assets, not the documentation tree.
+- A passed catalog manifest check does not validate prose, Markdown links, agent behavior, or downstream integrations.
+- Loading a document never implies permission to install tools, change accounts, or write to another repository.

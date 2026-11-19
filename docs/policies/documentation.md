@@ -12,12 +12,14 @@ Use one authoritative location for each instruction: `docs/policies/` for obliga
 
 - Use English in accordance with [language policy](language.md).
 - Follow [frontmatter rules](../documentation/frontmatter.md) for new or substantially revised `docs/` Markdown files.
+- Apply [information architecture](../documentation/information-architecture.md) to choose one canonical owner and appropriate page boundaries.
 - Follow [entrypoint rules](../documentation/entrypoints.md) when creating, moving or retiring documents and documentation areas.
 - Apply [bundle rules](../documentation/bundles.md) when publishing a multi-document topic.
+- Use [writing guidance](../documentation/authoring.md) for verifiable, reader-focused content and [documentation review](../documentation/review.md) before merging.
 - Start visible content with a descriptive heading and state scope and prerequisites.
 - Document current observed behavior separately from future proposals.
 - Record limitations, unsafe assumptions and unverified claims explicitly.
 
 ## Maintenance
 
-Treat stale commands, obsolete paths, broken links and ambiguous ownership as defects. Keep names stable where possible, and repair inbound links during moves. Do not claim automated document lint or agent behavior checks that have not run.
+Treat stale commands, obsolete paths, broken links and ambiguous ownership as defects. Follow [maintenance guidance](../documentation/maintenance.md) for moves, deprecations and retirement. Do not claim automated document lint or agent behavior checks that have not run.
