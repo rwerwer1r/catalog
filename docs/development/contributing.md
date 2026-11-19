@@ -1,9 +1,13 @@
+---
+description: "Workflow for contributing reusable assets and documentation to the catalog."
+---
+
 # Contributing assets
 
 1. Identify the reusable problem and intended consumers. Check `catalog.json` for an existing entry before adding another.
 2. Read [repository policies](../policies/README.md), especially the [language policy](../policies/language.md).
 3. Select the correct `src/` kind and write the canonical source. Describe triggers, prerequisites, outputs, dependencies, failure conditions and limits as appropriate.
-4. Add or update the unique entry in `catalog.json` and repair local links.
+4. Add or update the unique entry in `catalog.json` and repair local links. Follow the [documentation conventions](../documentation/README.md) for changes in `docs/`.
 5. Run the [validation checks](validation.md). If an asset changes agent behavior, prepare the [agent verification record](../agents/verification.md).
 6. Review the diff for secrets, stale references, unapproved external material, accidental assumptions and changes outside the intended scope.
 

@@ -21,6 +21,7 @@ The [manifest](catalog.json) lists published entrypoints. Consumers select and r
 - [Development](docs/development/README.md)
 - [Policies](docs/policies/README.md), including the [English language policy](docs/policies/language.md)
 - [AI agent operations](docs/agents/README.md) and [document-first harness](docs/agents/harness.md)
+- [Documentation authoring](docs/documentation/README.md): [frontmatter](docs/documentation/frontmatter.md), [entrypoints](docs/documentation/entrypoints.md) and [bundles](docs/documentation/bundles.md)
 
 English is the canonical language for maintained repository content.
 

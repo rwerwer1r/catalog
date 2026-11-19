@@ -1,3 +1,7 @@
+---
+description: "Document-first loading and verification model for repository-maintenance agents."
+---
+
 # Document-first agent harness
 
 ## Goal
@@ -8,14 +12,14 @@ Make agent behavior reviewable through a stable hierarchy of documents before in
 
 1. Repository-level entrypoint: [AGENTS.md](../../AGENTS.md).
 2. Mandatory maintenance policies: [policies index](../policies/README.md).
-3. Task guidance: [operating model](operating-model.md) plus the relevant [development topic](../development/README.md).
+3. Task guidance: [operating model](operating-model.md) plus the relevant [development topic](../development/README.md) or [documentation topic](../documentation/README.md).
 4. Only the selected reusable asset in `src/`, using `catalog.json` for discovery.
 
-Avoid loading unrelated assets, copying policy text or allowing selected assets to override repository authority.
+Use [entrypoint conventions](../documentation/entrypoints.md) to find canonical material and [bundle rules](../documentation/bundles.md) when a task spans a document set. Avoid loading unrelated assets, copying policy text or allowing selected assets to override repository authority.
 
 ## Verification layers
 
-- **Documentation:** check scope, expected behavior, inputs, permissions and links against the canonical source.
+- **Documentation:** check scope, expected behavior, inputs, permissions, frontmatter, entrypoints and links against the canonical source.
 - **Packaging:** run `tools/validate_catalog.py` and the standard-library unit tests.
 - **Behavior:** perform a representative controlled agent task when the changed asset affects agent actions, and record actual evidence.
 - **Integration:** validate the asset in an authorized consumer repository before claiming production readiness.
