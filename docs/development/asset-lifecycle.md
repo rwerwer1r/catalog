@@ -22,14 +22,14 @@ Do not treat these labels as API guarantees. Avoid untracked status claims in pr
 ## Create and revise
 
 1. Identify the consumer problem; confirm the asset does not duplicate an existing entry.
-2. Choose a kind and unique ID using [architecture](architecture.md) and [asset contract](../../src/references/asset-contract.md).
+2. Choose a kind and unique ID using [architecture](architecture.md), [asset policy](../policies/assets.md) and [asset contract](../../src/references/asset-contract.md).
 3. Implement canonical source under `src/`, declare prerequisites and constraints, then update `catalog.json`.
-4. Run [validation](validation.md), review against [security](../policies/security.md) and [provenance](../policies/provenance.md), and execute representative scenarios for behavioral changes.
-5. Describe compatibility, migration impact, and tests in the pull request.
+4. Run [validation](validation.md) and execute representative scenarios for behavior-affecting changes.
+5. Describe compatibility, migration impact and test evidence in the pull request.
 
 ## Deprecate and retire
 
-Never silently repurpose an established asset ID for different behavior. Identify consumers when known, publish a replacement and migration instructions, and avoid removing an entrypoint until the impact is reviewed. If no consumer inventory exists, record that uncertainty. Removal and renaming are potentially breaking changes even when CI passes.
+Never silently repurpose an established asset ID. Identify consumers when known, publish a replacement and migration instructions, and avoid removing an entrypoint until the impact is reviewed. If no consumer inventory exists, record that uncertainty. Removal and renaming may be breaking changes even when CI passes.
 
 ## Boundaries
 

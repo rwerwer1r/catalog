@@ -1,25 +1,30 @@
 ---
-description: "Repository-wide requirements for maintaining authoritative technical documentation."
+description: "Define canonical documentation ownership and quality requirements inside the catalog."
 ---
 
 # Documentation policy
 
-## Canonical ownership
+## Scope
 
-Use one authoritative location for each instruction: `docs/policies/` for obligations, `docs/development/` for implementation guidance, `docs/agents/` for agent workflows and harnessing, `docs/documentation/` for authoring conventions, and `src/` for reusable assets. Link to canonical text instead of copying policies into multiple documents.
+Documentation under `docs/` explains how **this catalog repository** is maintained. Do not present these pages as assets that other repositories must adopt.
 
-## Authoring requirements
+| Directory | Document responsibility |
+| --- | --- |
+| `docs/development/` | Source layout, contribution process, validation, lifecycle and consumption |
+| `docs/policies/` | Repository-specific requirements |
+| `docs/agents/` | Agent workflow and evidence for maintaining this repository |
+| `docs/documentation/` | Authoring, navigation, review and maintenance conventions |
 
-- Use English in accordance with [language policy](language.md).
-- Follow [frontmatter rules](../documentation/frontmatter.md) for new or substantially revised `docs/` Markdown files.
-- Apply [information architecture](../documentation/information-architecture.md) to choose one canonical owner and appropriate page boundaries.
-- Follow [entrypoint rules](../documentation/entrypoints.md) when creating, moving or retiring documents and documentation areas.
-- Apply [bundle rules](../documentation/bundles.md) when publishing a multi-document topic.
-- Use [writing guidance](../documentation/authoring.md) for verifiable, reader-focused content and [documentation review](../documentation/review.md) before merging.
-- Start visible content with a descriptive heading and state scope and prerequisites.
-- Document current observed behavior separately from future proposals.
-- Record limitations, unsafe assumptions and unverified claims explicitly.
+Publish reusable source under `src/` and register it in `catalog.json` instead of duplicating it in documentation.
 
-## Maintenance
+## Requirements
 
-Treat stale commands, obsolete paths, broken links and ambiguous ownership as defects. Follow [maintenance guidance](../documentation/maintenance.md) for moves, deprecations and retirement. Do not claim automated document lint or agent behavior checks that have not run.
+- Write maintained prose in English per [language policy](language.md).
+- Follow [frontmatter](../documentation/frontmatter.md) for `docs/` Markdown pages and [entrypoints](../documentation/entrypoints.md) for directory navigation.
+- Maintain one canonical page per topic and repair relevant relative links and indexes when documents move.
+- Use [bundle conventions](../documentation/bundles.md) only when several pages share a purpose and lifecycle.
+- Separate observed behavior from proposed behavior and label unsupported claims and unrun checks.
+
+## Verification
+
+Run the [document checks](../development/validation.md) and review correctness using the [documentation handbook](../documentation/README.md). Structure checks do not establish factual accuracy, external link health or agent behavior.

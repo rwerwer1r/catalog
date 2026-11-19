@@ -1,33 +1,28 @@
 # Catalog
 
-**rwerwer1r/catalog** maintains reusable modules, agent Skills, rules, references, agent roles and document templates for selective use by other repositories.
+**rwerwer1r/catalog** is a source library for reusable modules, AI agent Skills, rules, references, roles and templates that other repositories can select and adapt.
 
-## Source
+## Repository layout
 
-| Folder | Purpose |
+| Path | Purpose |
 | --- | --- |
-| [src/skills/](src/skills/README.md) | Opt-in agent workflows |
-| [src/rules/](src/rules/README.md) | Scoped reusable guidelines |
-| [src/references/](src/references/README.md) | Supporting knowledge and contracts |
-| [src/agents/](src/agents/README.md) | Role-specific agent behavior |
-| [src/modules/](src/modules/README.md) | Software implementations |
-| [src/templates/](src/templates/README.md) | Document templates |
+| [src/](src/README.md) | Canonical reusable assets |
+| [catalog.json](catalog.json) | Published asset IDs, kinds and entrypoints |
+| [docs/](docs/README.md) | Development guides, repository policies and agent-maintenance documentation |
+| [tools/](tools/) and [tests/](tests/) | Structural validation and regression tests |
 
-The [manifest](catalog.json) lists entrypoints. Assets are not automatically installed, synchronized or executed.
+Assets are organized under `src/skills/`, `src/rules/`, `src/references/`, `src/agents/`, `src/modules/` and `src/templates/`. No asset is automatically installed or synchronized into another repository.
 
-## Documentation and harness
+## Repository rules and development
 
-- [Documentation index](docs/README.md)
-- [Development](docs/development/README.md): architecture, [asset lifecycle](docs/development/asset-lifecycle.md), consumer compatibility
-- [Policies](docs/policies/README.md): English, documentation, [security](docs/policies/security.md) and [provenance](docs/policies/provenance.md)
-- [AI agent operations](docs/agents/README.md): context routing, [document-first harness](docs/agents/harness.md), [scenarios](docs/agents/scenarios.md)
-- [Documentation handbook](docs/documentation/README.md): authoring, structure, review and maintenance
+- [Repository policy](docs/policies/repository.md): what belongs here and who controls downstream adoption
+- [Asset policy](docs/policies/assets.md): source, manifest, reuse and verification criteria
+- [Language and documentation](docs/policies/README.md): English content and maintenance conventions
+- [Development](docs/development/README.md) and [agent harness](docs/agents/harness.md): working and checking procedures
 
-English is canonical for committed repository material.
+## Validation
 
-## Checks
-
-Python 3.11+ and the standard library are sufficient:
+Python 3.11+ with the standard library:
 
 ```sh
 python3 tools/validate_catalog.py
@@ -35,4 +30,4 @@ python3 tools/validate_docs.py
 python3 -m unittest discover -s tests -v
 ```
 
-GitHub Actions runs structural checks. Behavioral scenarios and downstream integrations require separate observed evidence; see [verification](docs/agents/verification.md).
+CI validates structural consistency. Actual agent behavior and consumer integrations require separate evidence.
