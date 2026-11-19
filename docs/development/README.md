@@ -1,13 +1,17 @@
 ---
-description: "Entry point to the catalog development and validation guides."
+description: "Entry point to the catalog development, asset lifecycle, integration, and verification guides."
 ---
 
 # Development
 
-Development documentation for the growing reusable asset library.
+This area covers how reusable source grows safely from proposal to independently adopted asset.
 
-- [Repository architecture](architecture.md): boundaries between source, documentation, manifest and tooling
-- [Contribution workflow](contributing.md): change lifecycle and review expectations
-- [Validation and tests](validation.md): local and CI harness checks
+| Topic | Guidance |
+| --- | --- |
+| [Architecture](architecture.md) | Source ownership, boundaries and scale |
+| [Contributing](contributing.md) | Scoped implementation and review process |
+| [Asset lifecycle](asset-lifecycle.md) | Proposal, evaluation, adoption and retirement |
+| [Consumption and compatibility](consumption.md) | Pinning, integration, upgrades and rollback |
+| [Validation and tests](validation.md) | Packaging, documentation and behavioral checks |
 
-Repository-wide requirements live under [Policies](../policies/README.md). Agent usage and document-first verification live under [AI agents](../agents/README.md).
+Repository requirements live under [Policies](../policies/README.md). Agent operation and evidence live under [AI agents](../agents/README.md). Do not confuse an asset's presence in the manifest with evidence that a consumer has adopted it.

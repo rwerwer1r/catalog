@@ -1,12 +1,12 @@
 ---
-description: "Explain the catalog's automated checks and review requirements for documentation and assets."
+description: "Explain catalog checks, evidence requirements, and limits of automated verification."
 ---
 
 # Validation and tests
 
-## Baseline checks
+## Available checks
 
-Run from the repository root with Python 3.11 or later:
+From the repository root with Python 3.11+:
 
 ```sh
 python3 tools/validate_catalog.py
@@ -14,12 +14,19 @@ python3 tools/validate_docs.py
 python3 -m unittest discover -s tests -v
 ```
 
-The asset validator checks the catalog manifest, safe paths and registered source files. The documentation validator checks YAML frontmatter shape, H1 headings, local Markdown file links, directory entrypoints and that documents are listed in their nearest directory index. Both validators use the Python standard library; [CI](../../.github/workflows/validate.yml) repeats them.
+The asset validator checks `catalog.json`, path safety and registered source coverage. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest README coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
 
-## Review beyond automation
+## Manual and behavioral review
 
-The Markdown checker intentionally does not verify external URLs, resolve heading anchors, fully parse arbitrary Markdown/YAML, assess semantics, run example commands, or establish agent behavior. Follow the [documentation review](../documentation/review.md) and [document-first harness](../agents/harness.md) for those checks. Treat unsupported situations as unverified.
+The documentation validator does not check external URLs, heading anchors, full Markdown/YAML parsing or the truth of claims. Review [documentation quality](../documentation/review.md) and run representative [agent scenarios](../agents/scenarios.md) when instructions change behavior.
 
-## Reporting
+Scenario execution is **not automated in the current CI**. Integration tests are consumer-specific and require explicit access. Record actual results using [verification evidence](../agents/verification.md) and avoid implying that missing checks passed.
 
-Distinguish passed, failed, not run and not applicable checks. Include evidence of behavioral or integration checks when the change affects agent assets.
+## Decision rules
+
+- Documentation-only change: check canonical ownership, frontmatter, internal links and language.
+- Manifest or source structure change: run packaging validation and unit tests.
+- Behavior-affecting asset change: review scenario coverage and execute applicable controlled cases or state what is unverified.
+- Breaking interface, installation or permission change: assess consumers, approval and rollback.
+
+Report passed, failed, not run and not applicable separately; a green CI job proves only its configured steps.

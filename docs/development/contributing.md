@@ -4,15 +4,14 @@ description: "Workflow for contributing reusable assets and documentation to the
 
 # Contributing assets
 
-1. Identify the reusable problem and intended consumers. Check `catalog.json` for an existing entry before adding another.
-2. Read [repository policies](../policies/README.md), especially the [language policy](../policies/language.md).
-3. Select the correct `src/` kind and write the canonical source. Describe triggers, prerequisites, outputs, dependencies, failure conditions and limits as appropriate.
-4. Add or update the unique entry in `catalog.json` and repair local links. Follow the [documentation conventions](../documentation/README.md) for changes in `docs/`.
-5. Run the [validation checks](validation.md). If an asset changes agent behavior, prepare the [agent verification record](../agents/verification.md).
-6. Review the diff for secrets, stale references, unapproved external material, accidental assumptions and changes outside the intended scope.
+1. Identify the reusable problem and intended consumers. Check `catalog.json` and [architecture](architecture.md) for duplicates and ownership.
+2. Read [policies](../policies/README.md), especially [language](../policies/language.md), [security](../policies/security.md) and [provenance](../policies/provenance.md).
+3. Follow [asset lifecycle](asset-lifecycle.md); choose the kind and write a canonical `src/` entrypoint that declares prerequisites, inputs, outputs and limits.
+4. Register the entrypoint in `catalog.json`, update relevant indexes and follow [documentation conventions](../documentation/README.md).
+5. Run [validation](validation.md). For changes affecting agent behavior, define [representative scenarios](../agents/scenarios.md) and record actual [verification](../agents/verification.md).
+6. Review compatibility with consumers through [consumption guidance](consumption.md), especially if an ID, contract or dependency changes.
+7. Inspect the final diff for unrelated changes, secrets, unsupported claims and stale links before proposing the change.
 
 ## Review and adoption
 
-A passing metadata check means the asset is well-formed, **not** that it works in a consuming environment. Require representative downstream evidence before calling a Skill, rule or module operationally verified.
-
-Keep user-specific records and generated vendor files out of `src/`. Publish only reusable material.
+A passing metadata check means an asset is structurally valid, not that it is operationally verified. The consumer must approve integration and retain responsibility for its account, tests and releases. Keep transient private notes and generated vendor projections out of the reusable tree.

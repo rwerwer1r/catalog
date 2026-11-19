@@ -1,23 +1,27 @@
 ---
-description: "Boundaries and scaling model for reusable source and documentation."
+description: "Boundaries and scaling model for reusable source, documentation, tooling, and consumers."
 ---
 
 # Repository architecture
 
 ## Purpose
 
-The catalog holds reusable assets for adoption by other repositories, independently of any particular consumer, runtime, or agent product.
+The catalog is a versioned collection of reusable source assets intended for selective use by other repositories. It is not a central controller of consumer accounts.
 
-## Ownership model
+## Ownership map
 
-- `src/` contains canonical reusable source, grouped by kind (`skills`, `rules`, `references`, `agents`, `modules`, `templates`).
-- `catalog.json` is a machine-readable inventory and entrypoint map; it is not the authority for behavior or permission.
-- `docs/` contains maintenance contracts, policies and agent harness guidance.
-- `tools/` and `tests/` implement mechanical validation of the catalog.
-- `.github/workflows/` runs repository checks but does not verify downstream agent behavior.
+- `src/` owns canonical Skills, rules, references, agent roles, modules and templates.
+- `catalog.json` lists IDs, kinds and entrypoints; it is not permission or readiness metadata.
+- `docs/` owns maintenance policies, development procedures, documentation conventions and agent harness guidance.
+- `tools/` and `tests/` validate structural contracts using standard-library Python.
+- `.github/workflows/` runs repository checks; CI does not exercise all downstream agent behavior.
 
-## Scale and discoverability
+## Design for growth
 
-Give each topic one canonical document and each publishable asset one unique ID. Keep indexes short and organized by intent. Prefer links to copying long instructions. Add a new document when it has a distinct owner or review lifecycle, not merely to increase file count.
+Use one stable ID per asset and one canonical page per maintenance topic. Keep directory indexes focused on immediate children and selection criteria. Use links rather than duplicating lengthy text. Add subdirectories only when there is a real distinct owner, interface or lifecycle; never turn every change into a new global rule.
 
-Consumers select specific assets and reviewed revisions. No automatic sync, installation, or cross-account write is implied by catalog membership.
+Distinguish **asset publication**, **behavioral evaluation** and **consumer adoption**. A manifest entry is a source of discovery, not a release badge. Follow [lifecycle](asset-lifecycle.md) and [compatibility](consumption.md) guidance.
+
+## No hidden deployment
+
+There is no automatic installer or synchronization. Any downstream deployment, upgrade, runtime, or account-specific process belongs to the consuming repository and requires its own authorization.

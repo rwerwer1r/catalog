@@ -1,20 +1,20 @@
 ---
-description: "Top-level index of repository documentation domains and their ownership."
+description: "Top-level navigation and ownership for catalog maintenance documentation."
 ---
 
 # Documentation
 
-The documentation system describes **how the catalog is maintained and consumed**. Reusable content belongs in [src/](../src/README.md), not in this directory.
+Documentation governs **how this reusable catalog is maintained**, while distributable source belongs under [src/](../src/README.md).
 
 | Area | Responsibility |
 | --- | --- |
-| [Development](development/README.md) | Architecture, contribution workflow, tests and release readiness |
-| [Policies](policies/README.md) | Cross-cutting repository requirements including language |
-| [AI agents](agents/README.md) | Agent instructions, document-first harnessing and verification |
-| [Documentation authoring](documentation/README.md) | Frontmatter, entrypoints and bundle-document conventions |
+| [Development](development/README.md) | Architecture, asset lifecycle, contributions and consumer compatibility |
+| [Policies](policies/README.md) | Language, documentation, permission/security and provenance requirements |
+| [AI agents](agents/README.md) | Agent context selection, document-first harness, behavior evaluation and handoff |
+| [Documentation authoring](documentation/README.md) | Page quality, frontmatter, entrypoints, bundles and maintenance |
 
-## Ownership and precedence
+## Precedence and ownership
 
-Policy documents state repository requirements. Development documents explain implementation. Agent documents describe how agents apply and verify those requirements. Documentation-authoring guides define document structure and navigation. Individual `src/` assets define their own task behavior but do not override repository policies when maintained here.
+Repository policies govern contributions. Development documents describe procedures; agent documents describe controlled execution and evidence; authoring guides govern document structure. `src/` assets describe optional reusable behavior but cannot override authorization or repository policy.
 
-Keep documentation discoverable through the area indexes; avoid duplicating rules across files. When behavior or an asset entrypoint changes, update its owning document and inbound links.
+Keep one canonical owner per topic, link rather than duplicate long instructions, and repair inbound links when documents move. Follow [document review](documentation/review.md) and report unverified behavior honestly.

@@ -1,13 +1,18 @@
 ---
-description: "Entry point to agent operating procedures and verification guidance."
+description: "Entry point to the agent operating model, context strategy, harness, scenarios, and evidence."
 ---
 
 # AI agent operations
 
-This area documents **how agents work on and verify this repository**. It does not publish reusable agent assets; those live in [src/agents/](../../src/agents/README.md), [src/skills/](../../src/skills/README.md) and [src/rules/](../../src/rules/README.md).
+This directory owns the **agent maintenance harness**, not reusable agent roles themselves. Publish downstream-consumable assets under [src/agents/](../../src/agents/README.md), [src/skills/](../../src/skills/README.md) or [src/rules/](../../src/rules/README.md).
 
-- [Agent operating model](operating-model.md): scope, authority and document loading
-- [Document-first harness](harness.md): what the harness is, and what it is not
-- [Verification records](verification.md): evidence format for agent-assisted changes
+| Task | Guide |
+| --- | --- |
+| Define an agent's authority and working sequence | [Operating model](operating-model.md) |
+| Load only relevant authoritative instructions | [Context selection](context-loading.md) |
+| Run the document-first harness | [Harness](harness.md) |
+| Define a reproducible behavior check | [Scenarios](scenarios.md) |
+| Record checks and evidence | [Verification record](verification.md) |
+| Transfer or finish an agent task | [Handoff and completion](handoff.md) |
 
-Start with [repository policies](../policies/README.md), then load only documents relevant to the active task.
+Start from [repository policies](../policies/README.md); avoid eagerly loading every document or asset.

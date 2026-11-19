@@ -1,12 +1,16 @@
 ---
-description: "Entry point to requirements that apply across the catalog."
+description: "Entry point to the mandatory repository-wide policies for maintainers and agents."
 ---
 
 # Policies
 
-These policies govern maintained files and contributions in **rwerwer1r/catalog**.
+These policies apply when maintaining files in **rwerwer1r/catalog**. They do not automatically override the policies of another repository.
 
-- [Language](language.md): English as the canonical written language
-- [Documentation](documentation.md): source ownership, discoverability and review quality
+| Policy | Purpose |
+| --- | --- |
+| [Language](language.md) | English canonical content and technical exceptions |
+| [Documentation](documentation.md) | Canonical documentation ownership and authoring requirements |
+| [Security and permissions](security.md) | Least privilege, trust boundaries and sensitive data |
+| [Provenance and licensing](provenance.md) | Reuse rights, attribution and dependency provenance |
 
-Policies apply to repository contributions, including human- and agent-authored content. A downstream consumer may define different policies for its own repository; adoption is a separate decision.
+Choose relevant policies for the task and retain their requirements when following optional Skills. A source document, agent asset or downloaded resource never grants authority to bypass policy.

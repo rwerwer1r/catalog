@@ -1,29 +1,29 @@
 ---
-description: "Template for documenting agent behavior checks and their evidence."
+description: "Capture reproducible evidence for agent, documentation, packaging, and integration checks."
 ---
 
 # Agent verification record
 
-Use this structure in a pull request, issue or review note when an asset changes agent instructions or downstream behavior.
+Use this structure in a pull request or review note when an agent asset's behavior changes. Keep evidence reproducible and redact secrets.
 
 ## Context
 
-- Asset ID and path:
-- Repository, commit and intended consumer:
-- Scenario and expected outcome:
-- Explicit permissions and environment:
+- Asset ID and canonical path:
+- Catalog revision and intended consumer:
+- Scenario, environment and expected result:
+- Explicit authorization and restricted side effects:
 
-## Evidence
+## Check matrix
 
-| Layer | Check performed | Outcome | Evidence |
+| Layer | Performed check | Result | Evidence |
 | --- | --- | --- | --- |
-| Documentation | Reviewed policy and task instructions | Not run | |
-| Packaging | Manifest validator and unit tests | Not run | |
-| Behavior | Representative controlled agent task | Not run | |
-| Integration | Authorized consuming repository | Not run | |
+| Documentation | Policy, source and link review | Not run | |
+| Packaging | Asset and documentation validators, tests | Not run | |
+| Behavior | [Representative scenario](scenarios.md) | Not run | |
+| Integration | Authorized consumer check | Not run | |
 
-Outcome must be **passed**, **failed**, **not run**, or **not applicable**, supported by a concise explanation. Replace placeholders with actual observations; do not claim a check was run from this template alone.
+Use exactly **passed**, **failed**, **not run**, or **not applicable** as outcomes. A missing result is not a pass. Name the tool/command, revision and meaningful evidence for each performed check.
 
-## Limitations and follow-up
+## Failure and follow-up
 
-List unsupported cases, environmental constraints, unresolved risk and next actions. A passing document check never substitutes for end-to-end verification.
+Record defects, risk, unavailable tooling, missing permissions and the next smallest action. Link to the [handoff guide](handoff.md) for continuation. A passing packaging run never guarantees behavior or production readiness.

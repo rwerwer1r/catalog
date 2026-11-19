@@ -1,6 +1,6 @@
 # Catalog
 
-**rwerwer1r/catalog** maintains reusable modules, agent Skills, rules, references, agent roles and document templates for other repositories.
+**rwerwer1r/catalog** maintains reusable modules, agent Skills, rules, references, agent roles and document templates for selective use by other repositories.
 
 ## Source
 
@@ -13,21 +13,21 @@
 | [src/modules/](src/modules/README.md) | Software implementations |
 | [src/templates/](src/templates/README.md) | Document templates |
 
-The [manifest](catalog.json) lists published entrypoints. Consumers select and review specific assets; the repository does not automatically install, sync or execute them.
+The [manifest](catalog.json) lists entrypoints. Assets are not automatically installed, synchronized or executed.
 
-## Documentation and agent harness
+## Documentation and harness
 
 - [Documentation index](docs/README.md)
-- [Development](docs/development/README.md)
-- [Policies](docs/policies/README.md), including the [English language policy](docs/policies/language.md)
-- [AI agent operations](docs/agents/README.md) and [document-first harness](docs/agents/harness.md)
+- [Development](docs/development/README.md): architecture, [asset lifecycle](docs/development/asset-lifecycle.md), consumer compatibility
+- [Policies](docs/policies/README.md): English, documentation, [security](docs/policies/security.md) and [provenance](docs/policies/provenance.md)
+- [AI agent operations](docs/agents/README.md): context routing, [document-first harness](docs/agents/harness.md), [scenarios](docs/agents/scenarios.md)
 - [Documentation handbook](docs/documentation/README.md): authoring, structure, review and maintenance
 
-English is the canonical language for maintained repository content.
+English is canonical for committed repository material.
 
-## Validation
+## Checks
 
-Requires Python 3.11+ with no third-party dependencies:
+Python 3.11+ and the standard library are sufficient:
 
 ```sh
 python3 tools/validate_catalog.py
@@ -35,4 +35,4 @@ python3 tools/validate_docs.py
 python3 -m unittest discover -s tests -v
 ```
 
-CI checks packaging and document structure. See [validation](docs/development/validation.md) for scope and [agent verification](docs/agents/verification.md) for behavioral evidence requirements.
+GitHub Actions runs structural checks. Behavioral scenarios and downstream integrations require separate observed evidence; see [verification](docs/agents/verification.md).
