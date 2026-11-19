@@ -20,7 +20,7 @@ description: "Define the catalog's purpose, source directory ownership, and repo
 | `src/templates/` | Document templates |
 | `src/README.md` and category `README.md` files | Human-readable asset navigation |
 | `docs/` | Repository policies, development and agent maintenance guidance |
-| `tools/`, `tests/` | Verification utilities and tests |
+| `scripts/`, `tests/scripts/` | Verification utilities and tests |
 | `.github/workflows/` | Repository CI |
 
 **The directories and their READMEs are the source discovery interface.** Do not introduce a second registry that duplicates the same asset inventory. Keep canonical source under its owner; documentation should link to it rather than copy it.

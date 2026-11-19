@@ -10,7 +10,7 @@ description: "Select authoritative context for catalog maintenance without loadi
 2. Read [AGENTS.md](../../AGENTS.md) and the [documentation index](../README.md).
 3. Apply the [repository policy](../policies/repository.md) and task-relevant policies from the [policy index](../policies/README.md).
 4. Choose the appropriate [development](../development/README.md) or [documentation](../documentation/README.md) procedure.
-5. If editing a reusable asset, find it through `src/README.md` and the relevant category README; read only its entrypoint and necessary dependencies.
+5. If editing a reusable asset, find it through `src/index.md` and the relevant category `index.md`; read only its entrypoint and necessary dependencies.
 
 ## Precedence
 

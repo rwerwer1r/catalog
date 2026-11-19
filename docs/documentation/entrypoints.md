@@ -1,27 +1,26 @@
 ---
-description: "Conventions for scalable documentation navigation and agent entrypoints."
+description: "Rules for lightweight README introductions and index.md navigation."
 ---
 
-# Documentation entrypoints
+# Documentation entrypoints and indexes
 
-## Purpose
+## Separation of responsibilities
 
-An entrypoint tells a reader where to begin, which material to select next and where the authoritative instructions live. Keep it short and navigable rather than duplicating detailed procedures.
+Keep **`README.md` short**: state the directory's purpose, who should use it, and link to `index.md`. Put the maintained **list of pages and assets in `index.md`**. Do not maintain competing lists in both files.
 
-## Required structure
+- Root `README.md`: concise repository purpose and links to the source and documentation indexes.
+- `src/README.md`: brief introduction to reusable source; `src/index.md` lists asset categories.
+- Each `src/<kind>/README.md`: category scope; its `index.md` lists all published entrypoints in that category.
+- `docs/README.md`: purpose of repository documentation; `docs/index.md` lists documentation areas.
+- Each `docs/<area>/README.md`: area scope; its `index.md` lists immediate pages and child area indexes.
+- Root `AGENTS.md`: repository-maintenance instructions. It selects task-relevant policies and sources, not a duplicate asset inventory.
 
-- Root `README.md` introduces purpose and links to documentation domains.
-- `docs/README.md` lists maintained domains.
-- Every directory under `docs/` has a `README.md` with direct links to each immediate document and child directory.
-- Root `AGENTS.md` is the agent entrypoint for **this repository**; it routes to policies and task-specific guides.
-- `src/README.md` and the category READMEs are the entrypoint map for reusable source, distinct from the documentation index.
+## Index maintenance
 
-## Linking and growth
+Use descriptive relative links and a single canonical index in each directory. Link directly to each immediate published asset or document from its nearest index; link child directories to their own `index.md`. Avoid repeating a flat list of every file at the repository root.
 
-Use repository-relative links and descriptive anchor text. Make each document reachable from its nearest directory README; reserve the root navigation for major domains. An entrypoint describes scope and reading order but does not reproduce full procedures.
+When adding, moving or removing an item, update its nearest index and any affected inbound links in the same change. An index is for discovery; it does not assert that a Skill, module or procedure has been behaviorally verified.
 
-When moving or retiring files, update inbound links and the nearest index in one change. A link to external material does not authorize account changes, installations or writes.
+## Verification
 
-## Review
-
-Run `python3 tools/validate_docs.py` to check directory index coverage and file-link existence. Manually inspect heading anchors, external URLs, rendered navigation and reader clarity; the script does not validate those.
+Run `python3 scripts/validate_catalog.py` for source entrypoints and `python3 scripts/validate_docs.py` for document indexes and local links. Check heading anchors, external URLs and navigation clarity manually; these are not fully covered by the scripts.

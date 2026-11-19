@@ -15,7 +15,7 @@ Documentation under `docs/` explains how **this catalog repository** is maintain
 | `docs/agents/` | Agent workflow and evidence for maintaining this repository |
 | `docs/documentation/` | Authoring, navigation, review and maintenance conventions |
 
-Publish reusable source under `src/` and link it from its category README instead of duplicating it in documentation.
+Publish reusable source under `src/` and link it from its category `index.md` instead of duplicating it in documentation.
 
 ## Requirements
 

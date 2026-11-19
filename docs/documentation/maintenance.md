@@ -17,7 +17,7 @@ Prefer editing the canonical page over creating another page with almost the sam
 1. Identify the current owning page and inbound references.
 2. Select the new canonical location according to [information architecture](information-architecture.md).
 3. Move content without silently changing its meaning. Split only along clear reader tasks or ownership boundaries.
-4. Repair relative links, anchors, directory entrypoints, policy links and agent routing references.
+4. Repair relative links, anchors, directory indexes, policy links and agent routing references.
 5. Check navigation from the repository index and the closest domain entrypoint.
 
 A simple file move should not implicitly expand the document's authority.

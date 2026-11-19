@@ -17,9 +17,9 @@ description: "Review documentation for factual correctness, discoverability, saf
 ## Mechanical verification
 
 ```sh
-python3 tools/validate_catalog.py
-python3 tools/validate_docs.py
-python3 -m unittest discover -s tests -v
+python3 scripts/validate_catalog.py
+python3 scripts/validate_docs.py
+python3 -m unittest discover -s tests/scripts -v
 ```
 
 The document validator checks frontmatter structure, a single H1, local Markdown file targets and directory-index coverage. It does not check external links, anchors, technical accuracy, full Markdown rendering or downstream behavior. Review those separately.

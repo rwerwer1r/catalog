@@ -13,7 +13,7 @@ The source path is the durable identifier. Use lowercase kebab-case filenames or
 ## Source and discovery
 
 - Maintain one canonical entrypoint per asset under its category.
-- Add a descriptive link from the **nearest category README**; keep the `src/README.md` index at category level.
+- Add a descriptive link from the **category `index.md`**; keep the `src/README.md` index at category level.
 - State purpose, prerequisites, inputs, outputs and relevant dependencies or limitations in the asset itself.
 - Do not duplicate the directory inventory in a separate JSON, YAML or generated registration file.
 - Keep required supporting files alongside their owning Skill or module.

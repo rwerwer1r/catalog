@@ -6,7 +6,7 @@ description: "Manage reusable assets from proposal through validation, adoption,
 
 ## States and evidence
 
-A source asset listed in its category README is **discoverable**, not automatically production-ready. The following working states belong in review records, not in a central registry.
+A source asset listed in its category index is **discoverable**, not automatically production-ready. The following working states belong in review records, not in a central registry.
 
 | State | Meaning | Required evidence |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ Do not treat these labels as API guarantees. Avoid untracked status claims in pr
 
 1. Identify the consumer problem; confirm the asset does not duplicate an existing entry.
 2. Choose a kind and unique ID using [architecture](architecture.md), [asset policy](../policies/assets.md) and [asset contract](../../src/references/asset-contract.md).
-3. Implement canonical source under `src/`, declare prerequisites and constraints, then update its category README.
+3. Implement canonical source under `src/`, declare prerequisites and constraints, then update its category index.
 4. Run [validation](validation.md) and execute representative scenarios for behavior-affecting changes.
 5. Describe compatibility, migration impact and test evidence in the pull request.
 

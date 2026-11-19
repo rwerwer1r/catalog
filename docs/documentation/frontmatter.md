@@ -6,7 +6,7 @@ description: "Rules for consistent YAML frontmatter in maintained catalog docume
 
 ## Scope
 
-All maintained Markdown files under `docs/`, including directory entrypoints, use a frontmatter block. This requirement does not automatically apply to `src/` assets, root `README.md`, or root `AGENTS.md`.
+All maintained Markdown files under `docs/`, including directory README and index files, use a frontmatter block. This requirement does not automatically apply to `src/` assets, root `README.md`, or root `AGENTS.md`.
 
 ## Format
 

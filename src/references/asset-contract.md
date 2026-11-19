@@ -13,7 +13,7 @@ The repository's `src/` directories own reusable assets. The **source path is th
 | Module | `src/modules/<name>/README.md` |
 | Template | `src/templates/<name>.md` |
 
-Use lowercase kebab-case names. The nearest `src/<kind>/README.md` provides a descriptive link to each published entrypoint, and `src/README.md` links to each kind. A Skill or module may keep supporting files inside its own directory.
+Use lowercase kebab-case names. The nearest `src/<kind>/index.md` provides a descriptive link to each published entrypoint, and `src/index.md` links to each kind. A Skill or module may keep supporting files inside its own directory.
 
 ## Content contract
 
@@ -25,4 +25,4 @@ Consumers select relevant files, review their assumptions and pin a repository r
 
 ## Verification
 
-The source validator checks directory naming, entrypoint files, basic Markdown headings and category README link coverage. It does not test arbitrary module runtime behavior, third-party dependencies or agent performance.
+The source validator checks directory naming, entrypoint files, basic Markdown headings and category index link coverage. It does not test arbitrary module runtime behavior, third-party dependencies or agent performance.

@@ -5,16 +5,16 @@ This is `rwerwer1r/catalog`, a maintained source library for reusable assets. Co
 ## Discover source and rules
 
 1. Read [repository policy](docs/policies/repository.md) and the relevant [policy index](docs/policies/README.md).
-2. For source changes, read [asset policy](docs/policies/assets.md), the corresponding `src/<kind>/README.md` and the affected asset.
+2. For source changes, read [asset policy](docs/policies/assets.md), the corresponding `src/<kind>/index.md` and the affected asset.
 3. For documentation changes, follow [documentation policy](docs/policies/documentation.md) and the relevant [authoring guide](docs/documentation/README.md).
 4. For agent work, use [operating model](docs/agents/operating-model.md) and [document-first harness](docs/agents/harness.md).
 5. Follow [English language policy](docs/policies/language.md) for all committed content.
 
-Source discovery is directory-first: use `src/README.md` and the category READMEs. Do not create a duplicate machine-readable asset registry.
+Source discovery is directory-first: use `src/index.md` and the relevant category index. Do not create a duplicate machine-readable asset registry.
 
 ## Verify
 
-- Keep edits scoped and update source files and their category README links together.
+- Keep edits scoped and update source files and their category index links together.
 - Do not publish secrets, private project records or material lacking reuse rights.
-- Run `python3 tools/validate_catalog.py`, `python3 tools/validate_docs.py` and `python3 -m unittest discover -s tests -v` when available.
+- Run `python3 scripts/validate_catalog.py`, `python3 scripts/validate_docs.py` and `python3 -m unittest discover -s tests/scripts -v` when available.
 - Report actual outcomes and unverified behavior; passing structural checks does not prove consumer behavior.

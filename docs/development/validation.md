@@ -9,12 +9,12 @@ description: "Explain catalog checks, evidence requirements, and limits of autom
 From the repository root with Python 3.11+:
 
 ```sh
-python3 tools/validate_catalog.py
-python3 tools/validate_docs.py
-python3 -m unittest discover -s tests -v
+python3 scripts/validate_catalog.py
+python3 scripts/validate_docs.py
+python3 -m unittest discover -s tests/scripts -v
 ```
 
-The source validator checks canonical asset paths, naming, entrypoint headings and category README link coverage. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest README coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
+The source validator checks canonical asset paths, naming, entrypoint headings and category index link coverage. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest index coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
 
 ## Manual and behavioral review
 

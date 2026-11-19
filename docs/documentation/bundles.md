@@ -1,41 +1,32 @@
 ---
-description: "Requirements for organizing and reviewing self-contained document bundles."
+description: "Guidance for coherent multi-page documentation bundles with concise introductions and indexes."
 ---
 
 # Bundle documents
 
-## Definition
+## When to bundle
 
-A **documentation bundle** is a small, coherent set of related documents with one explicit starting page. It is useful when a topic needs multiple procedures, decisions or references that should travel together. Do not create bundles for single-page topics or to duplicate content already owned elsewhere.
+Use a bundle when a topic requires several closely related pages with shared prerequisites, ownership or lifecycle. Do not create one for a single short procedure or merely to mirror existing canonical content.
 
 ## Layout
 
-Use a dedicated directory with a `README.md` entrypoint and descriptive filenames. Example:
+Each bundle has a **short `README.md` introduction** and a separate `index.md` listing its member pages in the intended reading order:
 
 ```text
 docs/<area>/<topic>/
   README.md
+  index.md
   overview.md
   procedure.md
   verification.md
 ```
 
-The `README.md` must state the bundle's goal, intended audience, scope, prerequisites, reading order and links to each member. Member files should link back to the bundle entrypoint when readers are likely to encounter them independently. Follow [frontmatter rules](frontmatter.md) for new bundle documents.
+The README states the goal, audience and an index link. The index links to every immediate member and any child indexes; include selection and reading order where useful. Each member must be understandable independently and follow [frontmatter rules](frontmatter.md).
 
-## Ownership and boundaries
+## Ownership and reuse
 
-Give the bundle one canonical owning directory and one clear lifecycle. A bundle groups documents; it does not create a new permission boundary, override policies or automatically become a reusable `src/` asset.
+Give the bundle one canonical home. Reusable Skills, modules and references belong under `src/` and are discovered through their category `index.md`; bundles may link to them but must not copy authoritative source. A bundle cannot change repository permissions or automatically install assets.
 
-If a downstream repository needs a reusable Skill, module or reference, publish that source under `src/` and link to its entrypoint from the appropriate category README. Link to the asset from the bundle instead of copying its source or treating a bundle as an installer.
+## Review
 
-## Verification
-
-Before publishing or moving a bundle:
-
-1. Check that its entrypoint explains selection and reading order.
-2. Verify every included document is linked and every local link resolves.
-3. Confirm that procedures can be followed using stated prerequisites, without hidden dependencies.
-4. Check that ownership is unambiguous and no contradictory policy copies exist.
-5. Document untested behavior as unverified; a complete bundle is not proof that instructions work in a real environment.
-
-Do not mark bundles as validated by automation unless the actual checks have run.
+Check that the index covers all member pages, all relative links exist, prerequisites are explicit and instructions do not contradict repository policy. Run the [documentation checks](../development/validation.md) and report any untested behavior as not run.

@@ -82,8 +82,8 @@ def local_links(relative: str, content: str, root: Path) -> list[str]:
         if not resolved.is_relative_to(root.resolve()):
             errors.append(f"{relative}: link escapes repository: {target}")
         elif destination.is_dir():
-            if not (destination / "README.md").is_file():
-                errors.append(f"{relative}: directory lacks README entrypoint: {target}")
+            if not (destination / "index.md").is_file():
+                errors.append(f"{relative}: directory lacks index.md: {target}")
         elif not destination.is_file():
             errors.append(f"{relative}: missing link target: {target}")
     return errors
@@ -110,17 +110,20 @@ def validate(root: Path) -> list[str]:
         errors.extend(local_links(relative, content, root))
 
     for directory in [docs, *[d for d in docs.rglob("*") if d.is_dir()]]:
-        entry = directory / "README.md"
-        if not entry.is_file():
-            errors.append(f"{directory.relative_to(root)}: missing README.md entrypoint")
+        readme, index = directory / "README.md", directory / "index.md"
+        if not readme.is_file() or not index.is_file():
+            errors.append(f"{directory.relative_to(root)}: missing README.md or index.md")
             continue
-        index = without_fences(entry.read_text(encoding="utf-8"))
+        intro = without_fences(readme.read_text(encoding="utf-8"))
+        listing = without_fences(index.read_text(encoding="utf-8"))
+        if "(index.md)" not in intro:
+            errors.append(f"{readme.relative_to(root)}: missing link to index.md")
         for page in directory.glob("*.md"):
-            if page.name != "README.md" and f"({page.name})" not in index:
-                errors.append(f"{page.relative_to(root)}: not linked from its directory README")
+            if page.name not in {"README.md", "index.md"} and f"({page.name})" not in listing:
+                errors.append(f"{page.relative_to(root)}: not linked from directory index")
         for child in directory.iterdir():
-            if child.is_dir() and f"({child.name}/README.md)" not in index:
-                errors.append(f"{child.relative_to(root)}: not linked from parent README")
+            if child.is_dir() and f"({child.name}/index.md)" not in listing:
+                errors.append(f"{child.relative_to(root)}: not linked from parent index")
     return errors
 
 
