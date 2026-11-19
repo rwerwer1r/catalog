@@ -1,25 +1,31 @@
 # Catalog
 
-A small collection of reusable agent instructions and writing templates maintained by **rwerwer1r**. Each project selects what it needs; nothing is installed automatically.
+**rwerwer1r/catalog** holds reusable implementation modules, agent Skills, rules, references, agent roles, and document templates for other repositories.
 
-## Find an asset
+## Source directories
 
-| Need | Asset |
+| Folder | Responsibility |
 | --- | --- |
-| Safe repository changes | [Repository workflow](assets/repository-workflow.md) |
-| Review a change before merging | [Change review](assets/change-review.md) |
-| Document a system or a process | [Technical writing](assets/technical-writing.md) |
-| Capture a decision | [Decision record](templates/decision-record.md) |
-| Hand off unfinished work | [Handoff note](templates/handoff-note.md) |
-| Define a focused task | [Task brief](templates/task-brief.md) |
+| [src/skills/](src/skills/README.md) | Task-specific, opt-in agent workflows |
+| [src/rules/](src/rules/README.md) | Small, scoped operating guidelines |
+| [src/references/](src/references/README.md) | Supporting knowledge and contracts |
+| [src/agents/](src/agents/README.md) | Role-specific agent behavior |
+| [src/modules/](src/modules/README.md) | Reusable software implementations |
+| [src/templates/](src/templates/README.md) | Document templates |
 
-Automated consumers can use [the manifest](catalog.json). Human users should read the asset directly. [Agent guidance](AGENTS.md) applies only when working **in this repository**.
+[Catalog manifest](catalog.json) lists published entrypoints. [Development guide](docs/development.md) defines how to add assets.
 
-## Use in another repository
+## Initial development checks
 
-1. Choose an asset for a specific task; do not load every asset by default.
-2. Read the complete source and check that its assumptions match the target project.
-3. Copy or adapt the relevant instructions into the project's own maintained files when needed.
-4. Review the changes and verify them with the target project's tools.
+Requires Python 3.11+ only; no dependency installation or external service is needed.
 
-This catalog does not grant permissions to access accounts, install programs, or make changes in other repositories.
+```sh
+python3 tools/validate_catalog.py
+python3 -m unittest discover -s tests -v
+```
+
+GitHub Actions executes both checks for pushes and pull requests. This packaging harness does **not** test downstream agent performance.
+
+## Consumption
+
+Choose only the relevant asset from `catalog.json`. Read its prerequisites, review permissions, and pin a revision for automatic consumers. Nothing here automatically installs, syncs, or executes assets in another repository.
