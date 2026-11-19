@@ -14,7 +14,7 @@ python3 tools/validate_docs.py
 python3 -m unittest discover -s tests -v
 ```
 
-The asset validator checks `catalog.json`, path safety and registered source coverage. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest README coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
+The source validator checks canonical asset paths, naming, entrypoint headings and category README link coverage. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest README coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
 
 ## Manual and behavioral review
 
@@ -25,7 +25,7 @@ Scenario execution is **not automated in the current CI**. Integration tests are
 ## Decision rules
 
 - Documentation-only change: check canonical ownership, frontmatter, internal links and language.
-- Manifest or source structure change: run packaging validation and unit tests.
+- Asset source or directory-index change: run packaging validation and unit tests.
 - Behavior-affecting asset change: review scenario coverage and execute applicable controlled cases or state what is unverified.
 - Breaking interface, installation or permission change: assess consumers, approval and rollback.
 

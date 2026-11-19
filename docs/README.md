@@ -15,4 +15,4 @@ Documentation governs **maintenance of this reusable asset repository**. Distrib
 
 ## Boundaries
 
-These instructions govern changes to `rwerwer1r/catalog`. They are not automatically published as reusable assets or imposed on other repositories. `src/` is canonical for assets, `catalog.json` lists published entrypoints, and repository policies govern their maintenance.
+These instructions govern changes to `rwerwer1r/catalog`. They are not automatically published as reusable assets or imposed on other repositories. `src/` is canonical for assets, category READMEs list available entrypoints, and repository policies govern their maintenance.

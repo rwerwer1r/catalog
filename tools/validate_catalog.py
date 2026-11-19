@@ -1,100 +1,95 @@
-"""Standard-library validation for the reusable asset catalog."""
-import json
+"""Check the on-disk reusable source layout and category index coverage.
+
+Source directories and their README links are authoritative; no duplicate
+asset registry or third-party dependency is required.
+"""
+from __future__ import annotations
+
 import re
 import sys
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 
-KINDS = {"skill": "skills", "rule": "rules", "reference": "references", "agent": "agents", "module": "modules", "template": "templates"}
-IDENTIFIER = re.compile(r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$")
+KINDS = ("skills", "rules", "references", "agents", "modules", "templates")
+NAME = re.compile(r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$")
+
+
+def _heading(path: Path, root: Path, errors: list[str]) -> None:
+    relative = path.relative_to(root).as_posix()
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        errors.append(f"{relative}: cannot read file: {exc}")
+        return
+    if not text.lstrip().startswith("# "):
+        errors.append(f"{relative}: missing Markdown heading")
+
+
+def _check_link(index: str, href: str, location: Path, root: Path, errors: list[str]) -> None:
+    if f"({href})" not in index:
+        errors.append(f"{location.relative_to(root)}: missing index link to {href}")
 
 
 def validate(root: Path) -> list[str]:
     root = root.resolve()
-    errors = []
-    try:
-        data = json.loads((root / "catalog.json").read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        return [f"catalog.json: {exc}"]
-    if not isinstance(data, dict):
-        return ["catalog.json must be an object"]
-    if data.get("schema_version") != 2:
-        errors.append("schema_version must be 2")
-    if data.get("owner") != "rwerwer1r":
-        errors.append("owner must be rwerwer1r")
-    if data.get("source_root") != "src":
-        errors.append("source_root must be src")
-    entries = data.get("assets")
-    if not isinstance(entries, list):
-        return errors + ["assets must be a list"]
-    ids, paths = set(), set()
-    for index, entry in enumerate(entries):
-        prefix = f"assets[{index}]"
-        if not isinstance(entry, dict):
-            errors.append(f"{prefix}: expected object")
+    errors: list[str] = []
+    source = root / "src"
+    index = source / "README.md"
+    if not index.is_file():
+        return ["src/README.md: missing source entrypoint"]
+    _heading(index, root, errors)
+    root_index = index.read_text(encoding="utf-8")
+
+    for kind in KINDS:
+        location = source / kind
+        readme = location / "README.md"
+        if not readme.is_file() or readme.is_symlink():
+            errors.append(f"src/{kind}/README.md: missing or unsafe category entrypoint")
             continue
-        ident, kind, path = entry.get("id"), entry.get("kind"), entry.get("path")
-        if not isinstance(ident, str) or not IDENTIFIER.fullmatch(ident):
-            errors.append(f"{prefix}: invalid id")
-            continue
-        if ident in ids:
-            errors.append(f"{prefix}: duplicate id {ident}")
-        ids.add(ident)
-        if kind not in KINDS:
-            errors.append(f"{prefix}: unsupported kind")
-            continue
-        if not isinstance(entry.get("description"), str) or not entry["description"].strip():
-            errors.append(f"{prefix}: missing description")
-        if not isinstance(path, str):
-            errors.append(f"{prefix}: invalid path")
-            continue
-        pp = PurePosixPath(path)
-        if pp.is_absolute() or ".." in pp.parts or "\\" in path:
-            errors.append(f"{prefix}: unsafe path")
-            continue
-        if kind == "skill":
-            allowed = {f"src/skills/{ident}/SKILL.md"}
-        elif kind == "module":
-            allowed = {f"src/modules/{ident}.py", f"src/modules/{ident}/README.md"}
-        else:
-            allowed = {f"src/{KINDS[kind]}/{ident}.md"}
-        if path not in allowed:
-            errors.append(f"{prefix}: unexpected path {path}")
-            continue
-        if path in paths:
-            errors.append(f"{prefix}: duplicate path {path}")
-        paths.add(path)
-        full = root / path
-        if full.is_symlink() or not full.is_file() or not full.resolve().is_relative_to(root):
-            errors.append(f"{prefix}: missing or unsafe file {path}")
-        elif path.endswith(".md"):
-            try:
-                content = full.read_text(encoding="utf-8")
-                if not content.lstrip().startswith("# "):
-                    errors.append(f"{prefix}: missing Markdown heading")
-            except (OSError, UnicodeError) as exc:
-                errors.append(f"{prefix}: cannot read file: {exc}")
-    for folder in KINDS.values():
-        directory = root / "src" / folder
-        if not directory.is_dir():
-            errors.append(f"missing directory: src/{folder}")
-            continue
-        for item in directory.rglob("*"):
+        _heading(readme, root, errors)
+        _check_link(root_index, f"{kind}/README.md", index, root, errors)
+        content = readme.read_text(encoding="utf-8")
+
+        # Do not accept symlinks anywhere in reusable source.
+        for item in location.rglob("*"):
             if item.is_symlink():
-                errors.append(f"symlink not allowed: {item.relative_to(root)}")
-            elif item.is_file() and item.name not in {"README.md", ".gitkeep"}:
-                rel = item.relative_to(root).as_posix()
-                if rel not in paths:
-                    errors.append(f"unregistered source: {rel}")
+                errors.append(f"{item.relative_to(root)}: symlinks are not allowed")
+
+        for item in sorted(location.iterdir()):
+            if item.name == "README.md":
+                continue
+            if item.is_file():
+                if kind in {"skills", "modules"}:
+                    errors.append(f"{item.relative_to(root)}: skills and modules require directories")
+                    continue
+                if item.suffix != ".md" or not NAME.fullmatch(item.stem):
+                    errors.append(f"{item.relative_to(root)}: invalid asset filename")
+                    continue
+                if item.suffix == ".md":
+                    _heading(item, root, errors)
+                _check_link(content, item.name, readme, root, errors)
+            elif item.is_dir():
+                if kind not in {"skills", "modules"} or not NAME.fullmatch(item.name):
+                    errors.append(f"{item.relative_to(root)}: unexpected asset directory")
+                    continue
+                entryname = "SKILL.md" if kind == "skills" else "README.md"
+                entry = item / entryname
+                if not entry.is_file() or entry.is_symlink():
+                    errors.append(f"{entry.relative_to(root)}: missing or unsafe asset entrypoint")
+                    continue
+                _heading(entry, root, errors)
+                _check_link(content, f"{item.name}/{entryname}", readme, root, errors)
+            else:
+                errors.append(f"{item.relative_to(root)}: unsupported source entry")
     return errors
 
 
 def main() -> int:
     problems = validate(Path(__file__).resolve().parents[1])
-    for error in problems:
-        print(f"ERROR: {error}", file=sys.stderr)
+    for problem in problems:
+        print(f"ERROR: {problem}", file=sys.stderr)
     if problems:
         return 1
-    print("Catalog validation passed.")
+    print("Source layout validation passed.")
     return 0
 
 

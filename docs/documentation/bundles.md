@@ -26,7 +26,7 @@ The `README.md` must state the bundle's goal, intended audience, scope, prerequi
 
 Give the bundle one canonical owning directory and one clear lifecycle. A bundle groups documents; it does not create a new permission boundary, override policies or automatically become a reusable `src/` asset.
 
-If a downstream repository needs a reusable Skill, module or reference, publish that source under `src/` and register it in `catalog.json`. Link to the asset from the bundle instead of copying its source or treating a bundle as an installer.
+If a downstream repository needs a reusable Skill, module or reference, publish that source under `src/` and link to its entrypoint from the appropriate category README. Link to the asset from the bundle instead of copying its source or treating a bundle as an installer.
 
 ## Verification
 

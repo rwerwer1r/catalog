@@ -14,7 +14,7 @@ An entrypoint tells a reader where to begin, which material to select next and w
 - `docs/README.md` lists maintained domains.
 - Every directory under `docs/` has a `README.md` with direct links to each immediate document and child directory.
 - Root `AGENTS.md` is the agent entrypoint for **this repository**; it routes to policies and task-specific guides.
-- `catalog.json` is the entrypoint map for reusable `src/` assets, not a documentation index.
+- `src/README.md` and the category READMEs are the entrypoint map for reusable source, distinct from the documentation index.
 
 ## Linking and growth
 

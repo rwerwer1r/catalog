@@ -14,4 +14,4 @@ This area covers how reusable source grows safely from proposal to independently
 | [Consumption and compatibility](consumption.md) | Pinning, integration, upgrades and rollback |
 | [Validation and tests](validation.md) | Packaging, documentation and behavioral checks |
 
-Repository requirements live under [Policies](../policies/README.md). Agent operation and evidence live under [AI agents](../agents/README.md). Do not confuse an asset's presence in the manifest with evidence that a consumer has adopted it.
+Repository requirements live under [Policies](../policies/README.md). Agent operation and evidence live under [AI agents](../agents/README.md). Do not confuse an asset's presence in a directory index with evidence that a consumer has adopted it.

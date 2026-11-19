@@ -1,28 +1,32 @@
 # Catalog
 
-**rwerwer1r/catalog** is a source library for reusable modules, AI agent Skills, rules, references, roles and templates that other repositories can select and adapt.
+**rwerwer1r/catalog** stores reusable modules, AI agent Skills, rules, references, roles and templates for selective use by other repositories.
 
-## Repository layout
+## Find reusable assets
 
-| Path | Purpose |
+Start at [src/](src/README.md) and select the relevant directory:
+
+| Directory | Content |
 | --- | --- |
-| [src/](src/README.md) | Canonical reusable assets |
-| [catalog.json](catalog.json) | Published asset IDs, kinds and entrypoints |
-| [docs/](docs/README.md) | Development guides, repository policies and agent-maintenance documentation |
-| [tools/](tools/) and [tests/](tests/) | Structural validation and regression tests |
+| [Skills](src/skills/README.md) | Task-specific agent workflows |
+| [Rules](src/rules/README.md) | Scoped agent instructions |
+| [References](src/references/README.md) | Reusable technical knowledge |
+| [Agents](src/agents/README.md) | Role definitions |
+| [Modules](src/modules/README.md) | Reusable implementation code |
+| [Templates](src/templates/README.md) | Document templates |
 
-Assets are organized under `src/skills/`, `src/rules/`, `src/references/`, `src/agents/`, `src/modules/` and `src/templates/`. No asset is automatically installed or synchronized into another repository.
+**There is no central asset manifest.** Directory layout and per-category READMEs are the discovery interface. Choose and review an individual asset; this repository does not automatically install, synchronize or execute it elsewhere.
 
-## Repository rules and development
+## Maintain the repository
 
-- [Repository policy](docs/policies/repository.md): what belongs here and who controls downstream adoption
-- [Asset policy](docs/policies/assets.md): source, manifest, reuse and verification criteria
-- [Language and documentation](docs/policies/README.md): English content and maintenance conventions
-- [Development](docs/development/README.md) and [agent harness](docs/agents/harness.md): working and checking procedures
+- [Repository policy](docs/policies/repository.md): purpose, canonical paths and boundaries
+- [Asset policy](docs/policies/assets.md): publishing and review criteria
+- [Documentation](docs/README.md): development, policies, agent harness and authoring
+- [Agent harness](docs/agents/harness.md): scoped context and evidence-based verification
 
-## Validation
+## Checks
 
-Python 3.11+ with the standard library:
+Requires Python 3.11+ and no third-party packages:
 
 ```sh
 python3 tools/validate_catalog.py
@@ -30,4 +34,4 @@ python3 tools/validate_docs.py
 python3 -m unittest discover -s tests -v
 ```
 
-CI validates structural consistency. Actual agent behavior and consumer integrations require separate evidence.
+CI verifies file layout, source indexes and documentation structure. Behavioral agent checks and consumer integrations require separate evidence.

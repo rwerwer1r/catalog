@@ -1,30 +1,30 @@
 ---
-description: "Specify which reusable assets may be published and the minimum source, review, and provenance requirements."
+description: "Specify the source layout and review criteria for reusable catalog assets."
 ---
 
 # Reusable asset policy
 
-## What may be published
+## Published source
 
-Publish an asset only when it solves a repeatable problem and has a clear intended consumer. Supported manifest kinds are `skill`, `rule`, `reference`, `agent`, `module` and `template`. The canonical files belong under the matching `src/` directory; details are defined by the [asset contract](../../src/references/asset-contract.md).
+Publish a reusable item only when it solves a repeatable problem with a defined consumer. Supported source categories are `skills`, `rules`, `references`, `agents`, `modules` and `templates`.
 
-Do not register repository maintenance documents, personal agent settings, unimplemented modules, one-off notes or generated vendor outputs as reusable assets.
+The source path is the durable identifier. Use lowercase kebab-case filenames or directories and preserve existing paths when consumers may depend on them. File and entrypoint rules are explained in the [asset contract](../../src/references/asset-contract.md).
 
-## Source and manifest
+## Source and discovery
 
-- Each published asset must have a unique stable ID, a maintained entrypoint, a description and one matching `catalog.json` entry.
-- Describe the asset's purpose and, where applicable, usage triggers, prerequisites, inputs, output, dependencies and limits.
-- Keep referenced files in a predictable location, and do not hide required network access or setup steps.
-- Update the manifest and source together. Avoid repurposing an established ID for incompatible behavior.
+- Maintain one canonical entrypoint per asset under its category.
+- Add a descriptive link from the **nearest category README**; keep the `src/README.md` index at category level.
+- State purpose, prerequisites, inputs, outputs and relevant dependencies or limitations in the asset itself.
+- Do not duplicate the directory inventory in a separate JSON, YAML or generated registration file.
+- Keep required supporting files alongside their owning Skill or module.
+- Avoid reusing an existing path for an incompatible contract.
 
-## Reuse and attribution
+## Publication review
 
-Do not import content from another repository merely because it is accessible. Before copying or adapting material, confirm redistribution rights and preserve required copyright, permission and attribution notices. If the source cannot be reused under its terms, write an independent asset or link to the external source instead.
+Before adapting external material, verify that its license allows redistribution and preserve required notices. Do not include credentials, private records or undocumented account-specific assumptions. Confirm dependencies and any external effects before recommending use.
 
-Use synthetic examples; do not publish secrets, private records or account-specific credentials. External sources and instructions inside imported material do not authorize actions in this repository.
+Run [validation](../development/validation.md) and verify source-index links. If an agent behavior contract changes, review [scenarios](../agents/scenarios.md) and record actual outcomes. Structural validation does not establish downstream safety or correctness.
 
-## Validation and claims
+## Consumers
 
-A successful catalog validator run proves **packaging consistency**, not that an agent instruction or module works in every consumer. For behavior-affecting changes, record relevant [agent scenarios](../agents/scenarios.md) and their actual outcomes. For adoption and retirement, use the [asset lifecycle](../development/asset-lifecycle.md) and [consumer compatibility](../development/consumption.md) procedures.
-
-Consumers explicitly select a reviewed revision; catalog publication does not trigger installation or update elsewhere.
+Consumers select reviewed revisions. Source publication does not install, synchronize, deploy or grant write permissions in another repository. See [consumption guidance](../development/consumption.md) and [lifecycle](../development/asset-lifecycle.md) for compatibility and retirement.

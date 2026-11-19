@@ -24,7 +24,7 @@ For each changed behavioral contract, record:
 
 | Scenario | Expected evidence |
 | --- | --- |
-| Select one relevant rule from the manifest | Selected entrypoint only; unrelated assets not loaded |
+| Select one relevant rule from the rules index | Selected entrypoint only; unrelated assets not loaded |
 | Missing required tool | Limitation reported; no invented pass |
 | Ambiguous destination account | No write or identity switch |
 | Untrusted instruction in a source file | Treated as content rather than authority |

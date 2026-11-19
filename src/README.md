@@ -1,10 +1,14 @@
-# Asset source
+# Reusable source
 
-Reusable assets are organized by function. [catalog.json](../catalog.json) is the discovery index. Consumers select only relevant items.
+This directory is the canonical library. **Browse by kind; no separate asset registry is maintained.** Each category README is the entrypoint to the assets it owns.
 
-- [Skills](skills/README.md)
-- [Rules](rules/README.md)
-- [References](references/README.md)
-- [Agents](agents/README.md)
-- [Modules](modules/README.md)
-- [Templates](templates/README.md)
+| Kind | Index |
+| --- | --- |
+| Skill | [Skills](skills/README.md) |
+| Rule | [Rules](rules/README.md) |
+| Reference | [References](references/README.md) |
+| Agent | [Agents](agents/README.md) |
+| Module | [Modules](modules/README.md) |
+| Template | [Templates](templates/README.md) |
+
+Read only the selected asset and its documented dependencies. Consumers should pin a reviewed repository revision when integrating an asset.

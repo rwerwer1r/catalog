@@ -1,51 +1,73 @@
-import json
+"""Tests for the directory-first asset layout validator."""
 import tempfile
 import unittest
 from pathlib import Path
+
 from tools.validate_catalog import KINDS, validate
 
 
-class CatalogHarnessTests(unittest.TestCase):
+class SourceLayoutTests(unittest.TestCase):
     def setUp(self):
-        self.tmp = tempfile.TemporaryDirectory()
-        self.root = Path(self.tmp.name)
-        for folder in KINDS.values():
-            (self.root / "src" / folder).mkdir(parents=True)
-        self.entry = {"id": "sample", "kind": "rule", "path": "src/rules/sample.md", "description": "Sample rule"}
-        self.data = {"schema_version": 2, "owner": "rwerwer1r", "source_root": "src", "assets": [self.entry]}
-        (self.root / "src/rules/sample.md").write_text("# Sample\n", encoding="utf-8")
-        self.save()
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        source = self.root / "src"
+        source.mkdir()
+        (source / "README.md").write_text(
+            "# Source\n\n" + "\n".join(f"[{k}]({k}/README.md)" for k in KINDS) + "\n",
+            encoding="utf-8",
+        )
+        for kind in KINDS:
+            folder = source / kind
+            folder.mkdir()
+            (folder / "README.md").write_text("# " + kind + "\n", encoding="utf-8")
+        self.rule = source / "rules" / "example.md"
+        self.rule.write_text("# Example\n", encoding="utf-8")
+        (source / "rules" / "README.md").write_text(
+            "# Rules\n\n[Example](example.md)\n", encoding="utf-8"
+        )
 
     def tearDown(self):
-        self.tmp.cleanup()
+        self.temp.cleanup()
 
-    def save(self):
-        (self.root / "catalog.json").write_text(json.dumps(self.data), encoding="utf-8")
+    def test_valid_layout(self):
+        self.assertEqual([], validate(self.root))
 
-    def test_valid(self):
-        self.assertEqual(validate(self.root), [])
+    def test_unindexed_asset(self):
+        self.rule.rename(self.rule.with_name("other.md"))
+        self.assertTrue(any("missing index link" in e for e in validate(self.root)))
 
-    def test_duplicate_id(self):
-        self.data["assets"].append(dict(self.entry))
-        self.save()
-        self.assertTrue(any("duplicate id" in error for error in validate(self.root)))
+    def test_missing_category_entrypoint(self):
+        (self.root / "src/templates/README.md").unlink()
+        self.assertTrue(any("missing or unsafe category" in e for e in validate(self.root)))
 
-    def test_unsafe_path(self):
-        self.entry["path"] = "../outside.md"
-        self.save()
-        self.assertTrue(any("unsafe path" in error for error in validate(self.root)))
+    def test_invalid_filename(self):
+        self.rule.rename(self.rule.with_name("Bad Name.md"))
+        self.assertTrue(any("invalid asset filename" in e for e in validate(self.root)))
 
-    def test_missing_file(self):
-        (self.root / "src/rules/sample.md").unlink()
-        self.assertTrue(any("missing or unsafe file" in error for error in validate(self.root)))
-
-    def test_unregistered_file(self):
-        (self.root / "src/rules/extra.md").write_text("# Extra\n", encoding="utf-8")
-        self.assertTrue(any("unregistered source" in error for error in validate(self.root)))
+    def test_skill_requires_entrypoint(self):
+        (self.root / "src/skills/sample").mkdir()
+        self.assertTrue(any("missing or unsafe asset entrypoint" in e for e in validate(self.root)))
 
     def test_missing_heading(self):
-        (self.root / "src/rules/sample.md").write_text("not a heading\n", encoding="utf-8")
-        self.assertTrue(any("missing Markdown heading" in error for error in validate(self.root)))
+        self.rule.write_text("No heading\n", encoding="utf-8")
+        self.assertTrue(any("missing Markdown heading" in e for e in validate(self.root)))
+
+    def test_module_package_indexed(self):
+        entry = self.root / "src/modules/example-package/README.md"
+        entry.parent.mkdir()
+        entry.write_text("# Example package\n", encoding="utf-8")
+        (entry.parent / "lib.ts").write_text("export const value = 1;\n", encoding="utf-8")
+        with (self.root / "src/modules/README.md").open("a", encoding="utf-8") as out:
+            out.write("\n[Example package](example-package/README.md)\n")
+        self.assertEqual([], validate(self.root))
+
+    def test_skill_indexed(self):
+        entry = self.root / "src/skills/sample/SKILL.md"
+        entry.parent.mkdir()
+        entry.write_text("# Sample skill\n", encoding="utf-8")
+        with (self.root / "src/skills/README.md").open("a", encoding="utf-8") as out:
+            out.write("\n[Sample](sample/SKILL.md)\n")
+        self.assertEqual([], validate(self.root))
 
 
 if __name__ == "__main__":

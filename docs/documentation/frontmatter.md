@@ -26,7 +26,7 @@ description: "How to select and review documentation entrypoints."
 
 ## Consistency
 
-Metadata aids discovery but never overrides policies, displayed text or the asset manifest. Keep the description accurate after substantive changes. Write a clear H1 and logical subordinate headings.
+Metadata aids discovery but never overrides policies, displayed text or the canonical source files. Keep the description accurate after substantive changes. Write a clear H1 and logical subordinate headings.
 
 ## Verification
 

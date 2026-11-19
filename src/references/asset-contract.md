@@ -1,9 +1,28 @@
-# Asset publishing contract
+# Asset source contract
 
-`catalog.json` is a UTF-8 JSON object with `schema_version: 2`, `owner: "rwerwer1r"`, `source_root: "src"` and an `assets` array.
+## Canonical structure
 
-Each asset has a unique lowercase kebab-case `id`, `kind`, repository-relative `path` and nonempty `description`.
+The repository's `src/` directories own reusable assets. The **source path is the asset identifier**. There is no duplicate machine-readable inventory.
 
-Supported kinds: `skill`, `rule`, `reference`, `agent`, `module`, `template`. Skill entrypoints use `src/skills/<id>/SKILL.md`; standard Markdown entrypoints use `src/<plural-kind>/<id>.md`. Modules may use a Python file or package README.
+| Kind | Entry point |
+| --- | --- |
+| Skill | `src/skills/<name>/SKILL.md` |
+| Rule | `src/rules/<name>.md` |
+| Reference | `src/references/<name>.md` |
+| Agent | `src/agents/<name>.md` |
+| Module | `src/modules/<name>/README.md` |
+| Template | `src/templates/<name>.md` |
 
-Asset paths must not escape the repository. Published source files must be registered exactly once. Consumers explicitly select and review assets; the catalog is not an installer or account authorization mechanism.
+Use lowercase kebab-case names. The nearest `src/<kind>/README.md` provides a descriptive link to each published entrypoint, and `src/README.md` links to each kind. A Skill or module may keep supporting files inside its own directory.
+
+## Content contract
+
+Each asset explains its purpose and the requirements necessary to use it. Operational assets should state triggers, inputs, outputs, dependencies and limitations. Avoid hidden setup, implicit permissions or internal-only context.
+
+## Reuse and compatibility
+
+Consumers select relevant files, review their assumptions and pin a repository revision for reproducibility. Keep published paths stable or provide a migration plan for renames. Directory presence is not evidence of behavioral readiness; use controlled tests where needed.
+
+## Verification
+
+The source validator checks directory naming, entrypoint files, basic Markdown headings and category README link coverage. It does not test arbitrary module runtime behavior, third-party dependencies or agent performance.

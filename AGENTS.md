@@ -1,18 +1,20 @@
 # Catalog agent instructions
 
-This repository is `rwerwer1r/catalog`: a source library for assets reused by other repositories. Check the intended account, branch and task before editing.
+This is `rwerwer1r/catalog`, a maintained source library for reusable assets. Confirm the intended account, branch and task before editing.
 
-## Find the right instructions
+## Discover source and rules
 
-1. Start with [repository policy](docs/policies/repository.md) and [policies index](docs/policies/README.md).
-2. For asset changes, read [asset policy](docs/policies/assets.md), [development](docs/development/README.md), and only the relevant `src/<kind>/README.md` and manifest entry.
-3. For documentation changes, read [documentation policy](docs/policies/documentation.md) and the relevant [authoring guide](docs/documentation/README.md).
-4. For agent-assisted tasks, follow [operating model](docs/agents/operating-model.md) and [document-first harness](docs/agents/harness.md).
-5. Apply [English language policy](docs/policies/language.md) to all committed content.
+1. Read [repository policy](docs/policies/repository.md) and the relevant [policy index](docs/policies/README.md).
+2. For source changes, read [asset policy](docs/policies/assets.md), the corresponding `src/<kind>/README.md` and the affected asset.
+3. For documentation changes, follow [documentation policy](docs/policies/documentation.md) and the relevant [authoring guide](docs/documentation/README.md).
+4. For agent work, use [operating model](docs/agents/operating-model.md) and [document-first harness](docs/agents/harness.md).
+5. Follow [English language policy](docs/policies/language.md) for all committed content.
+
+Source discovery is directory-first: use `src/README.md` and the category READMEs. Do not create a duplicate machine-readable asset registry.
 
 ## Verify
 
-- Keep changes scoped and update canonical assets, `catalog.json`, and documentation together when necessary.
-- Do not store credentials, private project data or material without the necessary reuse rights.
-- Run `python3 tools/validate_catalog.py`, `python3 tools/validate_docs.py`, and `python3 -m unittest discover -s tests -v` when available.
-- Report actual outcomes and unverified behavior; a structural check does not verify agents in consumers.
+- Keep edits scoped and update source files and their category README links together.
+- Do not publish secrets, private project records or material lacking reuse rights.
+- Run `python3 tools/validate_catalog.py`, `python3 tools/validate_docs.py` and `python3 -m unittest discover -s tests -v` when available.
+- Report actual outcomes and unverified behavior; passing structural checks does not prove consumer behavior.

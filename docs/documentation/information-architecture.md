@@ -23,7 +23,7 @@ A document should have one clear question it answers and one canonical location.
 - **Section:** the information is short, has the same owner and audience, and would not be useful independently.
 - **Standalone page:** a distinct task or concept deserves a stable entrypoint and can be read independently.
 - **Bundle:** several pages share a single reader journey, prerequisites and lifecycle; follow [bundle guidance](bundles.md).
-- **Reusable source asset:** another repository will consume the material as a Skill, rule, reference, module or template; publish under `src/` and register it in `catalog.json`.
+- **Reusable source asset:** another repository will consume the material as a Skill, rule, reference, module or template; publish under `src/` and link it from its category README.
 
 Avoid directory hierarchies created only for anticipated future content. Split a page when independent maintenance, discoverability or task focus justifies it, not because it reached an arbitrary word count.
 

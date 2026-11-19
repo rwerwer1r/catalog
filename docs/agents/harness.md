@@ -24,7 +24,7 @@ Repeat only when new evidence warrants revising a failed or incomplete step. Nev
 | Layer | Signal | What it does not establish |
 | --- | --- | --- |
 | Documentation | Frontmatter, ownership, navigation, manual accuracy review | That instructions are correct in all environments |
-| Packaging | Manifest and Markdown validators, unit tests | That agent behavior is safe or correct |
+| Packaging | Source layout and Markdown validators, unit tests | That agent behavior is safe or correct |
 | Behavior | A controlled, representative scenario with evidence | That every consumer integration works |
 | Integration | Authorized execution in a consumer environment | That other repositories or versions are compatible |
 
