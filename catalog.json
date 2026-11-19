@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "owner": "rwerwer1r",
+  "assets": [
+    {
+      "id": "repository-workflow",
+      "kind": "guide",
+      "path": "assets/repository-workflow.md",
+      "description": "Plan and verify repository edits with explicit account scope"
+    },
+    {
+      "id": "change-review",
+      "kind": "guide",
+      "path": "assets/change-review.md",
+      "description": "Review changes for functional, security, and maintenance risks"
+    },
+    {
+      "id": "technical-writing",
+      "kind": "guide",
+      "path": "assets/technical-writing.md",
+      "description": "Produce concise project documentation grounded in observed behavior"
+    },
+    {
+      "id": "decision-record",
+      "kind": "template",
+      "path": "templates/decision-record.md",
+      "description": "Record a technical choice and its trade-offs"
+    },
+    {
+      "id": "handoff-note",
+      "kind": "template",
+      "path": "templates/handoff-note.md",
+      "description": "Transfer incomplete work with evidence and remaining steps"
+    },
+    {
+      "id": "task-brief",
+      "kind": "template",
+      "path": "templates/task-brief.md",
+      "description": "Define a scoped piece of work and acceptance criteria"
+    }
+  ]
+}
