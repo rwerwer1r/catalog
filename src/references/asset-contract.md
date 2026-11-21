@@ -23,7 +23,7 @@ Each `SKILL.md` uses Agent Skills discovery metadata: `name` matches the Skill d
 
 ## Entrypoints and on-demand routing
 
-Apply the [documentation-authoring entrypoint procedure](../skills/documentation-authoring/references/entrypoints.md) to README.md and SKILL.md, and the [index procedure](../skills/documentation-authoring/references/indexes.md) to manual or metadata-generated navigation. This repository retains `src/skills/INDEX.md` for category discovery; a Skill-local `INDEX.md` selects on-demand procedures. Generated, metadata-backed indexes use `INDEX.tsv` rather than a script-generated Markdown index. Their rows derive from canonical document metadata; they do not replace the repository's asset source paths.
+Apply the [documentation-authoring entrypoint procedure](../skills/documentation-authoring/references/entrypoints.md) to README.md and SKILL.md, and the [index procedure](../skills/documentation-authoring/references/indexes.md) to manual or metadata-generated navigation. This repository retains `src/skills/INDEX.md` for category discovery; a Skill-local `references/INDEX.md` selects on-demand procedures. Supporting guides are stored within that Skill's `references/` directory. Generated, metadata-backed indexes use `INDEX.tsv` rather than a script-generated Markdown index. Their rows derive from canonical document metadata; they do not replace the repository's asset source paths.
 
 These are the catalog's packaging conventions, not mandatory layouts for other repositories. Published entrypoint paths must remain stable when consumers may rely on them.
 

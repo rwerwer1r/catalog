@@ -8,7 +8,7 @@ description: "Specify the source layout and review criteria for reusable catalog
 
 Publish a reusable item only when it solves a repeatable problem with a defined consumer. Supported source categories are `skills`, `rules`, `references`, `agents`, `modules` and `templates`.
 
-The source path is the durable identifier. Asset identifiers and ordinary asset filenames use lowercase kebab-case; reserved entrypoint and routing filenames such as `SKILL.md`, `README.md`, Skill-local `INDEX.md`, and derived `INDEX.tsv` are exempt. Preserve stable paths when consumers may depend on them. File and entrypoint rules are explained in the [asset contract](../../src/references/asset-contract.md).
+The source path is the durable identifier. Asset identifiers and ordinary asset filenames use lowercase kebab-case; reserved entrypoint and routing filenames such as `SKILL.md`, `README.md`, Skill-local `references/INDEX.md`, and derived `INDEX.tsv` are exempt. Preserve stable paths when consumers may depend on them. File and entrypoint rules are explained in the [asset contract](../../src/references/asset-contract.md).
 
 ## Source and discovery
 

@@ -6,7 +6,7 @@ An index helps consumers select documents **before loading them**. Choose format
 
 **INDEX.md is a hand-maintained, index-only Markdown navigator.** Use descriptive links grouped by reader intent; omit tutorials, repeated policies, copied inventories, and generation instructions. Never attach an auto-generation script to INDEX.md. Update links when destinations change; read only the chosen page.
 
-Existing manual `INDEX.md` files remain valid when target rules require lowercase. Do not rename or create a competing index.
+In this catalog all manual category and area indexes use uppercase `INDEX.md`. When migrating a lowercase index, update inbound links and remove the old path. Elsewhere, follow governing target conventions; never create a competing index.
 
 ## Metadata-generated index: INDEX.tsv
 

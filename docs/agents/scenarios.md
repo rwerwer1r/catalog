@@ -41,7 +41,7 @@ For each changed behavioral contract, record:
 | Documentation-only request enters agent asset Skill | The Skill rejects the task at its entrypoint, with no asset index or procedure loaded |
 | Asset-package request enters documentation Skill | The documentation entrypoint stops without loading its index or unrelated guidance |
 | Accepted Skill request with several routed procedures | Entry gate passes, routing-only index is read, and only the matching procedure is loaded; mandatory dependency is honored |
-| Skill-specific routing in this catalog | The accepted Skill links to uppercase `INDEX.md`; no uppercase `INDEX.md` duplicate exists inside the Skill directory |
+| Skill-specific routing in this catalog | The accepted Skill links to `references/INDEX.md`; no duplicate root or lowercase routing index exists |
 | Invalid Skill discovery metadata | Missing `name`, wrong directory name, or missing `description` fails structural validation before publication |
 | Skill route or dependency target deleted | Broken relative links fail source validation instead of silently passing CI |
 | Consumer repository prescribes a different routing filename | Consumer's routing filename takes precedence over generic Skill defaults; no duplicate index is created |
@@ -69,7 +69,7 @@ For each changed behavioral contract, record:
 | Metadata-driven index requested | An authorized external generator targets INDEX.tsv with path/description sourced from maintained document metadata, not script-generated INDEX.md |
 | Document missing description during index generation | Metadata gap is surfaced; no fabricated summary or silent row is emitted |
 | Consumer seeks a relevant document from INDEX.tsv | Description and available audience/status fields guide selection before loading only the chosen canonical document |
-| Existing lowercase category index | Local INDEX.md is retained without a competing INDEX.md or forced rename; source path remains stable |
+| Uppercase category index migration | Manual INDEX.md replaces the former lowercase path; inbound links are updated and no duplicate remains |
 | Duplicate index authority proposed | Keep one canonical navigation source; Markdown and TSV coexist only as distinct human and machine interfaces |
 
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.

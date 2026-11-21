@@ -13,10 +13,10 @@ The reusable [entrypoint authoring](../../src/skills/documentation-authoring/ref
 | Repository | `README.md` | `src/INDEX.md` or `docs/INDEX.md` |
 | Source category | `src/<kind>/README.md` | `src/<kind>/INDEX.md` |
 | Documentation area | `docs/<area>/README.md` | `docs/<area>/INDEX.md` |
-| Multi-route Skill | `src/skills/<name>/SKILL.md` | Optional sibling `INDEX.md` |
+| Multi-route Skill | `src/skills/<name>/SKILL.md` | `src/skills/<name>/references/INDEX.md` |
 | Single-workflow Skill | `src/skills/<name>/SKILL.md` | None required |
 
-The existing uppercase `INDEX.md` indexes are hand-maintained navigation. Do not rename them or add parallel uppercase indexes solely for naming uniformity. If a future authorized generator derives a metadata index from document frontmatter or fields, its output is `INDEX.tsv`, governed by the linked index procedure; no such generator is implied by these existing paths.
+Uppercase `INDEX.md` files are canonical hand-maintained navigation after migration. Do not retain competing lowercase indexes. If a future authorized generator derives a metadata index from document frontmatter or fields, its output is `INDEX.tsv`, governed by the linked index procedure; no such generator is implied by these existing paths.
 
 ## Local verification
 
