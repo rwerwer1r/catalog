@@ -6,7 +6,7 @@ This is `rwerwer1r/catalog`, a maintained source library for reusable assets. Co
 
 1. Read [repository policy](docs/policies/repository.md) and the relevant [policy index](docs/policies/README.md).
 2. For source changes, read [asset policy](docs/policies/assets.md) and the affected asset. Use the corresponding `src/<kind>/index.md` when discovering assets or updating category navigation; skip rediscovery if the target path is already known.
-3. For documentation changes, follow [documentation policy](docs/policies/documentation.md) and the relevant [authoring guide](docs/documentation/README.md).
+3. For documentation changes, follow [documentation policy](docs/policies/documentation.md) and the relevant [authoring guide](docs/documentation/README.md). For README.md, SKILL.md, or index work, use the owning [documentation-authoring Skill](src/skills/documentation-authoring/SKILL.md) and its task route.
 4. For agent work, use [operating model](docs/agents/operating-model.md) and [document-first harness](docs/agents/harness.md).
 5. Follow [English language policy](docs/policies/language.md) for all committed content.
 
