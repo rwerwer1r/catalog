@@ -20,7 +20,7 @@ Publish reusable source under `src/` and link it from its category `index.md` in
 ## Requirements
 
 - Write maintained prose in English per [language policy](language.md).
-- Follow [frontmatter](../documentation/frontmatter.md) for `docs/` Markdown pages and [entrypoints](../documentation/entrypoints.md) for directory navigation.
+- Follow [frontmatter](../documentation/frontmatter.md) for `docs/` Markdown pages; the reusable [documentation-authoring Skill](../../src/skills/documentation-authoring/SKILL.md) owns entrypoint and index authoring guidance. See [local entrypoint paths](../documentation/entrypoints.md) for this repository's filenames.
 - Maintain one canonical page per topic and repair relevant relative links and indexes when documents move.
 - Use [bundle conventions](../documentation/bundles.md) only when several pages share a purpose and lifecycle.
 - Separate observed behavior from proposed behavior and label unsupported claims and unrun checks.
