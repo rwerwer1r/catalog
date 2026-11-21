@@ -1,10 +1,10 @@
 # Documentation authoring routes
 
-Read this routing index **only after** [SKILL.md](SKILL.md) accepts the request. Load the one destination needed for the current task.
+After [SKILL.md](SKILL.md) accepts the task, load **only** the current procedure.
 
-| Request | Load next |
+| Task | Load next |
 | --- | --- |
-| Draft, rewrite, extend, or correct a document | [Write or revise](write.md) |
-| Audit, organize, move, deprecate, or repair navigation and entrypoints | [Maintain or audit](maintain.md) |
+| Create, rewrite, or correct content | [Write](write.md) |
+| Review, reorganize, or repair navigation | [Maintain](maintain.md) |
 
-For a mixed request, load another route only when it is needed. If neither route matches, stop rather than reading unrelated procedures.
+Open another route only if a distinct task requires it. Otherwise stop rather than traversing all links.
