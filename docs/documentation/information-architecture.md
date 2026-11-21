@@ -29,9 +29,9 @@ Avoid directory hierarchies created only for anticipated future content. Split a
 
 ## Naming and structure
 
-Use lowercase kebab-case names for topic pages, `README.md` for introductions and `index.md` for lists, and descriptive headings. Prefer stable conceptual names over dates, vague labels (`misc`, `notes`, `new`) or author names. Do not encode a release version into the filename unless multiple versions must be maintained concurrently.
+Use lowercase kebab-case names for topic pages, `README.md` for introductions and the existing manual `index.md` for directory lists. Reusable [entrypoint](../../src/skills/documentation-authoring/entrypoints.md) and [index](../../src/skills/documentation-authoring/indexes.md) guidance owns the authoring contract; metadata-generated listings, when authorized, use `INDEX.tsv` instead of generated Markdown. Use descriptive headings. Prefer stable conceptual names over dates, vague labels (`misc`, `notes`, `new`) or author names. Do not encode a release version into the filename unless multiple versions must be maintained concurrently.
 
-Keep the path from `README.md` to a typical page short: repository index → domain index → topic. Link nearby detail pages from their owner instead of forcing unrelated readers through a large global index. Use [entrypoint conventions](entrypoints.md) for navigation.
+Keep the path from `README.md` to a typical page short: repository index → domain index → topic. Link nearby detail pages from their owner instead of forcing unrelated readers through a large global index. See [local entrypoint paths](entrypoints.md).
 
 ## Expansion and change control
 
