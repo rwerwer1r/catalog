@@ -12,18 +12,19 @@ class SkillRoutingTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         src = self.root / "src"
         src.mkdir()
-        (src / "README.md").write_text("# Source\n\n[Index](index.md)\n")
-        (src / "index.md").write_text(
-            "# Index\n\n" + "\n".join(f"[{kind}]({kind}/index.md)" for kind in KINDS) + "\n"
+        (src / "README.md").write_text("# Source\n\n[Index](INDEX.md)\n")
+        (src / "INDEX.md").write_text(
+            "# Index\n\n" + "\n".join(f"[{kind}]({kind}/INDEX.md)" for kind in KINDS) + "\n"
         )
         for kind in KINDS:
             category = src / kind
             category.mkdir()
-            (category / "README.md").write_text(f"# {kind}\n\n[Index](index.md)\n")
-            (category / "index.md").write_text(f"# {kind} index\n")
+            (category / "README.md").write_text(f"# {kind}\n\n[Index](INDEX.md)\n")
+            (category / "INDEX.md").write_text(f"# {kind} index\n")
         self.skill = src / "skills" / "example"
         self.skill.mkdir()
-        (src / "skills" / "index.md").write_text(
+        (self.skill / "references").mkdir()
+        (src / "skills" / "INDEX.md").write_text(
             "# Skills index\n\n[Example](example/SKILL.md)\n"
         )
         self.entry = self.skill / "SKILL.md"
@@ -32,10 +33,10 @@ class SkillRoutingTests(unittest.TestCase):
             "description: Use for an example agent workflow.\n"
             "---\n\n# Example\n\n[Routes](INDEX.md)\n"
         )
-        (self.skill / "INDEX.md").write_text(
+        (self.skill / "references" / "INDEX.md").write_text(
             "# Routes\n\n[Write](write.md)\n"
         )
-        (self.skill / "write.md").write_text("# Write\n\nUse repository rules.\n")
+        (self.skill / "references" / "write.md").write_text("# Write\n\nUse repository rules.\n")
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -63,30 +64,30 @@ class SkillRoutingTests(unittest.TestCase):
         self.assertTrue(any("Skill description" in e for e in self.issues()))
 
     def test_missing_route_file_fails(self):
-        (self.skill / "write.md").unlink()
+        (self.skill / "references" / "write.md").unlink()
         self.assertTrue(any("missing Skill link target" in e for e in self.issues()))
 
     def test_unlinked_index_fails(self):
-        self.entry.write_text(self.entry.read_text().replace("[Routes](INDEX.md)", "No route."))
-        self.assertTrue(any("missing link to Skill-local INDEX.md" in e for e in self.issues()))
+        self.entry.write_text(self.entry.read_text().replace("[Routes](references/INDEX.md)", "No route."))
+        self.assertTrue(any("missing link to Skill-local references/INDEX.md" in e for e in self.issues()))
 
     def test_plain_index_marker_does_not_count_as_entrypoint_link(self):
         self.entry.write_text(
-            self.entry.read_text().replace("[Routes](INDEX.md)", "See (INDEX.md).")
+            self.entry.read_text().replace("[Routes](references/INDEX.md)", "See (references/INDEX.md).")
         )
-        self.assertTrue(any("missing link to Skill-local INDEX.md" in e for e in self.issues()))
+        self.assertTrue(any("missing link to Skill-local references/INDEX.md" in e for e in self.issues()))
 
     def test_fenced_index_marker_does_not_count_as_route_link(self):
         self.entry.write_text(
             self.entry.read_text().replace(
-                "[Routes](INDEX.md)",
-                "```markdown\n[Routes](INDEX.md)\n```",
+                "[Routes](references/INDEX.md)",
+                "```markdown\n[Routes](references/INDEX.md)\n```",
             )
         )
-        self.assertTrue(any("missing link to Skill-local INDEX.md" in e for e in self.issues()))
+        self.assertTrue(any("missing link to Skill-local references/INDEX.md" in e for e in self.issues()))
 
     def test_external_only_routes_are_rejected(self):
-        (self.skill / "INDEX.md").write_text(
+        (self.skill / "references" / "INDEX.md").write_text(
             "# Routes\n\n[Remote](https://example.com/write.md)\n"
         )
         self.assertTrue(any("no local procedure targets" in e for e in self.issues()))
@@ -97,29 +98,35 @@ class SkillRoutingTests(unittest.TestCase):
         (other / "SKILL.md").write_text(
             "---\nname: other\ndescription: Other workflow.\n---\n\n# Other\n"
         )
-        index = self.root / "src" / "skills" / "index.md"
+        index = self.root / "src" / "skills" / "INDEX.md"
         index.write_text(index.read_text() + "[Other](other/SKILL.md)\n")
-        (self.skill / "INDEX.md").write_text(
+        (self.skill / "references" / "INDEX.md").write_text(
             "# Routes\n\n[Other](../other/SKILL.md)\n"
         )
         self.assertTrue(any("no local procedure targets" in e for e in self.issues()))
 
     def test_plain_category_marker_is_not_an_index_link(self):
-        index = self.root / "src" / "skills" / "index.md"
+        index = self.root / "src" / "skills" / "INDEX.md"
         index.write_text("# Skills index\n\nExample: (example/SKILL.md)\n")
         self.assertTrue(any("missing index link to example/SKILL.md" in e for e in self.issues()))
 
     def test_plain_source_index_marker_is_not_a_readme_link(self):
         readme = self.root / "src" / "README.md"
-        readme.write_text("# Source\n\nSee (index.md).\n")
-        self.assertTrue(any("missing index link to index.md" in e for e in self.issues()))
+        readme.write_text("# Source\n\nSee (INDEX.md).\n")
+        self.assertTrue(any("missing index link to INDEX.md" in e for e in self.issues()))
 
     def test_lowercase_duplicate_fails(self):
         (self.skill / "index.md").write_text("# Duplicate routes\n")
-        self.assertTrue(any("use uppercase INDEX.md" in e for e in self.issues()))
+        self.assertTrue(any("Skill routes belong in references/INDEX.md" in e for e in self.issues()))
+
+    def test_legacy_root_skill_index_is_rejected(self):
+        (self.skill / "INDEX.md").write_text("# Legacy routes\\n")
+        self.assertTrue(any(
+            "Skill routes belong in references/INDEX.md" in e for e in self.issues()
+        ))
 
     def test_index_without_procedure_fails(self):
-        (self.skill / "INDEX.md").write_text("# Routes\n\n[Gate](SKILL.md)\n")
+        (self.skill / "references" / "INDEX.md").write_text("# Routes\n\n[Gate](SKILL.md)\n")
         self.assertTrue(any("no local procedure targets" in e for e in self.issues()))
 
     def test_missing_required_dependency_fails(self):
@@ -135,9 +142,9 @@ class SkillRoutingTests(unittest.TestCase):
         self.assertEqual(self.issues(), [])
 
     def test_empty_skill_without_routes_is_valid(self):
-        (self.skill / "INDEX.md").unlink()
-        (self.skill / "write.md").unlink()
-        self.entry.write_text(self.entry.read_text().replace("[Routes](INDEX.md)", ""))
+        (self.skill / "references" / "INDEX.md").unlink()
+        (self.skill / "references" / "write.md").unlink()
+        self.entry.write_text(self.entry.read_text().replace("[Routes](references/INDEX.md)", ""))
         self.assertEqual(self.issues(), [])
 
 
