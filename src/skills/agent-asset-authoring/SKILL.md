@@ -17,6 +17,6 @@ Higher-priority instructions and authorization apply first; the target repositor
 
 ## Route
 
-After acceptance read [INDEX.md](INDEX.md); load only the procedure selected for this task. Expand references only for a concrete open question. Reuse valid context instead of re-reading.
+After acceptance read [INDEX.md](references/INDEX.md); load only the procedure selected for this task. Expand references only for a concrete open question. Reuse valid context instead of re-reading.
 
 **Output:** changed assets, dependency and compatibility impact, checks actually run, and unresolved limits. Neither publication nor structural checks prove downstream behavior.
