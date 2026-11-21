@@ -1,6 +1,6 @@
 # Review or retire an agent asset
 
-Use only after the [Skill gate](SKILL.md) accepts the task and [route index](index.md) selects review.
+Use only after the [Skill gate](SKILL.md) accepts the task and [route index](INDEX.md) selects review.
 
 1. Read applicable repository rules, the asset entrypoint, its nearest index, and only the directly affected implementation or dependency. Follow the required documentation-authoring Skill for textual review and edits.
 2. Check the trigger and exclusion gate: an unrelated request must not load the asset's workflows or optional references. Confirm that the entrypoint contains only essential authority, prerequisites, dependency and routing guidance.
