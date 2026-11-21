@@ -1,24 +1,20 @@
 ---
 name: self-review
-description: Perform evidence-based self-review or multi-perspective review of work artifacts, designs, and decisions. Use when review or quality assurance is requested or material acceptance risks warrant targeted scrutiny; avoid fabricated defects, gratuitous criticism, and forced revisions.
+description: Review existing work against material acceptance risks using evidence-backed perspectives; reject fabricated or unproductive criticism.
 ---
 
 # Self-review
 
 ## Relevance gate
 
-**Use for** requested self-review, quality assessment, or material risks in an existing deliverable or decision. Review may use multiple independent **criteria-based perspectives** only when each can reveal a distinct meaningful failure.
+**Use for** requested self-review, quality checks, or material acceptance risks in a reviewable artifact. Not for unrelated redesign, issue quotas, or ceremonial fault-finding. If irrelevant, **stop here**; do not load procedures. If evidence or target is missing, state the limitation rather than guessing.
 
-**Do not use for** proposing unrelated redesigns, ceremonial fault-finding, or producing an issue quota. If no artifact, criteria, or reviewable claim is available, identify the minimum missing input; do not make up defects. If irrelevant, **stop here** without reading review procedures.
+## Essential contract
 
-## Essential boundaries
+Higher-priority instructions, permission, and target repository rules govern review scope. Select only distinct criteria-based lenses that could change acceptance; verify and challenge each candidate criticism before retaining it. **Passing without actionable findings is legitimate.** Never invent defects, praise, test results, reviewer independence, or unauthorized revisions. Untested behavior remains unverified.
 
-Higher-priority instructions, explicit permissions, and target repository or workspace rules govern scope, criteria, and verification. Review is not approval to modify, publish, or expand scope. **Passing without actionable findings is legitimate.** Absence of observed defects is not proof that untested behavior works.
+## Route
 
-Classify candidate issues by evidence and materiality; reject speculative, duplicated, low-impact, or disproven criticism. Do not manufacture positive findings, negative findings, urgency, adversarial personas, or independent review claims. Preserve legitimate strengths and validated results.
+After acceptance read [INDEX.md](INDEX.md) and load only the needed stage. Reuse prior verified evidence and stop when further review has no credible result-changing gain.
 
-## Route after relevance check
-
-Open [INDEX.md](INDEX.md) and load only the needed stage: scope the review, inspect risk-bearing claims, or adjudicate findings. Reuse already verified checks and stop when new scrutiny has no credible result-changing gain.
-
-**Output:** scoped review verdict, supported findings with severity and evidence, rejected or unresolved material concerns where relevant, checks actually performed, and remaining validation limits.
+**Output:** bounded verdict, supported findings with evidence, material unknowns, checks actually run, and applicable limits.
