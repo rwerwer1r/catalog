@@ -1,24 +1,22 @@
 ---
 name: documentation-authoring
-description: Writes, revises, reviews, and organizes technical documentation, READMEs, indexes, procedures, and agent asset instructions. Use for documentation tasks and the documentation portion of agent asset authoring.
+description: Create, revise, and audit source-backed documentation, READMEs, indexes, and agent instructions in any authorized repository.
 ---
 
 # Documentation authoring
 
 ## Relevance gate
 
-**Use only for** writing, revising, reviewing, or organizing documents, including README files, indexes, guides, technical references, and documentation within agent assets.
-
-**Do not use for** implementing software behavior, packaging agent assets outside their documentation, changing permissions, or deployment. When invoked as the required dependency of agent asset authoring, handle **only the documentation subtask**; the parent Skill retains control of asset contracts and packaging. **If neither a documentation task nor a documentation subtask applies, stop here**; do not open this Skill's index or procedures.
+**Use only for** writing, organizing, or reviewing documents, including a documentation subtask in agent asset authoring. Not for implementing code, packaging unrelated assets, changing permissions, or deployment. If neither applies, **stop here**; do not load routes.
 
 ## Essential contract
 
-Higher-priority instructions and explicit authority always apply. The **target repository's applicable policies and scoped rules take precedence over this Skill's defaults**, including language, format, frontmatter, entrypoints, routing filename, and validation. Resolve material conflicts instead of choosing permissive defaults.
+Higher-priority instructions, authorization, and the target repository's scoped policies override generic defaults for language, layout, metadata, and validation. As a companion Skill, own **only document work**; the calling workflow retains asset and tool authority.
 
-Keep a small working context: governing rules, relevant canonical page, confirmed evidence, and open questions. Read the nearest instructions and targeted files only after the relevance gate; do not recursively preload documentation. Reuse unchanged evidence for the same revision.
+Read the applicable instructions and canonical page, then only evidence needed for the next decision. Reuse confirmed context for the same revision. Never invent sources, checks, or requirements.
 
-## Route only after acceptance
+## Route
 
-Read [index.md](INDEX.md) and load one task-specific procedure. Expand only when a concrete uncertainty or failure justifies it. For optional details, follow the target repository's routing conventions (`INDEX.md`, `index.md`, or another required name), not this Skill's preferences.
+After acceptance read [INDEX.md](INDEX.md) and load one task-specific procedure; expand on a concrete uncertainty only. Follow the **target's** README and index naming conventions, not this repository's layout.
 
-**Output:** changed paths and links, source-backed claims, actual checks, and unresolved limitations. A successful structural check is not proof of factual correctness.
+**Output:** changed documents and navigation, verified claims and checks, and unresolved limits. Passing structural checks does not prove factual accuracy.
