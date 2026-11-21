@@ -14,7 +14,7 @@ python3 scripts/validate_docs.py
 python3 -m unittest discover -s tests/scripts -v
 ```
 
-The source validator checks canonical asset paths, naming, entrypoint headings, category index link coverage, required Skill frontmatter fields, and local Markdown links within Skill directories. For Skills with `INDEX.md`, it also checks the entrypoint route and presence of a routed procedure. Its metadata check covers the catalog's simple scalar frontmatter convention, not every valid YAML construction. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest index coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
+The source validator checks canonical asset paths, naming, entrypoint headings, category index link coverage, required Skill frontmatter fields, and local Markdown links within Skill directories. For Skills with `INDEX.md`, it also checks the entrypoint route and presence of a routed procedure. Its metadata check covers the catalog's simple scalar frontmatter convention, not every valid YAML construction. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest index coverage. Unit tests exercise validation edge cases and guard lightweight Skill entrypoints, routing indexes, and one-procedure loading paths with **character-count proxies**. These are maintainability bounds, not measured model token use, latency, or behavioral compliance. [CI](../../.github/workflows/validate.yml) runs the same commands.
 
 ## Manual and behavioral review
 
