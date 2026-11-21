@@ -1,7 +1,5 @@
 # Create or revise an agent asset
 
-Use only after the [Skill gate](SKILL.md) accepts the task and [route index](INDEX.md) selects authoring. Apply the required documentation-authoring Skill to written entrypoints and supporting documents.
-
 1. **Resolve local authority.** Identify the authorized repository, branch, instructions, relevant scoped rules, source conventions, and permitted changes. Repository requirements override this generic procedure within higher-priority constraints. If authority conflicts, stop rather than choosing permissive defaults.
 2. **Reuse before creating.** Search the nearest existing asset index and related entrypoints. Prefer a compatible revision to a duplicate asset.
 3. **Specify the contract.** Define the consumer, activation conditions, exclusions, inputs, expected outputs, tool or data dependencies, side effects, failure paths, and stop criteria.
