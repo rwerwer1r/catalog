@@ -1,6 +1,6 @@
 ---
 name: documentation-authoring
-description: Create, revise, and audit source-backed documentation, READMEs, indexes, and agent instructions in any authorized repository.
+description: Use when writing, revising, organizing, or reviewing documentation, READMEs, indexes, or agent instructions; not for software implementation.
 ---
 
 # Documentation authoring
