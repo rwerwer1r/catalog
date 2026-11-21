@@ -80,14 +80,14 @@ class SkillRoutingTests(unittest.TestCase):
         self.entry.write_text(
             self.entry.read_text().replace(
                 "[Routes](INDEX.md)",
-                "```markdown\\n[Routes](INDEX.md)\\n```",
+                "```markdown\n[Routes](INDEX.md)\n```",
             )
         )
         self.assertTrue(any("missing link to Skill-local INDEX.md" in e for e in self.issues()))
 
     def test_external_only_routes_are_rejected(self):
         (self.skill / "INDEX.md").write_text(
-            "# Routes\\n\\n[Remote](https://example.com/write.md)\\n"
+            "# Routes\n\n[Remote](https://example.com/write.md)\n"
         )
         self.assertTrue(any("no local procedure targets" in e for e in self.issues()))
 
@@ -95,23 +95,23 @@ class SkillRoutingTests(unittest.TestCase):
         other = self.root / "src" / "skills" / "other"
         other.mkdir()
         (other / "SKILL.md").write_text(
-            "---\\nname: other\\ndescription: Other workflow.\\n---\\n\\n# Other\\n"
+            "---\nname: other\ndescription: Other workflow.\n---\n\n# Other\n"
         )
         index = self.root / "src" / "skills" / "index.md"
-        index.write_text(index.read_text() + "[Other](other/SKILL.md)\\n")
+        index.write_text(index.read_text() + "[Other](other/SKILL.md)\n")
         (self.skill / "INDEX.md").write_text(
-            "# Routes\\n\\n[Other](../other/SKILL.md)\\n"
+            "# Routes\n\n[Other](../other/SKILL.md)\n"
         )
         self.assertTrue(any("no local procedure targets" in e for e in self.issues()))
 
     def test_plain_category_marker_is_not_an_index_link(self):
         index = self.root / "src" / "skills" / "index.md"
-        index.write_text("# Skills index\\n\\nExample: (example/SKILL.md)\\n")
+        index.write_text("# Skills index\n\nExample: (example/SKILL.md)\n")
         self.assertTrue(any("missing index link to example/SKILL.md" in e for e in self.issues()))
 
     def test_plain_source_index_marker_is_not_a_readme_link(self):
         readme = self.root / "src" / "README.md"
-        readme.write_text("# Source\\n\\nSee (index.md).\\n")
+        readme.write_text("# Source\n\nSee (index.md).\n")
         self.assertTrue(any("missing index link to index.md" in e for e in self.issues()))
 
     def test_lowercase_duplicate_fails(self):
