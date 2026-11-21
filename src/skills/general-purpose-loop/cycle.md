@@ -1,6 +1,6 @@
 # Execute and review one substantive cycle
 
-Use only after [preparation](prepare.md) accepted the run and the [route index](INDEX.md) selected the active cycle. One cycle ends when a substantive **Review** has evaluated new evidence or a genuine attempt; intermediate tool calls do not increment the counter.
+After readiness, one substantive **Review** closes a cycle; intermediate tool calls do not increment the counter.
 
 ## Default sequence
 
