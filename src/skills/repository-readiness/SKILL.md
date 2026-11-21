@@ -1,3 +1,8 @@
+---
+name: repository-readiness
+description: Assesses a repository's development readiness by examining project structure, tooling, checks, and CI. Use before implementation when repository prerequisites or missing capabilities need review.
+---
+
 # Repository readiness
 
 ## Use when
