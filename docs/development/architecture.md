@@ -11,7 +11,7 @@ The catalog is a versioned collection of reusable source assets intended for sel
 ## Ownership map
 
 - `src/` owns canonical Skills, rules, references, agent roles, modules and templates.
-- `src/index.md` and category `index.md` files list source entrypoints; directory paths identify assets. No separate registry is maintained.
+- `src/INDEX.md` and category `INDEX.md` files list source entrypoints; directory paths identify assets. No separate registry is maintained.
 - `docs/` owns maintenance policies, development procedures, documentation conventions and agent harness guidance.
 - `scripts/` and `tests/scripts/` validate structural contracts using standard-library Python.
 - `.github/workflows/` runs repository checks; CI does not exercise all downstream agent behavior.

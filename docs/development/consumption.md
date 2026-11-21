@@ -6,7 +6,7 @@ description: "Select, pin, integrate, and upgrade catalog assets in authorized c
 
 ## Selection
 
-Start from `src/index.md` and the appropriate category `index.md` to find a candidate, then read the complete entrypoint and any explicitly referenced prerequisites. Choose the **smallest asset set** that solves the consumer task; do not fetch or install the entire catalog by default.
+Start from `src/INDEX.md` and the appropriate category `INDEX.md` to find a candidate, then read the complete entrypoint and any explicitly referenced prerequisites. Choose the **smallest asset set** that solves the consumer task; do not fetch or install the entire catalog by default.
 
 ## Ownership and installation
 
