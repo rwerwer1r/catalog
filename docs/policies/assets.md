@@ -13,9 +13,9 @@ The source path is the durable identifier. Asset identifiers and ordinary asset 
 ## Source and discovery
 
 - Maintain one canonical entrypoint per asset under its category.
-- Add a descriptive link from the **category `index.md`**; keep the `src/README.md` index at category level.
+- Add a descriptive link from the **category `INDEX.md`**; keep the `src/README.md` index at category level.
 - State purpose, prerequisites, inputs, outputs and relevant dependencies or limitations in the asset itself.
-- Do not duplicate the directory inventory in a separate JSON, YAML or generated registration file. A derived, metadata-backed `INDEX.tsv` may serve document discovery only under the [documentation Skill's index contract](../../src/skills/documentation-authoring/indexes.md); it must not become a second authoritative asset registry.
+- Do not duplicate the directory inventory in a separate JSON, YAML or generated registration file. A derived, metadata-backed `INDEX.tsv` may serve document discovery only under the [documentation Skill's index contract](../../src/skills/documentation-authoring/references/indexes.md); it must not become a second authoritative asset registry.
 - Keep required supporting files alongside their owning Skill or module.
 - Avoid reusing an existing path for an incompatible contract.
 
