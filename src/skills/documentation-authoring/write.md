@@ -1,6 +1,6 @@
 # Write or revise documentation
 
-Use after the [documentation Skill gate](SKILL.md) and [route index](index.md) select writing.
+Use after the [documentation Skill gate](SKILL.md) and [route index](INDEX.md) select writing.
 
 1. Identify the reader, task, canonical page, authorized destination, and closest applicable repository or directory rules. Reuse the current version of already confirmed guidance.
 2. Look for existing source-of-truth documents, code, specifications, or decisions before creating new text. Read only the portions needed to support claims; label proposed or unverified behavior.
