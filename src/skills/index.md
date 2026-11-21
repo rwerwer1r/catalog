@@ -1,5 +1,5 @@
 # Skills index
 
-- [Agent asset authoring](agent-asset-authoring/SKILL.md) — create and maintain portable agent assets; requires documentation authoring.
-- [Documentation authoring](documentation-authoring/SKILL.md) — write and review documentation in any repository using its local conventions.
+- [Agent asset authoring](agent-asset-authoring/SKILL.md) — build reusable agent assets with repository-first rules, progressive context loading, and required documentation authoring.
+- [Documentation authoring](documentation-authoring/SKILL.md) — maintain source-backed documents using local conventions, on-demand context, and focused verification.
 - [Repository readiness](repository-readiness/SKILL.md) — inspect development prerequisites and report gaps.
