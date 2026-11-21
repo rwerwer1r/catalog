@@ -1,7 +1,5 @@
 # Reconcile debate without forced consensus
 
-Use after [framing](frame.md) finds no material dispute, or after [examination](examine.md) of genuine alternatives.
-
 1. **Audit the arguments.** Classify each material claim as **supported**, **rejected**, or **unresolved** against available evidence, task criteria, and constraints. A rhetorically strong claim without evidence does not become a fact.
 2. **Do not force a contest or a compromise.** When the baseline is adequate and no credible competing position survived, say **no substantive disagreement identified**. When one option is clearly stronger, select it and explain why; do not split the difference for symmetry.
 3. **Preserve real disagreement.** If competing values, assumptions, or evidence remain materially different, state the disagreement and the missing evidence or decision authority; do not manufacture consensus.
