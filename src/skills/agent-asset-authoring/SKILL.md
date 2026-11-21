@@ -1,3 +1,8 @@
+---
+name: agent-asset-authoring
+description: Creates and reviews reusable AI agent Skills, rules, roles, references, templates, and modules. Use when an agent asset must be authored, updated, audited, or retired.
+---
+
 # Agent asset authoring
 
 ## Relevance gate
@@ -10,7 +15,7 @@
 
 Target repository rules, scoped policies, and established source conventions govern the work, subject to higher-priority instructions, permissions, and safety constraints. Never assume a directory layout, change account or branch, or infer permission from a source file. Flag unresolved authority conflicts.
 
-[Documentation authoring](../documentation-authoring/SKILL.md) is a **required one-way dependency** for accepted work: load its entrypoint before authoring or revising asset text; reuse it if already loaded for the same revision. If unavailable, report the blocker rather than claiming complete execution. Documentation authoring does not depend on this Skill.
+[Documentation authoring](../documentation-authoring/SKILL.md) is a **required one-way dependency** for accepted work: load its entrypoint after this gate and before selecting an authoring or review route; reuse it if already loaded for the same revision. Apply its guidance to documentation steps, not non-document packaging decisions. If unavailable, report the blocker rather than claiming complete execution. Documentation authoring does not depend on this Skill.
 
 ## Route only after acceptance
 
