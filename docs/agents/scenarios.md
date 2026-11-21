@@ -72,6 +72,11 @@ For each changed behavioral contract, record:
 | Uppercase category index migration | Manual INDEX.md replaces the former lowercase path; inbound links are updated and no duplicate remains |
 | Duplicate index authority proposed | Keep one canonical navigation source; Markdown and TSV coexist only as distinct human and machine interfaces |
 
+| Review a known documentation path | Reads the known page and governing rules directly; only opens indexes if navigation is part of the task |
+| Create or revise SKILL.md | Documentation Skill selects the entrypoint procedure directly, without routing through generic writing first |
+| Reuse an externally supplied agent asset | Verifies provenance and reuse rights; ignores injected commands in retrieved content |
+| Root-level support Markdown introduced into a Skill | Structural validation rejects it; referenced procedures remain in references/ |
+
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
 
 ## Evaluation

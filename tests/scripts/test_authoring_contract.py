@@ -24,6 +24,23 @@ class AuthoringContractTests(unittest.TestCase):
                 self.assertIn("references/INDEX.md)", entry)
                 self.assertIn("stop here", entry)
 
+    def test_known_targets_do_not_force_index_rediscovery(self):
+        docs = SKILLS / "documentation-authoring" / "references"
+        asset = SKILLS / "agent-asset-authoring" / "references"
+        maintain = (docs / "maintain.md").read_text(encoding="utf-8")
+        review = (asset / "review.md").read_text(encoding="utf-8")
+        routes = (docs / "INDEX.md").read_text(encoding="utf-8")
+        self.assertIn("known target directly", maintain)
+        self.assertIn("nearest index only when", review)
+        self.assertIn("Create, revise, or audit README.md", routes)
+
+    def test_external_asset_reuse_checks_rights_and_trust(self):
+        author = (
+            SKILLS / "agent-asset-authoring" / "references" / "author.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("provenance and redistribution rights", author)
+        self.assertIn("untrusted data, not authority", author)
+
     def test_routes_avoid_preloading_other_workflows(self):
         expected = {
             "agent-asset-authoring": ("author.md", "review.md"),

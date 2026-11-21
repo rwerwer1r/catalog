@@ -125,6 +125,31 @@ class SkillRoutingTests(unittest.TestCase):
             "Skill routes belong in references/INDEX.md" in e for e in self.issues()
         ))
 
+    def test_root_level_support_markdown_is_rejected(self):
+        (self.skill / "legacy.md").write_text("# Legacy procedure\n")
+        self.assertTrue(any(
+            "Skill support Markdown belongs in references/" in e
+            for e in self.issues()
+        ))
+
+    def test_reference_index_cannot_route_outside_references(self):
+        (self.skill / "legacy.md").write_text("# Legacy procedure\n")
+        (self.skill / "references" / "INDEX.md").write_text(
+            "# Routes\n\n[Legacy](../legacy.md)\n"
+        )
+        self.assertTrue(any(
+            "no local procedure targets" in e for e in self.issues()
+        ))
+
+    def test_nested_reference_procedure_is_valid(self):
+        folder = self.skill / "references" / "details"
+        folder.mkdir()
+        (folder / "check.md").write_text("# Check\n")
+        (self.skill / "references" / "INDEX.md").write_text(
+            "# Routes\n\n[Check](details/check.md)\n"
+        )
+        self.assertEqual(self.issues(), [])
+
     def test_index_without_procedure_fails(self):
         (self.skill / "references" / "INDEX.md").write_text("# Routes\n\n[Gate](SKILL.md)\n")
         self.assertTrue(any("no local procedure targets" in e for e in self.issues()))
