@@ -52,7 +52,7 @@ class DocumentationNavigationContractTests(unittest.TestCase):
         for term in (
             "INDEX.md", "hand-maintained", "index-only",
             "Never attach an auto-generation script to INDEX.md",
-            "Existing manual", "INDEX.md",
+            "In this catalog all manual", "INDEX.md",
         ):
             with self.subTest(term=term):
                 self.assertIn(term, self.indexes)
@@ -79,7 +79,7 @@ class DocumentationNavigationContractTests(unittest.TestCase):
         for term in (
             "one canonical index per navigation role",
             "different interfaces", "not duplicate independently edited",
-            "Existing category", "Do not rename",
+            "Existing category", "update inbound links and remove the old path",
         ):
             with self.subTest(term=term):
                 self.assertIn(term, self.indexes)
