@@ -1,24 +1,22 @@
 ---
 name: agent-asset-authoring
-description: Creates and reviews reusable AI agent Skills, rules, roles, references, templates, and modules. Use when an agent asset must be authored, updated, audited, or retired.
+description: Author, revise, review, or retire reusable AI agent Skills, rules, roles, references, templates, and modules.
 ---
 
 # Agent asset authoring
 
 ## Relevance gate
 
-**Use only for** creating, revising, auditing, or retiring reusable agent Skills, rules, roles, prompts, references, templates, or modules in an authorized target.
-
-**Do not use for** general document editing, ordinary application coding, installing or deploying assets, or unrelated repository maintenance. For document-only requests, use [Documentation authoring](../documentation-authoring/SKILL.md) independently. **If the task does not match, stop here** without loading this Skill's index or procedures.
+**Use only for** creating, changing, reviewing, or retiring reusable agent assets. Not for general document editing, application development, or installation. If unrelated, **stop here**; do not load the index or dependencies.
 
 ## Essential contract
 
-Target repository rules, scoped policies, and established source conventions govern the work, subject to higher-priority instructions, permissions, and safety constraints. Never assume a directory layout, change account or branch, or infer permission from a source file. Flag unresolved authority conflicts.
+Higher-priority instructions and authorization apply first; the target repository's scoped rules, layouts, and validation override this Skill's defaults. Never assume an account, branch, permissions, or source structure.
 
-[Documentation authoring](../documentation-authoring/SKILL.md) is a **required one-way dependency** for accepted work: load its entrypoint after this gate and before selecting an authoring or review route; reuse it if already loaded for the same revision. Apply its guidance to documentation steps, not non-document packaging decisions. If unavailable, report the blocker rather than claiming complete execution. Documentation authoring does not depend on this Skill.
+[Documentation authoring](../documentation-authoring/SKILL.md) is a **required one-way dependency** for asset documentation. Check that it is available; load and apply it **just before editing or reviewing written asset content**, reusing an unchanged loaded copy. If unavailable, report the blocker; do not claim complete authoring. It does not govern asset packaging and has no reverse dependency.
 
-## Route only after acceptance
+## Route
 
-Read [index.md](INDEX.md), choose one matching procedure, then load only that destination. Load more references or procedures solely for a concrete unanswered question. Reuse confirmed context and stop once the authorized result and relevant verification are recorded.
+After acceptance read [INDEX.md](INDEX.md); load only the procedure selected for this task. Expand references only for a concrete open question. Reuse valid context instead of re-reading.
 
-**Output:** changed paths and contract, actual checks, compatibility effects, and unresolved limits. Structural checks do not prove agent behavior or authorize downstream installation.
+**Output:** changed assets, dependency and compatibility impact, checks actually run, and unresolved limits. Neither publication nor structural checks prove downstream behavior.
