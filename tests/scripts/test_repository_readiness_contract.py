@@ -61,7 +61,7 @@ class RepositoryReadinessContractTests(unittest.TestCase):
         self.assertIn("command, revision, environment, result", self.body)
 
     def test_ready_requires_sufficient_current_or_equivalent_evidence(self):
-        self.assertIn("critical requirements supported by current or equivalent evidence", self.body)
+        self.assertIn("critical requirements supported by current or justified equivalent evidence", self.body)
         self.assertIn("critical evidence or authority missing", self.body)
 
     def test_report_and_entrypoint_remain_bounded(self):
