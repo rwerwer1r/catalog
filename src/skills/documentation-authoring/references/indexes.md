@@ -1,6 +1,6 @@
 # Author consumer-oriented indexes
 
-An index helps consumers select documents **before loading them**. Choose format by maintenance mode; follow target repository naming rules.
+An index enables selection before loading documents. Choose its format by maintenance mode and target rules.
 
 ## Manual Markdown: INDEX.md
 
@@ -28,6 +28,6 @@ repair.md	Use when troubleshooting a failed setup step.
 
 ## One source of navigation truth
 
-Keep **one canonical index per navigation role**. Manual Markdown and TSV may coexist for different interfaces, not duplicate independently edited inventories. Existing category `INDEX.md` stays manual unless a compatible metadata-generated replacement is requested.
+Keep **one canonical index per navigation role**. Manual Markdown and TSV may coexist for different interfaces, not duplicate independently edited inventories. Existing category `INDEX.md` remains manual unless explicitly replaced.
 
-Respect target rules for scripts, metadata, naming, and validation. Never create extra indexes or manufactured metadata solely to satisfy format preferences.
+Respect target rules; do not create needless indexes or invent metadata.
