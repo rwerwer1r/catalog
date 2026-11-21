@@ -1,11 +1,11 @@
 # Self-review routes
 
-Read only after the [Skill gate](SKILL.md) accepts the task. Load the current stage alone; do not preload every possible review procedure.
+After [SKILL.md](SKILL.md) accepts the task, load **only** the current stage.
 
-| Stage or need | Load next |
+| Review stage | Load next |
 | --- | --- |
-| Set artifact, revision, acceptance criteria, and relevant review lenses | [Scope](scope.md) |
-| Inspect risk-bearing areas and test plausible defects | [Inspect](inspect.md) |
-| Decide whether findings are real, actionable, or absent | [Adjudicate](adjudicate.md) |
+| Identify artifact, criteria, and useful risk lenses | [Scope](scope.md) |
+| Verify possible defects in evidence | [Inspect](inspect.md) |
+| Decide findings, limits, or no change | [Adjudicate](adjudicate.md) |
 
-If no reviewable evidence is available, report that limit without inventing issues. A clean review may proceed directly to adjudication when sufficient inspection evidence already exists.
+No issue quota or forced criticism. With adequate prior evidence, go directly from Scope to Adjudicate; do not preload other stages.
