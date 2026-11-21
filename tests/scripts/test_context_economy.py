@@ -63,6 +63,27 @@ class ContextEconomyTests(unittest.TestCase):
         self.assertIn("just before editing or reviewing written asset content", entry)
         self.assertIn("Before editing or reviewing written content", index)
 
+    def test_discovery_descriptions_say_when_to_activate(self):
+        import re
+
+        for skill in sorted(SKILLS.iterdir()):
+            entry = skill / "SKILL.md"
+            if not entry.is_file():
+                continue
+            with self.subTest(skill=skill.name):
+                body = entry.read_text(encoding="utf-8")
+                match = re.match(r"\\A---\\nname: [^\\n]+\\ndescription: ([^\\n]+)", body)
+                self.assertIsNotNone(match)
+                self.assertRegex(match.group(1), r"^Use (when|before)\\b")
+
+    def test_known_target_direct_entrypoint_and_optional_index(self):
+        root = SKILLS.parents[1]
+        rules = (root / "AGENTS.md").read_text(encoding="utf-8")
+        context = (root / "docs" / "agents" / "context-loading.md").read_text(encoding="utf-8")
+        self.assertIn("target path is already known", rules)
+        self.assertIn("if the target path is known", context)
+        self.assertIn("single-workflow Skill", context)
+
     def test_small_skill_does_not_need_routing_scaffold(self):
         skill = SKILLS / "repository-readiness"
         self.assertFalse((skill / "INDEX.md").exists())
