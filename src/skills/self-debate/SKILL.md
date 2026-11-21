@@ -1,24 +1,22 @@
 ---
 name: self-debate
-description: Facilitate evidence-led self-debate and multi-perspective deliberation for material trade-offs, competing explanations, and decisions. Use when a debate is requested or genuine alternatives could change an outcome; never manufacture opposing positions.
+description: Deliberate across evidence-backed, decision-relevant perspectives when meaningful alternatives or trade-offs exist; never invent opposition.
 ---
 
 # Self-debate
 
 ## Relevance gate
 
-**Use for** requested self-debate or multi-perspective deliberation, or a consequential question with plausible competing approaches, interests, or interpretations. A request to debate permits **checking whether meaningful disagreement exists**, not inventing it.
+**Use for** requested self-debate or a material decision with plausible competing claims, values, or approaches. Not for routine facts or performative disagreement. If irrelevant, **stop here**; do not stage positions.
 
-**Do not use for** straightforward factual retrieval, cosmetic contrast, ritual argument, or requests outside an authorized task. If irrelevant, **stop here** without reading the index or staging positions. If explicit debate is requested but no credible opposition exists, report that result without roleplay.
+## Essential contract
 
-## Essential boundaries
+Higher-priority instructions, user criteria, and target workspace rules govern the decision. Perspectives are distinct **questions that could change the outcome**, not personas or quotas. First test whether disagreement is real; when there is **no credible opposition**, report it without inventing a case. Preserve evidence asymmetry and real uncertainty; never fabricate independent reviewers, sources, or balance.
 
-Applicable instructions, the task's evidence standard, user-specified acceptance criteria, and target repository or workspace rules take precedence. Debate evaluates ideas; it grants no permission to change artifacts, approve actions, or weaken evidence.
+Debate does not authorize modifying artifacts or broadening scope.
 
-**Perspectives are distinct decision-relevant questions, not mandatory personas or equal sides.** Select only perspectives that could materially change a decision. No quotas, fabricated objections, invented data, contrarian-for-show roles, or unsupported claims of independent reviewers. An empty set of substantive disagreements is a valid outcome.
+## Route
 
-## Route after relevance check
+For accepted work, read [INDEX.md](INDEX.md) and load the current stage only. Stop when another perspective has no credible decision-changing value.
 
-Open [INDEX.md](INDEX.md) and load only the phase needed: framing, examination, or reconciliation. Start with framing on a new deliberation, and reuse a valid existing frame. Stop when further angles have no credible decision-changing value.
-
-**Output:** decision or uncertainty, actual alternative positions considered, evidence and disconfirming information, unresolved material disagreements, and what would change the conclusion.
+**Output:** supported decision or conditional result, material alternatives and evidence, unresolved disagreements, and the smallest useful next check.
