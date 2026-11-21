@@ -23,7 +23,7 @@ Each asset explains its purpose and the requirements necessary to use it. Operat
 
 A Skill's `SKILL.md` is a lightweight **relevance gate**: include activation and exclusion criteria, essential permissions and dependencies, and a clear route for accepted tasks. If the request does not match, stop before loading further files.
 
-When a Skill has distinct workflows, a sibling `index.md` may route to task-specific supporting files. Keep that index a concise map; load only the selected destination. The canonical category index remains `src/skills/index.md`, while a Skill-local index routes **within** that Skill. Do not confuse these roles or introduce duplicate inventories.
+When a Skill has distinct workflows, a sibling `INDEX.md` may route to task-specific supporting files. Keep that index a concise map; load only the selected destination. The canonical category index remains `src/skills/index.md`, while a Skill-local `INDEX.md` routes **within** that Skill. Do not confuse these roles or introduce duplicate inventories.
 
 These are the catalog's packaging conventions, not mandatory layouts for other repositories. Published entrypoint paths must remain stable when consumers may rely on them.
 
