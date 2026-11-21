@@ -2,9 +2,110 @@
 import re
 import sys
 from pathlib import Path
+from urllib.parse import unquote
 
 KINDS = ("skills", "rules", "references", "agents", "modules", "templates")
 NAME = re.compile(r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$")
+
+
+
+SKILL_FRONTMATTER = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.DOTALL)
+MD_LINK = re.compile(r"!?\[[^\]]*\]\((<[^>]+>|[^)]+)\)")
+
+
+def _without_fences(content: str) -> str:
+    lines = []
+    fence = None
+    for line in content.splitlines():
+        marker = re.match(r"^\s{0,3}((?:\x60){3,}|~{3,})", line)
+        if marker:
+            token = marker.group(1)
+            if fence is None:
+                fence = token
+            elif token[0] == fence[0] and len(token) >= len(fence):
+                fence = None
+            lines.append("")
+        else:
+            lines.append("" if fence else line)
+    return "\n".join(lines)
+
+
+def _link_targets(content: str):
+    for match in MD_LINK.finditer(_without_fences(content)):
+        target = match.group(1).strip()
+        if target.startswith("<") and target.endswith(">"):
+            target = target[1:-1]
+        yield target.split(' "')[0].split(" '")[0]
+
+
+def _skill_frontmatter_errors(entry: Path, root: Path, content: str) -> list[str]:
+    relative = entry.relative_to(root)
+    match = SKILL_FRONTMATTER.match(content)
+    if not match:
+        return [f"{relative}: missing Agent Skills YAML frontmatter"]
+    values = {}
+    errors = []
+    for line in match.group(1).splitlines():
+        field = re.fullmatch(r"([a-z][a-z-]*):\s*(.*)", line)
+        if field:
+            key, value = field.groups()
+            if key in values:
+                errors.append(f"{relative}: duplicate frontmatter key: {key}")
+            values[key] = value.strip().strip("\"'")
+    name = values.get("name", "")
+    description = values.get("description", "")
+    if not NAME.fullmatch(name) or len(name) > 64 or name != entry.parent.name:
+        errors.append(f"{relative}: invalid or mismatched Skill name")
+    if not 1 <= len(description) <= 1024 or description in {"|", ">", "|-", ">-"}:
+        errors.append(f"{relative}: missing or invalid Skill description")
+    if not content[match.end():].lstrip().startswith("# "):
+        errors.append(f"{relative}: Markdown body must begin with an H1")
+    return errors
+
+
+def _skill_errors(skill: Path, root: Path) -> list[str]:
+    entry = skill / "SKILL.md"
+    if not entry.is_file() or entry.is_symlink():
+        return []  # the source layout validator reports missing entrypoints
+    errors = []
+    body = entry.read_text(encoding="utf-8")
+    errors.extend(_skill_frontmatter_errors(entry, root, body))
+
+    route = skill / "INDEX.md"
+    lower = skill / "index.md"
+    if lower.exists():
+        errors.append(f"{lower.relative_to(root)}: use uppercase INDEX.md for Skill-local routes")
+    if route.is_file():
+        if "(INDEX.md)" not in body:
+            errors.append(f"{entry.relative_to(root)}: missing link to Skill-local INDEX.md")
+        routes = []
+        for target in _link_targets(route.read_text(encoding="utf-8")):
+            clean = target.split("#", 1)[0].split("?", 1)[0]
+            if clean and not clean.startswith("..") and clean not in {"SKILL.md", "INDEX.md"}:
+                routes.append(clean)
+        if not routes:
+            errors.append(f"{route.relative_to(root)}: routing index has no procedure targets")
+
+    for page in sorted(skill.rglob("*.md")):
+        if page.is_symlink():
+            continue  # already rejected by the category validator
+        relative = page.relative_to(root)
+        for target in _link_targets(page.read_text(encoding="utf-8")):
+            if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", target) or target.startswith("//"):
+                continue
+            local = unquote(target.split("#", 1)[0].split("?", 1)[0])
+            if not local:
+                continue
+            if local.startswith("/"):
+                errors.append(f"{relative}: absolute local link: {target}")
+                continue
+            destination = (page.parent / local).resolve()
+            if not destination.is_relative_to(root):
+                errors.append(f"{relative}: link escapes repository: {target}")
+            elif not destination.is_file():
+                errors.append(f"{relative}: missing Skill link target: {target}")
+    return errors
+
 
 
 def validate(root: Path) -> list[str]:
@@ -17,7 +118,7 @@ def validate(root: Path) -> list[str]:
             errors.append(f"{path.relative_to(root)}: missing or unsafe entrypoint")
             return ""
         body = path.read_text(encoding="utf-8")
-        if not body.lstrip().startswith("# "):
+        if not re.sub(r"\A---\r?\n.*?\r?\n---\r?\n", "", body, count=1, flags=re.DOTALL).lstrip().startswith("# "):
             errors.append(f"{path.relative_to(root)}: missing Markdown heading")
         return body
 
@@ -67,6 +168,11 @@ def validate(root: Path) -> list[str]:
                 else:
                     read_markdown(entry)
                     require_link(listing, f"{item.name}/{entry.name}", index)
+    skills = source / "skills"
+    if skills.is_dir():
+        for skill in sorted(skills.iterdir()):
+            if skill.is_dir() and NAME.fullmatch(skill.name):
+                errors.extend(_skill_errors(skill, root))
     return errors
 
 
