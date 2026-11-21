@@ -45,6 +45,12 @@ For each changed behavioral contract, record:
 | Invalid Skill discovery metadata | Missing `name`, wrong directory name, or missing `description` fails structural validation before publication |
 | Skill route or dependency target deleted | Broken relative links fail source validation instead of silently passing CI |
 | Consumer repository prescribes a different routing filename | Consumer's routing filename takes precedence over generic Skill defaults; no duplicate index is created |
+| Generic loop request with no task relevance | Entry gate rejects a discussion-only or mechanical repetition request without loading loop procedures |
+| Bounded improvement with verified goal | Readiness precedes work, every substantive Review increments once, closure independently validates COMPLETE and preserves observed evidence |
+| Material defect found in Review | Next cycle resumes at the earliest invalid prerequisite, reusing unaffected Research, Plan and completed Work |
+| Out-of-scope change proposed during iteration | Review proposes but cannot authorize expansion; no Work outside active scope until applicable permission and updated plan are verified |
+| Child review or continuation near budget | Focused child inherits the same counter and constraints; exhausted Run returns HANDOFF rather than silently resetting or claiming completion |
+| Blocker before work begins | Preparation reports BLOCKED without pretending a main cycle or closure occurred |
 
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
 
