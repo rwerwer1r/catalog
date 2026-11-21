@@ -53,7 +53,7 @@ class PerspectiveContracts(unittest.TestCase):
         self.assertIn("no credible opposition", entry)
         self.assertIn("disagreement gate", frame)
         self.assertIn("Prune", frame)
-        self.assertIn("false", examine.lower())
+        self.assertIn("forcing equal plausibility", examine)
         self.assertIn("no substantive disagreement identified", resolve)
         self.assertIn("zero new objections", resolve)
         self.assertIn("Do not force a contest", resolve)
