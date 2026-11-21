@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SKILL_DIR = ROOT / "src" / "skills" / "repository-readiness"
 ENTRY = SKILL_DIR / "SKILL.md"
-INDEX = ROOT / "src" / "skills" / "index.md"
+INDEX = ROOT / "src" / "skills" / "INDEX.md"
 
 
 class RepositoryReadinessContractTests(unittest.TestCase):
@@ -23,7 +23,7 @@ class RepositoryReadinessContractTests(unittest.TestCase):
         self.assertIn("Relevance gate", self.body)
         self.assertIn("stop here", self.body.lower())
         self.assertNotIn("(INDEX.md)", self.body)
-        self.assertFalse((SKILL_DIR / "INDEX.md").exists())
+        self.assertFalse((SKILL_DIR / "references" / "INDEX.md").exists())
         self.assertIn("(repository-readiness/SKILL.md)", INDEX.read_text())
 
     def test_scope_and_evidence_before_verdict(self):

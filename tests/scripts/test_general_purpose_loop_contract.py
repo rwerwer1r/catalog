@@ -14,7 +14,7 @@ class GeneralPurposeLoopContractTests(unittest.TestCase):
     def setUpClass(cls):
         cls.pages = {
             path.name: path.read_text(encoding="utf-8")
-            for path in SKILL.glob("*.md")
+            for path in SKILL.rglob("*.md")
         }
 
     def test_discovery_and_gate(self):
@@ -23,7 +23,7 @@ class GeneralPurposeLoopContractTests(unittest.TestCase):
         self.assertIn("description:", entry)
         self.assertIn("Relevance gate", entry)
         self.assertIn("If irrelevant, stop here", entry)
-        self.assertIn("(INDEX.md)", entry)
+        self.assertIn("(references/INDEX.md)", entry)
 
     def test_on_demand_routes(self):
         routes = self.pages["INDEX.md"]

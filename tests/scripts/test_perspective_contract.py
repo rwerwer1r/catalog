@@ -15,11 +15,11 @@ class PerspectiveContracts(unittest.TestCase):
     def setUpClass(cls):
         cls.debate = {
             p.name: p.read_text(encoding="utf-8")
-            for p in (SKILLS / "self-debate").glob("*.md")
+            for p in (SKILLS / "self-debate").rglob("*.md")
         }
         cls.review = {
             p.name: p.read_text(encoding="utf-8")
-            for p in (SKILLS / "self-review").glob("*.md")
+            for p in (SKILLS / "self-review").rglob("*.md")
         }
 
     def test_discovery_metadata_and_lightweight_gates(self):
@@ -29,7 +29,7 @@ class PerspectiveContracts(unittest.TestCase):
                 self.assertIn(f"name: {name}", entry)
                 self.assertIn("description:", entry)
                 self.assertIn("Relevance gate", entry)
-                self.assertIn("(INDEX.md)", entry)
+                self.assertIn("(references/INDEX.md)", entry)
                 self.assertIn("stop here", entry.lower())
 
     def test_routes_are_selective_and_targets_exist(self):
@@ -88,9 +88,9 @@ class PerspectiveContracts(unittest.TestCase):
             self.assertIn("material", combined.lower())
 
     def test_optional_integration_into_outer_loop(self):
-        loop = (SKILLS / "general-purpose-loop" / "cycle.md").read_text(encoding="utf-8")
-        self.assertIn("(../self-debate/SKILL.md)", loop)
-        self.assertIn("(../self-review/SKILL.md)", loop)
+        loop = (SKILLS / "general-purpose-loop" / "references" / "cycle.md").read_text(encoding="utf-8")
+        self.assertIn("(../../self-debate/SKILL.md)", loop)
+        self.assertIn("(../../self-review/SKILL.md)", loop)
         self.assertIn("optionally use", loop)
         self.assertIn("do not invoke them merely", loop)
 
