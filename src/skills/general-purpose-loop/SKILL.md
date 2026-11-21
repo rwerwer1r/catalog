@@ -17,4 +17,4 @@ A run has **readiness → substantive review cycles → closure**. Default ceili
 
 ## Route
 
-After acceptance select the current stage through [INDEX.md](INDEX.md), starting with readiness. Load only the selected procedure. Terminal results are **COMPLETE**, **HANDOFF**, or **BLOCKED**, with actual checks, unresolved gaps, and cycle count.
+After acceptance select the current stage through [INDEX.md](references/INDEX.md), starting with readiness. Load only the selected procedure. Terminal results are **COMPLETE**, **HANDOFF**, or **BLOCKED**, with actual checks, unresolved gaps, and cycle count.

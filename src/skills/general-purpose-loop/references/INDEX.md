@@ -1,6 +1,6 @@
 # General-purpose loop routes
 
-After [SKILL.md](SKILL.md) accepts the task, load **only** the current stage.
+After [SKILL.md](../SKILL.md) accepts the task, load **only** the current stage.
 
 | Current stage | Load next |
 | --- | --- |
