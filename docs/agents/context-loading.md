@@ -9,7 +9,7 @@ description: "Select authoritative context for catalog maintenance without loadi
 1. Confirm the repository, account, branch, request and permissions.
 2. Read [AGENTS.md](../../AGENTS.md) and applicable scoped instructions first; it directs which repository policies must be consulted.
 3. Apply [repository policy](../policies/repository.md) and only task-relevant policies from the [policy index](../policies/README.md).
-4. For source work, locate the category through `src/index.md` and its nearest `index.md`, then read the affected asset gate and required dependencies. Do not load the documentation area index for a source-only task.
+4. For source work, locate the category through `src/index.md` and its nearest `index.md`, then read the asset gate. Check required dependency availability; load its instructions only when the selected action needs them, before any dependent work. Do not load the documentation area index for a source-only task.
 5. For documentation work, use the [documentation entrypoint](../documentation/README.md) and its appropriate procedure; for implementation work, use the [development entrypoint](../development/README.md). Expand only on concrete need.
 
 ## Precedence
