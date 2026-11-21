@@ -1,5 +1,5 @@
 # Skills index
 
-- [Catalog agent asset authoring](catalog-asset-authoring/SKILL.md) — create and maintain reusable catalog assets with contract, discovery, and verification checks.
-- [Catalog documentation authoring](catalog-documentation-authoring/SKILL.md) — write and review accurate, navigable, maintainable catalog documentation.
+- [Agent asset authoring](agent-asset-authoring/SKILL.md) — create and maintain portable agent assets; requires documentation authoring.
+- [Documentation authoring](documentation-authoring/SKILL.md) — write and review documentation in any repository using its local conventions.
 - [Repository readiness](repository-readiness/SKILL.md) — inspect development prerequisites and report gaps.
