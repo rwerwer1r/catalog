@@ -1,19 +1,22 @@
 ## Scope
 
-Which catalog assets or documentation contracts changed, and why?
+Describe the affected catalog assets or documentation contracts, why this change is needed, and any non-goals.
 
 ## Policy and documentation review
 
-- [ ] [English language policy](../docs/policies/language.md) applied to committed content
-- [ ] Canonical documentation and indexes updated
-- [ ] Permissions, prerequisites and dependency assumptions reviewed
+- [ ] Relevant [repository policy](../docs/policies/repository.md), [asset policy](../docs/policies/assets.md) and [documentation policy](../docs/policies/documentation.md) reviewed as applicable
+- [ ] [Language policy](../docs/policies/language.md), canonical source ownership, and nearest `index.md` links checked
+- [ ] Permissions, dependencies, consumer compatibility and migration impact assessed
 
 ## Validation
 
-- [ ] `python3 tools/validate_catalog.py`
-- [ ] `python3 -m unittest discover -s tests -v`
-- [ ] [Agent verification record](../docs/agents/verification.md) included when behavior changes
+Check only commands actually run; provide a CI link or failure details in the PR description.
+
+- [ ] `python3 scripts/validate_catalog.py`
+- [ ] `python3 scripts/validate_docs.py`
+- [ ] `python3 -m unittest discover -s tests/scripts -v`
+- [ ] For agent behavior changes, include an [agent verification record](../docs/agents/verification.md) with scenario outcomes or explicitly mark them `not run`
 
 ## Limitations
 
-List checks not run, known risks and unresolved follow-up.
+List failed or unrun checks, unverified behavior, compatibility risks and required follow-up.

@@ -14,7 +14,7 @@ python3 scripts/validate_docs.py
 python3 -m unittest discover -s tests/scripts -v
 ```
 
-The source validator checks canonical asset paths, naming, entrypoint headings and category index link coverage. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest index coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
+The PR template's validation commands must match the executable CI checks; a unit test guards against drift in the current one-line workflow format. The source validator checks canonical asset paths, naming, entrypoint headings and category index link coverage. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest index coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
 
 ## Manual and behavioral review
 
