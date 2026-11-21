@@ -14,6 +14,6 @@ Target repository rules, scoped policies, and established source conventions gov
 
 ## Route only after acceptance
 
-Read [index.md](index.md), choose one matching procedure, then load only that destination. Load more references or procedures solely for a concrete unanswered question. Reuse confirmed context and stop once the authorized result and relevant verification are recorded.
+Read [index.md](INDEX.md), choose one matching procedure, then load only that destination. Load more references or procedures solely for a concrete unanswered question. Reuse confirmed context and stop once the authorized result and relevant verification are recorded.
 
 **Output:** changed paths and contract, actual checks, compatibility effects, and unresolved limits. Structural checks do not prove agent behavior or authorize downstream installation.
