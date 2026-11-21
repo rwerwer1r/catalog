@@ -72,9 +72,9 @@ class ContextEconomyTests(unittest.TestCase):
                 continue
             with self.subTest(skill=skill.name):
                 body = entry.read_text(encoding="utf-8")
-                match = re.match(r"\\A---\\nname: [^\\n]+\\ndescription: ([^\\n]+)", body)
+                match = re.match(r"\A---\nname: [^\n]+\ndescription: ([^\n]+)", body)
                 self.assertIsNotNone(match)
-                self.assertRegex(match.group(1), r"^Use (when|before)\\b")
+                self.assertRegex(match.group(1), r"^Use (when|before)\b")
 
     def test_known_target_direct_entrypoint_and_optional_index(self):
         root = SKILLS.parents[1]
