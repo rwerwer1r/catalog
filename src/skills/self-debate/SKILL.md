@@ -1,6 +1,6 @@
 ---
 name: self-debate
-description: Deliberate across evidence-backed, decision-relevant perspectives when meaningful alternatives or trade-offs exist; never invent opposition.
+description: Use when self-debate is requested or consequential decisions have plausible competing perspectives or trade-offs; never manufacture opposition.
 ---
 
 # Self-debate
