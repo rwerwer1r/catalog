@@ -1,6 +1,6 @@
 # Close or hand off a run
 
-Use after a substantive [cycle Review](cycle.md) nominates an exit, blocker, or limit. This is a **single bounded closure stage**, not a new cycle. If [preparation](prepare.md) was blocked before any cycle, report **BLOCKED** directly.
+Closure is a **single bounded stage, not a new cycle**. If preparation blocked the run, report **BLOCKED** without entering closure.
 
 1. **Inspect.** Confirm current goal and active scope, valid prerequisites, review findings, actual acceptance checks, residual risks, and consumed versus allowed cycles.
 2. **Resolve narrowly.** Correct only small presentation or verification defects already covered by the accepted plan and authority. Do not reopen broad investigation, alter scope, replan, or do substantial new work under a finishing label.
