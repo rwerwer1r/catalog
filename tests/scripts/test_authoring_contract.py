@@ -27,7 +27,7 @@ class AuthoringContractTests(unittest.TestCase):
     def test_routes_avoid_preloading_other_workflows(self):
         expected = {
             "agent-asset-authoring": ("author.md", "review.md"),
-            "documentation-authoring": ("write.md", "maintain.md"),
+            "documentation-authoring": ("entrypoints.md", "indexes.md", "write.md", "maintain.md"),
         }
         for name, files in expected.items():
             with self.subTest(skill=name):
