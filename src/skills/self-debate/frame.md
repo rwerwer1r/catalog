@@ -1,7 +1,5 @@
 # Frame a substantive debate
 
-Use after the [relevance gate](SKILL.md) and [routing index](INDEX.md) select framing.
-
 1. **Define the decision.** Identify the user's question, current claim or proposal, criteria, constraints, affected stakeholders, available evidence, and what a different conclusion would change. Respect the authority and scope of the target environment.
 2. **Establish a neutral baseline first.** State what is supported, what is uncertain, and which alternatives are already ruled out by decisive evidence or explicit constraints. Do not present settled facts as a balanced controversy.
 3. **Test the disagreement gate before producing arguments.** For each prospective perspective ask: Does it address a distinct criterion, assumption, affected party, failure mode, or plausible option? Is there credible evidence or a genuinely open question? Could resolving it change the decision, its risk, or necessary verification?
