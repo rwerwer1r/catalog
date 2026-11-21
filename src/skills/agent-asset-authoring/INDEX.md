@@ -1,6 +1,6 @@
 # Agent asset authoring routes
 
-Read this routing index **only after** [SKILL.md](SKILL.md) accepts the request. Apply the required [documentation Skill](../documentation-authoring/SKILL.md) before working on asset documentation. Select only the relevant destination.
+Read this routing index **only after** [SKILL.md](SKILL.md) accepts the request and the required [documentation Skill](../documentation-authoring/SKILL.md) has been loaded. Apply the companion to documentation subtasks only; the asset Skill owns contracts and packaging. Select only the relevant destination.
 
 | Request | Load next |
 | --- | --- |
