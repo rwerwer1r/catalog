@@ -42,6 +42,8 @@ For each changed behavioral contract, record:
 | Asset-package request enters documentation Skill | The documentation entrypoint stops without loading its index or unrelated guidance |
 | Accepted Skill request with several routed procedures | Entry gate passes, routing-only index is read, and only the matching procedure is loaded; mandatory dependency is honored |
 | Skill-specific routing in this catalog | The accepted Skill links to uppercase `INDEX.md`; no lowercase `index.md` duplicate exists inside the Skill directory |
+| Invalid Skill discovery metadata | Missing `name`, wrong directory name, or missing `description` fails structural validation before publication |
+| Skill route or dependency target deleted | Broken relative links fail source validation instead of silently passing CI |
 | Consumer repository prescribes a different routing filename | Consumer's routing filename takes precedence over generic Skill defaults; no duplicate index is created |
 
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
