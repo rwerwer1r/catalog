@@ -26,7 +26,7 @@ description: "How to select and review documentation entrypoints."
 
 ## Consistency
 
-Metadata aids discovery but never overrides policies, displayed text or canonical source files. Keep the description accurate after changes. If an authorized generator derives `INDEX.tsv` from frontmatter, use these maintained fields as its source; do not generate `INDEX.md` or infer missing descriptions. The reusable [index contract](../../src/skills/documentation-authoring/indexes.md) owns generated-versus-manual behavior. Write a clear H1 and logical subordinate headings.
+Metadata aids discovery but never overrides policies, displayed text or canonical source files. Keep the description accurate after changes. If an authorized generator derives `INDEX.tsv` from frontmatter, use these maintained fields as its source; do not generate `INDEX.md` or infer missing descriptions. The reusable [index contract](../../src/skills/documentation-authoring/references/indexes.md) owns generated-versus-manual behavior. Write a clear H1 and logical subordinate headings.
 
 ## Verification
 

@@ -4,19 +4,19 @@ description: "Locate this catalog's reader entrypoints and local navigation file
 
 # Catalog entrypoints
 
-The reusable [entrypoint authoring](../../src/skills/documentation-authoring/entrypoints.md) and [index authoring](../../src/skills/documentation-authoring/indexes.md) procedures are the **canonical owners** of README.md, SKILL.md, manual INDEX.md, and generated INDEX.tsv authoring rules. Apply [local frontmatter](frontmatter.md) to maintained documentation here. This page lists only repository-specific paths.
+The reusable [entrypoint authoring](../../src/skills/documentation-authoring/references/entrypoints.md) and [index authoring](../../src/skills/documentation-authoring/references/indexes.md) procedures are the **canonical owners** of README.md, SKILL.md, manual INDEX.md, and generated INDEX.tsv authoring rules. Apply [local frontmatter](frontmatter.md) to maintained documentation here. This page lists only repository-specific paths.
 
 ## Existing paths
 
 | Scope | Entrypoint | Manual navigation |
 | --- | --- | --- |
-| Repository | `README.md` | `src/index.md` or `docs/index.md` |
-| Source category | `src/<kind>/README.md` | `src/<kind>/index.md` |
-| Documentation area | `docs/<area>/README.md` | `docs/<area>/index.md` |
+| Repository | `README.md` | `src/INDEX.md` or `docs/INDEX.md` |
+| Source category | `src/<kind>/README.md` | `src/<kind>/INDEX.md` |
+| Documentation area | `docs/<area>/README.md` | `docs/<area>/INDEX.md` |
 | Multi-route Skill | `src/skills/<name>/SKILL.md` | Optional sibling `INDEX.md` |
 | Single-workflow Skill | `src/skills/<name>/SKILL.md` | None required |
 
-The existing lowercase `index.md` indexes are hand-maintained navigation. Do not rename them or add parallel uppercase indexes solely for naming uniformity. If a future authorized generator derives a metadata index from document frontmatter or fields, its output is `INDEX.tsv`, governed by the linked index procedure; no such generator is implied by these existing paths.
+The existing uppercase `INDEX.md` indexes are hand-maintained navigation. Do not rename them or add parallel uppercase indexes solely for naming uniformity. If a future authorized generator derives a metadata index from document frontmatter or fields, its output is `INDEX.tsv`, governed by the linked index procedure; no such generator is implied by these existing paths.
 
 ## Local verification
 
