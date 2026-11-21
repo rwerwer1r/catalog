@@ -1,6 +1,6 @@
 # Resolve a narrow subproblem
 
-Open only when [cycle Review](cycle.md) identifies a material, separable uncertainty or task whose isolation is worth its context and coordination cost. This is optional, not a required nesting level.
+Use only for a material separable subproblem whose benefit exceeds its context and coordination cost; this route is optional.
 
 1. Define a child question that is a **strict subset** of the active parent scope, with a specific result that could change the parent's evidence, plan, or acceptance.
 2. Inherit or narrow all parent exclusions, approvals, safety constraints, evidence standards, and the **same cycle counter and ceiling**. Never create a new run, independent budget, or broader authority for the child.
