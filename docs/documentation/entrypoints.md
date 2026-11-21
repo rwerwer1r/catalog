@@ -10,10 +10,10 @@ An entrypoint is a **small decision gate**, not the full content of a directory 
 
 - **`README.md`:** briefly state directory purpose, intended audience, boundaries, and link to its `index.md`. Keep inventories and detailed procedures out of the README.
 - **`SKILL.md`:** state when to use the Skill, when **not** to use it, indispensable authority or dependency requirements, and the next route. If the task is out of scope, stop without opening its index or supporting references.
-- **`index.md`:** route accepted readers to distinct task-specific pages using short descriptions and relative links. It is a map, not another guide or policy copy. Read the selected target **only when needed**, not every link.
+- **`index.md` / `INDEX.md`:** use lowercase `index.md` for directory and category listings, and uppercase `INDEX.md` for routing within a Skill. Both should link to specific destinations rather than duplicate guides or policies. Read the selected target **only when needed**, not every link.
 - **`AGENTS.md`:** select applicable repository maintenance rules and source, not a duplicate asset inventory or an unrestricted command to load everything.
 
-For a catalog Skill with multiple workflows, a lightweight `SKILL.md` can link to a sibling `index.md`, which links to on-demand procedures. A small Skill need not be split just to create routing layers. Never hide essential activation, permission, or safety gates exclusively in a deep document.
+For a catalog Skill with multiple workflows, a lightweight `SKILL.md` can link to a sibling `INDEX.md`, which links to on-demand procedures. A small Skill need not be split just to create routing layers. Never hide essential activation, permission, or safety gates exclusively in a deep document.
 
 ## Canonical entrypoints in this repository
 
@@ -22,9 +22,9 @@ For a catalog Skill with multiple workflows, a lightweight `SKILL.md` can link t
 - `src/<kind>/README.md`: category scope; `src/<kind>/index.md` lists published assets.
 - `docs/README.md`: purpose of repository documentation; `docs/index.md` lists documentation areas.
 - `docs/<area>/README.md`: area scope; its `index.md` lists immediate pages and child indexes.
-- `src/skills/<name>/SKILL.md`: Skill activation gate; optional sibling `index.md` routes to supporting files.
+- `src/skills/<name>/SKILL.md`: Skill activation gate; optional sibling `INDEX.md` routes to supporting files.
 
-This catalog standardizes on lowercase **`index.md`**. Other repositories may require `INDEX.md` or a different filename; reusable Skills must obey the **target repository's** convention, not impose this one. Never maintain lowercase and uppercase duplicates as competing authorities.
+This catalog uses **`index.md` for directory/category inventories** and **`INDEX.md` for Skill-local routing**. Other repositories may specify different names; reusable Skills must obey the **target repository's** convention, not impose this one. Never maintain competing routing indexes in different cases.
 
 ## Gate before routing
 
