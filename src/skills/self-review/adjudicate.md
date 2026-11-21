@@ -1,7 +1,5 @@
 # Adjudicate review findings
 
-Use after [inspection](inspect.md), or when [scope.md](scope.md) confirms adequate evidence for a bounded review verdict.
-
 1. **Evidence gate.** For each candidate, verify an applicable requirement or credible failure mechanism, exact evidence or reproducer, realistic impact, and whether the suggested correction actually addresses it. Mark as **confirmed**, **rejected**, or **unresolved**; delete duplicate or immaterial criticism rather than padding the report.
 2. **Calibrate severity.** Reserve severity labels for credible impact and likelihood, not rhetorical urgency. Do not promote a hypothetical low-probability edge case to a blocker without evidence or a relevant risk policy.
 3. **Protect valid results.** If checks pass and no actionable defect is supported, report **no actionable findings in the reviewed scope** and preserve the accepted result. Never invent a defect or forced improvement to satisfy an assumed review quota.
