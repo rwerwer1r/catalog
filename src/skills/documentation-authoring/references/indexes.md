@@ -6,7 +6,7 @@ An index helps consumers select documents **before loading them**. Choose format
 
 **INDEX.md is a hand-maintained, index-only Markdown navigator.** Use descriptive links grouped by reader intent; omit tutorials, repeated policies, copied inventories, and generation instructions. Never attach an auto-generation script to INDEX.md. Update links when destinations change; read only the chosen page.
 
-Existing manual `index.md` files remain valid when target rules require lowercase. Do not rename or create a competing index.
+Existing manual `INDEX.md` files remain valid when target rules require lowercase. Do not rename or create a competing index.
 
 ## Metadata-generated index: INDEX.tsv
 
@@ -28,6 +28,6 @@ repair.md	Use when troubleshooting a failed setup step.
 
 ## One source of navigation truth
 
-Keep **one canonical index per navigation role**. Manual Markdown and TSV may coexist for different interfaces, not duplicate independently edited inventories. Existing category `index.md` stays manual unless a compatible metadata-generated replacement is requested.
+Keep **one canonical index per navigation role**. Manual Markdown and TSV may coexist for different interfaces, not duplicate independently edited inventories. Existing category `INDEX.md` stays manual unless a compatible metadata-generated replacement is requested.
 
 Respect target rules for scripts, metadata, naming, and validation. Never create extra indexes or manufactured metadata solely to satisfy format preferences.

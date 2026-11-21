@@ -1,6 +1,6 @@
 # Documentation authoring routes
 
-After [SKILL.md](SKILL.md) accepts the task, load **only** the relevant procedure. Prefer a specific entrypoint or index route over generic editing.
+After [SKILL.md](../SKILL.md) accepts the task, load **only** the relevant procedure. Prefer a specific entrypoint or index route over generic editing.
 
 | Task | Load next |
 | --- | --- |

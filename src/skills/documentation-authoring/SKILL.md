@@ -17,6 +17,6 @@ Read the applicable instructions and canonical page, then only evidence needed f
 
 ## Route
 
-After acceptance read [INDEX.md](INDEX.md) and load one route for entrypoints, indexes, general writing, or maintenance; expand on concrete need only. Follow the **target's** README and index naming conventions, not this repository's layout.
+After acceptance read [INDEX.md](references/INDEX.md) and load one route for entrypoints, indexes, general writing, or maintenance; expand on concrete need only. Follow the **target's** README and index naming conventions, not this repository's layout.
 
 **Output:** changed documents and navigation, verified claims and checks, and unresolved limits. Passing structural checks does not prove factual accuracy.
