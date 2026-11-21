@@ -1,10 +1,15 @@
+---
+name: documentation-authoring
+description: Writes, revises, reviews, and organizes technical documentation, READMEs, indexes, procedures, and agent asset instructions. Use for documentation tasks and the documentation portion of agent asset authoring.
+---
+
 # Documentation authoring
 
 ## Relevance gate
 
 **Use only for** writing, revising, reviewing, or organizing documents, including README files, indexes, guides, technical references, and documentation within agent assets.
 
-**Do not use for** implementing software behavior, packaging agent assets outside their documentation, changing permissions, or deployment. For agent asset contracts and packaging, use the separate asset-authoring Skill. **If the request is not a documentation task, stop here**; do not open this Skill's index or procedures.
+**Do not use for** implementing software behavior, packaging agent assets outside their documentation, changing permissions, or deployment. When invoked as the required dependency of agent asset authoring, handle **only the documentation subtask**; the parent Skill retains control of asset contracts and packaging. **If neither a documentation task nor a documentation subtask applies, stop here**; do not open this Skill's index or procedures.
 
 ## Essential contract
 
