@@ -31,7 +31,7 @@ class SkillRoutingTests(unittest.TestCase):
         self.entry.write_text(
             "---\nname: example\n"
             "description: Use for an example agent workflow.\n"
-            "---\n\n# Example\n\n[Routes](INDEX.md)\n"
+            "---\n\n# Example\n\n[Routes](references/INDEX.md)\n"
         )
         (self.skill / "references" / "INDEX.md").write_text(
             "# Routes\n\n[Write](write.md)\n"
@@ -48,7 +48,7 @@ class SkillRoutingTests(unittest.TestCase):
         self.assertEqual(self.issues(), [])
 
     def test_missing_frontmatter_fails(self):
-        self.entry.write_text("# Example\n\n[Routes](INDEX.md)\n")
+        self.entry.write_text("# Example\n\n[Routes](references/INDEX.md)\n")
         self.assertTrue(any("missing Agent Skills YAML frontmatter" in e for e in self.issues()))
 
     def test_mismatched_name_fails(self):
@@ -101,7 +101,7 @@ class SkillRoutingTests(unittest.TestCase):
         index = self.root / "src" / "skills" / "INDEX.md"
         index.write_text(index.read_text() + "[Other](other/SKILL.md)\n")
         (self.skill / "references" / "INDEX.md").write_text(
-            "# Routes\n\n[Other](../other/SKILL.md)\n"
+            "# Routes\n\n[Other](../../other/SKILL.md)\n"
         )
         self.assertTrue(any("no local procedure targets" in e for e in self.issues()))
 
@@ -120,7 +120,7 @@ class SkillRoutingTests(unittest.TestCase):
         self.assertTrue(any("Skill routes belong in references/INDEX.md" in e for e in self.issues()))
 
     def test_legacy_root_skill_index_is_rejected(self):
-        (self.skill / "INDEX.md").write_text("# Legacy routes\\n")
+        (self.skill / "INDEX.md").write_text("# Legacy routes\n")
         self.assertTrue(any(
             "Skill routes belong in references/INDEX.md" in e for e in self.issues()
         ))
