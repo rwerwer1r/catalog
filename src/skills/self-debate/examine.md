@@ -1,6 +1,6 @@
 # Examine competing explanations and choices
 
-Use when [framing](frame.md) established at least one material alternative and the [routing index](INDEX.md) selected examination.
+Examine only alternatives that passed the framing gate.
 
 1. **Choose only warranted lenses.** Examples include empirical correctness, end-user outcomes, operations, security, cost, accessibility, reversibility, and future maintenance. Name the specific decision question each lens tests; do not assume every example applies.
 2. **Represent each live option fairly.** State its strongest evidence-backed case, relevant assumptions, limits, and feasible counterexample. Where evidence is asymmetrical, reflect that asymmetry rather than forcing equal plausibility or airtime.
