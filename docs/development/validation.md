@@ -20,7 +20,7 @@ The source validator checks canonical asset paths, naming, entrypoint headings, 
 
 The documentation validator does not check external URLs, heading anchors, full Markdown/YAML parsing or the truth of claims. Review [documentation quality](../documentation/review.md) and run representative [agent scenarios](../agents/scenarios.md) when instructions change behavior.
 
-Scenario execution is **not automated in the current CI**. Integration tests are consumer-specific and require explicit access. Record actual results using [verification evidence](../agents/verification.md) and avoid implying that missing checks passed.
+No metadata-driven `INDEX.tsv` generator or generated index is introduced by the current work; future generators must validate source-backed descriptions, destinations and reproducible output under the [documentation Skill index contract](../../src/skills/documentation-authoring/indexes.md). Scenario execution is **not automated in the current CI**. Integration tests are consumer-specific and require explicit access. Record actual results using [verification evidence](../agents/verification.md) and avoid implying that missing checks passed.
 
 ## Decision rules
 
