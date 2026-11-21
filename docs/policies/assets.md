@@ -8,14 +8,14 @@ description: "Specify the source layout and review criteria for reusable catalog
 
 Publish a reusable item only when it solves a repeatable problem with a defined consumer. Supported source categories are `skills`, `rules`, `references`, `agents`, `modules` and `templates`.
 
-The source path is the durable identifier. Asset identifiers and ordinary asset filenames use lowercase kebab-case; reserved entrypoint and routing filenames such as `SKILL.md`, `README.md`, and Skill-local `INDEX.md` are exempt. Preserve stable paths when consumers may depend on them. File and entrypoint rules are explained in the [asset contract](../../src/references/asset-contract.md).
+The source path is the durable identifier. Asset identifiers and ordinary asset filenames use lowercase kebab-case; reserved entrypoint and routing filenames such as `SKILL.md`, `README.md`, Skill-local `INDEX.md`, and derived `INDEX.tsv` are exempt. Preserve stable paths when consumers may depend on them. File and entrypoint rules are explained in the [asset contract](../../src/references/asset-contract.md).
 
 ## Source and discovery
 
 - Maintain one canonical entrypoint per asset under its category.
 - Add a descriptive link from the **category `index.md`**; keep the `src/README.md` index at category level.
 - State purpose, prerequisites, inputs, outputs and relevant dependencies or limitations in the asset itself.
-- Do not duplicate the directory inventory in a separate JSON, YAML or generated registration file.
+- Do not duplicate the directory inventory in a separate JSON, YAML or generated registration file. A derived, metadata-backed `INDEX.tsv` may serve document discovery only under the [documentation Skill's index contract](../../src/skills/documentation-authoring/indexes.md); it must not become a second authoritative asset registry.
 - Keep required supporting files alongside their owning Skill or module.
 - Avoid reusing an existing path for an incompatible contract.
 
