@@ -1,6 +1,6 @@
 ---
 name: agent-asset-authoring
-description: Author, revise, review, or retire reusable AI agent Skills, rules, roles, references, templates, and modules.
+description: Use when creating, revising, auditing, or retiring reusable agent Skills, rules, roles, references, templates, or modules; not for application coding or installation.
 ---
 
 # Agent asset authoring
