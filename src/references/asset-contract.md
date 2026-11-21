@@ -2,7 +2,7 @@
 
 ## Canonical structure
 
-The repository's `src/` directories own reusable assets. The **source path is the asset identifier**. There is no duplicate machine-readable inventory.
+The repository's `src/` directories own reusable assets. The **source path is the asset identifier**. There is no competing machine-readable asset registry; a derived document-discovery `INDEX.tsv`, if introduced, is not a second source of truth.
 
 | Kind | Entry point |
 | --- | --- |
@@ -23,7 +23,7 @@ Each `SKILL.md` uses Agent Skills discovery metadata: `name` matches the Skill d
 
 ## Entrypoints and on-demand routing
 
-Apply the [documentation-authoring entrypoint procedure](../skills/documentation-authoring/entrypoints.md) to README.md and SKILL.md, and the [index procedure](../skills/documentation-authoring/indexes.md) to manual or metadata-generated navigation. This repository retains `src/skills/index.md` for category discovery; a Skill-local `INDEX.md` selects on-demand procedures. Generated, metadata-backed indexes use `INDEX.tsv` rather than a script-generated Markdown index.
+Apply the [documentation-authoring entrypoint procedure](../skills/documentation-authoring/entrypoints.md) to README.md and SKILL.md, and the [index procedure](../skills/documentation-authoring/indexes.md) to manual or metadata-generated navigation. This repository retains `src/skills/index.md` for category discovery; a Skill-local `INDEX.md` selects on-demand procedures. Generated, metadata-backed indexes use `INDEX.tsv` rather than a script-generated Markdown index. Their rows derive from canonical document metadata; they do not replace the repository's asset source paths.
 
 These are the catalog's packaging conventions, not mandatory layouts for other repositories. Published entrypoint paths must remain stable when consumers may rely on them.
 
