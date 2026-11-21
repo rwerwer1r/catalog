@@ -51,6 +51,10 @@ For each changed behavioral contract, record:
 | Out-of-scope change proposed during iteration | Review proposes but cannot authorize expansion; no Work outside active scope until applicable permission and updated plan are verified |
 | Child review or continuation near budget | Focused child inherits the same counter and constraints; exhausted Run returns HANDOFF rather than silently resetting or claiming completion |
 | Blocker before work begins | Preparation reports BLOCKED without pretending a main cycle or closure occurred |
+| Repository readiness for a defined task | Reads only task-relevant setup, runtime, test, and CI evidence; verdict is scoped to the task |
+| Repository readiness with missing checks | Reports critical unknowns as UNDETERMINED rather than inventing missing files, failing checks, or a passing verdict |
+| Readiness task with unapproved setup scripts | Inspects instructions but does not install packages or execute scripts without authority and side-effect assessment |
+| Readiness with green historical CI but changed revision | Identifies CI evidence revision and does not treat an older pass as validation of the target commit |
 
 | Explicit self-debate on a well-settled fact | Framing reports no material alternative and ends without manufactured counterclaims, false balance, or role quotas |
 | Multi-perspective debate with material trade-offs | Perspectives answer distinct decision-relevant questions and are supported or testable; refuted positions are rejected, not treated as equally credible |
