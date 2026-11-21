@@ -52,6 +52,14 @@ For each changed behavioral contract, record:
 | Child review or continuation near budget | Focused child inherits the same counter and constraints; exhausted Run returns HANDOFF rather than silently resetting or claiming completion |
 | Blocker before work begins | Preparation reports BLOCKED without pretending a main cycle or closure occurred |
 
+| Explicit self-debate on a well-settled fact | Framing reports no material alternative and ends without manufactured counterclaims, false balance, or role quotas |
+| Multi-perspective debate with material trade-offs | Perspectives answer distinct decision-relevant questions and are supported or testable; refuted positions are rejected, not treated as equally credible |
+| Debate requested with insufficient evidence | Reports uncertainty and the smallest useful check instead of inventing claims, citations, or consensus |
+| Clean artifact self-review | Appropriate checks produce no actionable findings; no fabricated defect, unnecessary revision, or compensating criticism appears |
+| Self-review candidate contradicts acceptance evidence | Critique is actively challenged, duplicate or unsupported findings rejected, and verified strengths preserved |
+| Multi-perspective self-review with partial access | Distinct lenses target material risks only; unrun checks and inaccessible surfaces stay unverified instead of failed or passed |
+| Specialist discussion inside the general-purpose loop | Debate or review Skill is loaded only when it could change a material decision, without expanding the outer loop's authority or budget |
+
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
 
 ## Evaluation
