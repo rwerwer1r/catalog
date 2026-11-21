@@ -19,13 +19,11 @@ Use lowercase kebab-case names. The nearest `src/<kind>/index.md` provides a des
 
 Each asset explains its purpose and the requirements necessary to use it. Operational assets should state triggers, inputs, outputs, dependencies and limitations. Avoid hidden setup, implicit permissions or internal-only context.
 
-Each `SKILL.md` begins with Agent Skills YAML frontmatter: `name` matches the Skill directory, and `description` states a concrete activation condition as well as purpose. Distinguish overlapping Skills in discovery rather than relying only on their Markdown gates. Keep the entrypoint lightweight and link detailed procedures on demand. See the [Agent Skills specification](https://agentskills.io/specification) for the full metadata contract.
+Each `SKILL.md` uses Agent Skills discovery metadata: `name` matches the Skill directory and `description` states when it applies. The reusable [documentation-authoring entrypoint guidance](../skills/documentation-authoring/entrypoints.md) owns reader-facing structure and metadata usage. See the [Agent Skills specification](https://agentskills.io/specification) for the full metadata contract.
 
 ## Entrypoints and on-demand routing
 
-A Skill's `SKILL.md` is a lightweight **relevance gate**: include activation and exclusion criteria, essential permissions and dependencies, and a clear route for accepted tasks. If the request does not match, stop before loading further files.
-
-When a Skill has distinct workflows, a sibling `INDEX.md` may route to task-specific supporting files. Keep that index a concise map; load only the selected destination. The canonical category index remains `src/skills/index.md`, while a Skill-local `INDEX.md` routes **within** that Skill. Do not confuse these roles or introduce duplicate inventories.
+Apply the [documentation-authoring entrypoint procedure](../skills/documentation-authoring/entrypoints.md) to README.md and SKILL.md, and the [index procedure](../skills/documentation-authoring/indexes.md) to manual or metadata-generated navigation. This repository retains `src/skills/index.md` for category discovery; a Skill-local `INDEX.md` selects on-demand procedures. Generated, metadata-backed indexes use `INDEX.tsv` rather than a script-generated Markdown index.
 
 These are the catalog's packaging conventions, not mandatory layouts for other repositories. Published entrypoint paths must remain stable when consumers may rely on them.
 
