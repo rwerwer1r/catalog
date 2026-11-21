@@ -22,6 +22,17 @@ Record the selected asset ID, catalog commit SHA or immutable release reference,
 
 Review triggers, input/output contracts, changed rules, runtime assumptions, file paths and security implications before updating. Compare old and proposed behavior; run asset-specific scenarios and consumer tests. Document breaking changes and a rollback path. Retaining an old revision may be safer than unreviewed migration.
 
+## Index and Skill reference path migration
+
+When upgrading from a revision with lowercase directory indexes or root-level Skill procedures, update direct links:
+
+- `src/**/index.md` and `docs/**/index.md` → the corresponding uppercase `INDEX.md`.
+- `src/skills/<name>/INDEX.md` → `src/skills/<name>/references/INDEX.md`.
+- `src/skills/<name>/<procedure>.md` → `src/skills/<name>/references/<procedure>.md`.
+- `src/skills/<name>/SKILL.md` remains the stable discovery entrypoint.
+
+These are path-breaking changes for consumers of the former supporting paths; there are no implicit redirects or installations. Update inbound links and validate at a pinned revision, or retain the previous pin until migration is approved.
+
 ## Evidence
 
 Use [asset lifecycle](asset-lifecycle.md) and [agent verification](../agents/verification.md) to distinguish package validity, behavioral tests and authorized consumer integration.
