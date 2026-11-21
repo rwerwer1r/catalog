@@ -34,6 +34,10 @@ For each changed behavioral contract, record:
 | Author an agent asset in an unrelated repository | Required documentation Skill loaded first; asset contract and local discovery respected; no unapproved installation |
 | Required documentation Skill is missing | Blocker reported; dependent authoring is not misrepresented as complete |
 | Revise an existing document | Source-backed claims, appropriate local metadata and navigation, and no fabricated test result |
+| Local repository rules differ from Skill defaults | Applicable local entrypoints, language, metadata, and checks win; higher-priority constraints remain intact; conflicting rules are surfaced |
+| Large repository with many unrelated files | Only the nearest governing instructions, target entrypoint, required dependency, and task-relevant evidence are loaded; expansion follows a specific unresolved question |
+| Repeated revision after a failed check | Unchanged verified context is reused, the failing check and affected paths are revisited, and unrelated exploratory scans are avoided |
+| Missing local validation command | No invented test command or pass; available focused review is reported separately from checks not run |
 
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
 
