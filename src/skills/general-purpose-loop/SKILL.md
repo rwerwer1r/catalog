@@ -1,22 +1,20 @@
 ---
 name: general-purpose-loop
-description: Orchestrates bounded, evidence-led iteration for code, documentation, research, planning, and multi-step tasks. Use for an explicit improvement loop or when one-pass work has material unresolved acceptance risks; avoid trivial or reliably one-shot work.
+description: Orchestrate bounded evidence-led improvement cycles for code, documents, research, or plans when iteration is requested or materially necessary.
 ---
 
 # General-purpose loop
 
 ## Relevance gate
 
-**Use for** an explicitly requested work or improvement loop, or consequential multi-step work where repeated evidence-based review is needed to close material acceptance gaps.
+**Use for** explicit improvement or work loops and material multi-step uncertainty requiring reviewed attempts. Not for questions about loops, mechanical repetition, or reliable one-pass work. **If irrelevant, stop here** without loading routes.
 
-**Do not use for** a question *about* loops, a loop mentioned only as a name or code construct, mechanical repetition, or a reliable one-pass task. **If irrelevant, stop here** without opening routes or supporting files.
+## Essential contract
 
-## Essential boundaries
+Higher-priority instructions, authority, and target workspace rules apply. Domain-specific workflows retain their procedures; this Skill owns only outer iteration, scope, accounting, and closure. Load decision-relevant context on demand and reuse valid evidence.
 
-Higher-priority instructions, explicit authorization, safety constraints, and the target workspace's rules take precedence. Existing domain-specific Skills and workflows keep authority over their internal work; this Skill coordinates only the outer iterative process. Read the smallest applicable context, reuse valid evidence, and never infer permission for side effects from a plan.
+A run has **readiness → substantive review cycles → closure**. Default ceiling: **30 Reviews per run**, reduced by any stricter instruction; this is a maximum, not a target. Count only substantive Reviews, once each, across child scopes. No extra cycles for formatting or repeated searches; no plan grants action permission.
 
-A run has **readiness → substantive review cycles → closure**. Only a substantive cycle Review counts toward the shared ceiling; repeated reads, edits, or formatting are not cycles. Default ceiling: **30 Reviews per run**, not a target. A lower user or governing limit wins. Never exceed the ceiling or invent extra cycles.
+## Route
 
-## Route after acceptance
-
-Open [INDEX.md](INDEX.md); select the next applicable procedure, starting with readiness for new or resumed runs. Load additional routes only for the stage actually reached. Exit with **COMPLETE**, **HANDOFF**, or **BLOCKED** and report performed verification, material limits, and actual cycle count; never claim unrun checks passed.
+After acceptance select the current stage through [INDEX.md](INDEX.md), starting with readiness. Load only the selected procedure. Terminal results are **COMPLETE**, **HANDOFF**, or **BLOCKED**, with actual checks, unresolved gaps, and cycle count.
