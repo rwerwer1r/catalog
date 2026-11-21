@@ -1,6 +1,6 @@
 # Self-review routes
 
-After [SKILL.md](SKILL.md) accepts the task, load **only** the current stage.
+After [SKILL.md](../SKILL.md) accepts the task, load **only** the current stage.
 
 | Review stage | Load next |
 | --- | --- |

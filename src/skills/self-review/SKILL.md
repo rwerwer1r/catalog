@@ -15,6 +15,6 @@ Higher-priority instructions, permission, and target repository rules govern rev
 
 ## Route
 
-After acceptance read [INDEX.md](INDEX.md) and load only the needed stage. Reuse prior verified evidence and stop when further review has no credible result-changing gain.
+After acceptance read [INDEX.md](references/INDEX.md) and load only the needed stage. Reuse prior verified evidence and stop when further review has no credible result-changing gain.
 
 **Output:** bounded verdict, supported findings with evidence, material unknowns, checks actually run, and applicable limits.

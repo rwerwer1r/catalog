@@ -17,6 +17,6 @@ Debate does not authorize modifying artifacts or broadening scope.
 
 ## Route
 
-For accepted work, read [INDEX.md](INDEX.md) and load the current stage only. Stop when another perspective has no credible decision-changing value.
+For accepted work, read [INDEX.md](references/INDEX.md) and load the current stage only. Stop when another perspective has no credible decision-changing value.
 
 **Output:** supported decision or conditional result, material alternatives and evidence, unresolved disagreements, and the smallest useful next check.

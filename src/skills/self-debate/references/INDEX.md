@@ -1,6 +1,6 @@
 # Self-debate routes
 
-After [SKILL.md](SKILL.md) accepts the task, load **only** the current stage.
+After [SKILL.md](../SKILL.md) accepts the task, load **only** the current stage.
 
 | Decision stage | Load next |
 | --- | --- |
