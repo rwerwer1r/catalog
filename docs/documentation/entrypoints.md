@@ -9,7 +9,7 @@ description: "Define lightweight entrypoint gates and routing-only index documen
 An entrypoint is a **small decision gate**, not the full content of a directory or Skill. A reader or agent who arrived at the wrong entrypoint should be able to reject it **before loading detailed context**.
 
 - **`README.md`:** briefly state directory purpose, intended audience, boundaries, and link to its `index.md`. Keep inventories and detailed procedures out of the README.
-- **`SKILL.md`:** begin with required Agent Skills `name` and `description` YAML metadata for discovery; in the Markdown body state when to use the Skill, when **not** to use it, indispensable authority or dependency requirements, and the next route. If the task is out of scope, stop without opening its index or supporting references.
+- **`SKILL.md`:** begin with Agent Skills `name` and `description` discovery metadata. The description must state **when** the Skill applies, not only what it does; make overlapping task boundaries distinguishable. In the body, state triggers, exclusions, essential authority/dependencies, and next step. Stop before further loading when irrelevant.
 - **`index.md` / `INDEX.md`:** use lowercase `index.md` for directory and category listings, and uppercase `INDEX.md` for routing within a Skill. Both should link to specific destinations rather than duplicate guides or policies. Read the selected target **only when needed**, not every link.
 - **`AGENTS.md`:** select applicable repository maintenance rules and source, not a duplicate asset inventory or an unrestricted command to load everything.
 
@@ -30,7 +30,7 @@ This catalog uses **`index.md` for directory/category inventories** and **`INDEX
 
 1. Read only the entrypoint and applicable higher-priority/local rules needed to decide relevance.
 2. If the reader's task does not match the stated scope, stop or redirect **without reading the index, procedures, or unrelated references**.
-3. If it matches, follow the entrypoint to the routing index, choose one task-relevant destination, and load that file.
+3. If it matches and a routing index exists, select one task-relevant destination; otherwise follow the single-workflow entrypoint directly. Do not invent an index just to satisfy a routing pattern.
 4. Expand to another route only for a concrete separate task or unresolved requirement. Reuse unchanged context for the same revision.
 
 Keep the gate concise, but explicit about the triggers, exclusions, essential dependency, authority, and where to continue. A small cost saving never justifies omitting a mandatory safety or permission check.
