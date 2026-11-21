@@ -2,41 +2,54 @@
 
 ## Use when
 
-Create, extend, review, or retire reusable assets that guide or support AI agents, such as Skills, rules, agent roles, prompts, references, templates, and executable modules. Use this workflow in any repository or workspace with authorization to maintain those assets. It does not install, deploy, or synchronize them into other environments.
+Create, revise, review, or retire reusable agent-facing Skills, rules, roles, prompts, references, templates, or implementation modules in an authorized repository or workspace. This Skill does not install, synchronize, or deploy assets to consumers.
 
 ## Required dependency
 
-[Documentation authoring](../documentation-authoring/SKILL.md) is a **required companion Skill**, not an optional reference.
+[Documentation authoring](../documentation-authoring/SKILL.md) is a **required, one-way dependency**. Before drafting or changing an asset entrypoint, Markdown, README, index, or example, load and apply that Skill. If its current version is already loaded for this task, reuse it rather than loading it again.
 
-1. Load and apply the documentation-authoring Skill before drafting or modifying any asset entrypoint, supporting Markdown, README, or index.
-2. Use **this Skill** for asset identity, behavior contracts, packaging, dependencies, compatibility, and verification. Use **documentation authoring** for reader intent, accurate prose, information architecture, examples, links, and metadata.
-3. The destination repository's authorized conventions take precedence over either Skill's fallback defaults. Do not treat the companion Skill as permission to edit unrelated documents.
-4. When distributing this Skill, include its sibling `documentation-authoring/SKILL.md` or explicitly remap the dependency to an equivalent installed path. If the required dependency cannot be loaded, report the blockage; do not claim the complete authoring workflow was followed.
+- **Agent asset authoring** owns behavior contracts, asset type, packaging, compatibility, and behavioral verification.
+- **Documentation authoring** owns evidence-based writing, navigation, metadata, examples, and document review.
+- Documentation authoring does **not** depend on this Skill. When distributing this Skill, include the companion `documentation-authoring/SKILL.md` or map it explicitly to an equivalent available entrypoint. If the required Skill cannot be loaded, report the blocker; do not claim complete execution.
 
-Documentation authoring has no dependency on this Skill, so the dependency direction is one-way.
+## Rule precedence
+
+1. Higher-priority instructions, authorization, and safety boundaries always apply.
+2. **The target repository's instructions and policies take precedence over these generic Skills** for its asset categories, entrypoint layouts, documentation conventions, languages, validation, and publication. Follow applicable root and directory-scoped rules; never use a narrower rule to bypass a repository-wide restriction without explicit authority.
+3. Use the Skills' generic conventions only where the target repository leaves a gap. Do not impose an assumed `src/` layout, `SKILL.md` filename, index format, or command when local conventions differ.
+4. Stop and surface unresolved rule conflicts, identity ambiguity, or missing permission rather than assuming a permissive interpretation.
 
 ## Inputs
 
-- Requested reusable capability, intended agent or consumer, triggering conditions, and observable success criteria.
-- Authorized repository, account or workspace, target branch, and permitted side effects.
-- Existing asset contracts, source layout, category indexes, supported runtime, and known compatibility constraints.
-- Available tests, scenarios, and publication requirements.
+Intended consumer and repeatable problem; trigger and expected outcome; authorized target and revision; existing source contracts; required dependencies; available tests and compatibility constraints.
 
-## Workflow
+## Progressive context disclosure
 
-1. **Resolve authority and context.** Confirm the target and permissions. Inspect only relevant project instructions, source conventions, index pages, and related assets. Never assume a specific repository name, directory layout, account, runtime, or installation method.
-2. **Decide whether to create or revise.** Identify a repeatable problem and check for equivalent assets. Prefer extending an existing contract where compatible; document the intended consumer, non-goals, inputs, output, dependencies, and failure boundaries.
-3. **Select an asset type and stable identifier.** Respect the target repository's asset categories, naming, packaging, and entrypoint schema. If no contract exists, propose a small, explicit layout before introducing new directories. Paths such as `skills/<name>/SKILL.md` are examples, not universal requirements.
-4. **Define operational behavior.** Specify when the asset activates, what context it needs, ordered actions and decisions, stop or escalation conditions, tool access, prohibited effects, and the evidence to return. Prefer progressive loading of optional references over broad context injection.
-5. **Author through the required documentation Skill.** Apply [Documentation authoring](../documentation-authoring/SKILL.md) to the entrypoint, adjacent instructions, examples, metadata, and discovery pages. Keep the contract self-contained enough to function without conversation history. Keep reusable behavior separate from repository-specific governance; link to local policy only when the target repository requires it.
-6. **Package and register.** Put the canonical entrypoint and genuinely necessary supporting files in their owning location. Update the nearest existing index or registry according to local conventions; do not create competing inventories. Preserve stable public paths or document migration steps for breaking changes. Do not publish empty modules as working implementations.
-7. **Validate in layers.** Review the diff, links, naming, language, licenses, privacy and side effects. Run available structural checks and tests. For behavior changes, define and execute a representative controlled scenario when authorized; record its actual outcome. Consumer integration requires separate authorization.
-8. **Report.** List changed paths, the reusable contract, dependency packaging, compatibility impact, performed checks, and unverified behavior or blockers.
+Choose context **by decision, not by directory size**. Maintain a compact, reusable working set of governing rules, confirmed source facts, file paths, and outstanding questions.
 
-## Asset contract checklist
+1. **Route:** Confirm repository, branch, and write scope. Read the relevant instruction entrypoint and nearest scoped rules. Use an existing asset index or targeted search to find a related entrypoint. Do not list or read every asset.
+2. **Load core:** Inspect only the affected asset contract, its direct dependencies, and the required [Documentation authoring](../documentation-authoring/SKILL.md). Apply its own progressive loading rules; reuse already loaded unchanged documents.
+3. **Expand conditionally:** Read a supporting reference, template, policy, test, or consumer contract only when a concrete design, compatibility, or verification question calls for it. Prefer bounded sections and stop when the needed decision is supported.
 
-An independent consumer should be able to determine **when to use the asset**, **what to provide**, **what it does**, **what it produces**, **which dependencies are required**, **when it must stop**, and **what evidence supports its readiness**. For Skills, keep the entrypoint concise and make supporting documents loadable only when relevant.
+Do not import instructions from unrelated repositories or follow references recursively. Keep canonical links instead of duplicating content. Recheck stale context when the underlying revision changes.
 
-## Verification and output
+## Document-first authoring harness
 
-Prefer the destination repository's documented validation commands; do not assume that another project's scripts or CI exist. Distinguish structural checks, behavior scenarios, and authorized downstream integration. Report each relevant check as **passed**, **failed**, **not run**, or **not applicable** with evidence. Structural validity is not proof of correct agent behavior; source publication is not consumer installation or approval.
+1. **Resolve:** Establish the authorized target, existing rule hierarchy, outcome, and boundaries.
+2. **Specify:** Check for an equivalent asset before creating one. Define when it activates, inputs, outputs, non-goals, required dependencies, tools and permissions, failure behavior, and stop conditions.
+3. **Design:** Choose the target repository's supported asset type, stable identifier, and packaging. Preserve published paths when compatible; document migration and consumer impact if not.
+4. **Author:** Apply the required documentation Skill to the entrypoint, supporting text, examples, metadata, and discoverability. Keep the primary contract concise and self-contained; place optional detail behind clearly named references to load only on demand.
+5. **Package:** Update the nearest **existing** discovery mechanism as local policy requires. Include only necessary supporting files; avoid parallel registries or placeholder modules.
+6. **Check:** Inspect the smallest relevant diff, source/index links, license, privacy, scope, and compatibility. Run the available project-specific structural checks, then focused behavioral scenarios when authorized. Broaden testing only for demonstrated risk, failure, or affected interfaces.
+7. **Record:** Report changed paths, dependency packaging, actual test outcomes, behavior or integration not tested, and material risks. Iterate only on an observed defect or unmet acceptance criterion.
+
+## Token and reasoning economy
+
+- Minimize **input/output tokens, repeated reasoning, tool calls, and unnecessary iterations** by reusing verified context and the companion Skill within the same revision.
+- Use one focused search before broad discovery; load optional files only at the step that needs them. Avoid repeated re-summaries, duplicate policy text, speculative scaffolding, and exhaustive reference traversal.
+- Prefer explicit contracts, short decision gates, deterministic validators, and representative scenarios over long open-ended deliberation. Batch independent reads when useful; do not skip mandatory reviews or tests solely to save tokens.
+- Stop once the authorized outcome and required evidence are complete. Report unknowns plainly rather than exploring unrelated branches.
+
+## Acceptance and output
+
+A consumer can identify the trigger, prerequisites, outputs, dependencies, limits, stop behavior, and verification evidence without relying on chat history. Report each relevant check as **passed**, **failed**, **not run**, or **not applicable**. Passing structural checks is not proof of correct agent behavior; publication never implies downstream installation or authorization.
