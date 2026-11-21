@@ -82,8 +82,8 @@ def local_links(relative: str, content: str, root: Path) -> list[str]:
         if not resolved.is_relative_to(root.resolve()):
             errors.append(f"{relative}: link escapes repository: {target}")
         elif destination.is_dir():
-            if not (destination / "index.md").is_file():
-                errors.append(f"{relative}: directory lacks index.md: {target}")
+            if not (destination / "INDEX.md").is_file():
+                errors.append(f"{relative}: directory lacks INDEX.md: {target}")
         elif not destination.is_file():
             errors.append(f"{relative}: missing link target: {target}")
     return errors
@@ -110,19 +110,21 @@ def validate(root: Path) -> list[str]:
         errors.extend(local_links(relative, content, root))
 
     for directory in [docs, *[d for d in docs.rglob("*") if d.is_dir()]]:
-        readme, index = directory / "README.md", directory / "index.md"
+        readme, index = directory / "README.md", directory / "INDEX.md"
+        if (directory / "index.md").exists():
+            errors.append(f"{directory.relative_to(root)}: legacy index.md; use INDEX.md")
         if not readme.is_file() or not index.is_file():
-            errors.append(f"{directory.relative_to(root)}: missing README.md or index.md")
+            errors.append(f"{directory.relative_to(root)}: missing README.md or INDEX.md")
             continue
         intro = without_fences(readme.read_text(encoding="utf-8"))
         listing = without_fences(index.read_text(encoding="utf-8"))
-        if "(index.md)" not in intro:
-            errors.append(f"{readme.relative_to(root)}: missing link to index.md")
+        if "(INDEX.md)" not in intro:
+            errors.append(f"{readme.relative_to(root)}: missing link to INDEX.md")
         for page in directory.glob("*.md"):
-            if page.name not in {"README.md", "index.md"} and f"({page.name})" not in listing:
+            if page.name not in {"README.md", "INDEX.md"} and f"({page.name})" not in listing:
                 errors.append(f"{page.relative_to(root)}: not linked from directory index")
         for child in directory.iterdir():
-            if child.is_dir() and f"({child.name}/index.md)" not in listing:
+            if child.is_dir() and f"({child.name}/INDEX.md)" not in listing:
                 errors.append(f"{child.relative_to(root)}: not linked from parent index")
     return errors
 

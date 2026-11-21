@@ -1,4 +1,4 @@
-"""Validate source structure and index.md coverage without external dependencies."""
+"""Validate source structure and INDEX.md coverage without external dependencies."""
 import re
 import sys
 from pathlib import Path
@@ -71,17 +71,18 @@ def _skill_errors(skill: Path, root: Path) -> list[str]:
     body = entry.read_text(encoding="utf-8")
     errors.extend(_skill_frontmatter_errors(entry, root, body))
 
-    route = skill / "INDEX.md"
-    lower = skill / "index.md"
-    if lower.exists():
-        errors.append(f"{lower.relative_to(root)}: use uppercase INDEX.md for Skill-local routes")
+    route = skill / "references" / "INDEX.md"
+    legacy = (skill / "INDEX.md", skill / "index.md", skill / "references" / "index.md")
+    for old in legacy:
+        if old.exists():
+            errors.append(f"{old.relative_to(root)}: Skill routes belong in references/INDEX.md")
     if route.is_file():
         entry_links = {
             unquote(target.split("#", 1)[0].split("?", 1)[0])
             for target in _link_targets(body)
         }
-        if "INDEX.md" not in entry_links:
-            errors.append(f"{entry.relative_to(root)}: missing link to Skill-local INDEX.md")
+        if "references/INDEX.md" not in entry_links:
+            errors.append(f"{entry.relative_to(root)}: missing link to Skill-local references/INDEX.md")
         routes = []
         for target in _link_targets(route.read_text(encoding="utf-8")):
             if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", target) or target.startswith("//"):
@@ -146,28 +147,30 @@ def validate(root: Path) -> list[str]:
             errors.append(f"{index.relative_to(root)}: missing index link to {target}")
 
     readme = source / "README.md"
-    home = source / "index.md"
+    home = source / "INDEX.md"
     intro = read_markdown(readme)
     home_body = read_markdown(home)
-    require_link(intro, "index.md", readme)
+    require_link(intro, "INDEX.md", readme)
 
     for kind in KINDS:
         folder = source / kind
         if not folder.is_dir():
             errors.append(f"src/{kind}: missing category directory")
             continue
-        readme, index = folder / "README.md", folder / "index.md"
+        readme, index = folder / "README.md", folder / "INDEX.md"
+        if (folder / "index.md").exists():
+            errors.append(f"src/{kind}: remove legacy index.md; use INDEX.md")
         if not readme.is_file() or not index.is_file() or readme.is_symlink() or index.is_symlink():
             errors.append(f"src/{kind}: missing or unsafe category entrypoint")
             continue
-        require_link(home_body, f"{kind}/index.md", home)
-        require_link(read_markdown(readme), "index.md", readme)
+        require_link(home_body, f"{kind}/INDEX.md", home)
+        require_link(read_markdown(readme), "INDEX.md", readme)
         listing = read_markdown(index)
         for item in folder.rglob("*"):
             if item.is_symlink():
                 errors.append(f"{item.relative_to(root)}: symlinks are not allowed")
         for item in sorted(folder.iterdir()):
-            if item.name in {"README.md", "index.md"}:
+            if item.name in {"README.md", "INDEX.md"}:
                 continue
             if item.is_file():
                 if kind in {"skills", "modules"}:
