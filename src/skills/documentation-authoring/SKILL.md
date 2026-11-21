@@ -14,6 +14,6 @@ Keep a small working context: governing rules, relevant canonical page, confirme
 
 ## Route only after acceptance
 
-Read [index.md](index.md) and load one task-specific procedure. Expand only when a concrete uncertainty or failure justifies it. For optional details, follow the target repository's routing conventions (`index.md`, `INDEX.md`, or another required name), not this Skill's preferences.
+Read [index.md](INDEX.md) and load one task-specific procedure. Expand only when a concrete uncertainty or failure justifies it. For optional details, follow the target repository's routing conventions (`INDEX.md`, `index.md`, or another required name), not this Skill's preferences.
 
 **Output:** changed paths and links, source-backed claims, actual checks, and unresolved limitations. A successful structural check is not proof of factual correctness.
