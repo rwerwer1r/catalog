@@ -1,6 +1,6 @@
 ---
 name: general-purpose-loop
-description: Orchestrate bounded evidence-led improvement cycles for code, documents, research, or plans when iteration is requested or materially necessary.
+description: Use when improvement loops are requested or consequential work needs evidence-led attempts and review; not for reliable one-shot tasks.
 ---
 
 # General-purpose loop
