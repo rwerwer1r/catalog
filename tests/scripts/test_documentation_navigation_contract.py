@@ -14,9 +14,9 @@ class DocumentationNavigationContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.skill = (SKILL / "SKILL.md").read_text(encoding="utf-8")
-        cls.routes = (SKILL / "INDEX.md").read_text(encoding="utf-8")
-        cls.entrypoints = (SKILL / "entrypoints.md").read_text(encoding="utf-8")
-        cls.indexes = (SKILL / "indexes.md").read_text(encoding="utf-8")
+        cls.routes = (SKILL / "references" / "INDEX.md").read_text(encoding="utf-8")
+        cls.entrypoints = (SKILL / "references" / "entrypoints.md").read_text(encoding="utf-8")
+        cls.indexes = (SKILL / "references" / "indexes.md").read_text(encoding="utf-8")
 
     def test_entrypoint_and_index_rules_have_one_reusable_owner(self):
         self.assertIn("owns reader-facing entrypoint, index", self.skill)
@@ -26,18 +26,18 @@ class DocumentationNavigationContractTests(unittest.TestCase):
             ROOT / "docs" / "documentation" / "entrypoints.md"
         ).read_text(encoding="utf-8")
         self.assertIn(
-            "(../../src/skills/documentation-authoring/entrypoints.md)", handbook
+            "(../../src/skills/documentation-authoring/references/entrypoints.md)", handbook
         )
         self.assertIn(
-            "(../../src/skills/documentation-authoring/indexes.md)", handbook
+            "(../../src/skills/documentation-authoring/references/indexes.md)", handbook
         )
 
     def test_asset_skill_delegates_document_navigation(self):
         asset = ROOT / "src" / "skills" / "agent-asset-authoring"
         for file in ("author.md", "review.md"):
             with self.subTest(file=file):
-                text = (asset / file).read_text(encoding="utf-8")
-                self.assertIn("(../documentation-authoring/SKILL.md)", text)
+                text = (asset / "references" / file).read_text(encoding="utf-8")
+                self.assertIn("(../../documentation-authoring/SKILL.md)", text)
 
     def test_entrypoint_gate_and_metadata_are_consumer_oriented(self):
         for term in (
@@ -52,7 +52,7 @@ class DocumentationNavigationContractTests(unittest.TestCase):
         for term in (
             "INDEX.md", "hand-maintained", "index-only",
             "Never attach an auto-generation script to INDEX.md",
-            "Existing manual", "index.md",
+            "Existing manual", "INDEX.md",
         ):
             with self.subTest(term=term):
                 self.assertIn(term, self.indexes)

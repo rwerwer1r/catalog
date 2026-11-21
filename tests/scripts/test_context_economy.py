@@ -33,22 +33,22 @@ class ContextEconomyTests(unittest.TestCase):
             with self.subTest(skill=name):
                 skill = SKILLS / name
                 gate = (skill / "SKILL.md").read_text(encoding="utf-8")
-                routes = (skill / "INDEX.md").read_text(encoding="utf-8")
+                routes = (skill / "references" / "INDEX.md").read_text(encoding="utf-8")
                 self.assertLessEqual(len(routes), 1000, "Routing index should not be a guide")
-                self.assertIn("(INDEX.md)", gate)
+                self.assertIn("(references/INDEX.md)", gate)
                 self.assertIn("only", routes.lower())
                 for target in targets:
                     self.assertIn(f"({target})", routes)
-                    self.assertTrue((skill / target).is_file())
+                    self.assertTrue((skill / "references" / target).is_file())
 
     def test_single_route_loading_path_is_bounded(self):
         for name, targets in ROUTES.items():
             with self.subTest(skill=name):
                 skill = SKILLS / name
                 front = len((skill / "SKILL.md").read_text(encoding="utf-8"))
-                route = len((skill / "INDEX.md").read_text(encoding="utf-8"))
+                route = len((skill / "references" / "INDEX.md").read_text(encoding="utf-8"))
                 largest_selected_step = max(
-                    len((skill / target).read_text(encoding="utf-8"))
+                    len((skill / "references" / target).read_text(encoding="utf-8"))
                     for target in targets
                 )
                 # Only one procedure is selected at a time; dependencies
@@ -58,7 +58,7 @@ class ContextEconomyTests(unittest.TestCase):
     def test_companion_only_at_document_boundary(self):
         skill = SKILLS / "agent-asset-authoring"
         entry = (skill / "SKILL.md").read_text(encoding="utf-8")
-        index = (skill / "INDEX.md").read_text(encoding="utf-8")
+        index = (skill / "references" / "INDEX.md").read_text(encoding="utf-8")
         self.assertIn("required one-way dependency", entry)
         self.assertIn("just before editing or reviewing written asset content", entry)
         self.assertIn("Before editing or reviewing written content", index)
@@ -86,7 +86,7 @@ class ContextEconomyTests(unittest.TestCase):
 
     def test_small_skill_does_not_need_routing_scaffold(self):
         skill = SKILLS / "repository-readiness"
-        self.assertFalse((skill / "INDEX.md").exists())
+        self.assertFalse((skill / "references" / "INDEX.md").exists())
         self.assertTrue((skill / "SKILL.md").is_file())
 
 

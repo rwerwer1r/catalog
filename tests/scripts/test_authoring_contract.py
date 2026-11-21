@@ -21,7 +21,7 @@ class AuthoringContractTests(unittest.TestCase):
                 entry = (SKILLS / name / "SKILL.md").read_text()
                 self.assertIn("Relevance gate", entry)
                 self.assertIn("Use only for", entry)
-                self.assertIn("INDEX.md)", entry)
+                self.assertIn("references/INDEX.md)", entry)
                 self.assertIn("stop here", entry)
 
     def test_routes_avoid_preloading_other_workflows(self):
@@ -31,7 +31,7 @@ class AuthoringContractTests(unittest.TestCase):
         }
         for name, files in expected.items():
             with self.subTest(skill=name):
-                routes = (SKILLS / name / "INDEX.md").read_text()
+                routes = (SKILLS / name / "references" / "INDEX.md").read_text()
                 self.assertIn("only", routes.lower())
                 for file in files:
                     self.assertIn(f"({file})", routes)
