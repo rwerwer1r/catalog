@@ -76,15 +76,30 @@ def _skill_errors(skill: Path, root: Path) -> list[str]:
     if lower.exists():
         errors.append(f"{lower.relative_to(root)}: use uppercase INDEX.md for Skill-local routes")
     if route.is_file():
-        if "(INDEX.md)" not in body:
+        entry_links = {
+            unquote(target.split("#", 1)[0].split("?", 1)[0])
+            for target in _link_targets(body)
+        }
+        if "INDEX.md" not in entry_links:
             errors.append(f"{entry.relative_to(root)}: missing link to Skill-local INDEX.md")
         routes = []
         for target in _link_targets(route.read_text(encoding="utf-8")):
-            clean = target.split("#", 1)[0].split("?", 1)[0]
-            if clean and not clean.startswith("..") and clean not in {"SKILL.md", "INDEX.md"}:
-                routes.append(clean)
+            if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", target) or target.startswith("//"):
+                continue
+            local = unquote(target.split("#", 1)[0].split("?", 1)[0])
+            if not local or local.startswith("/"):
+                continue
+            destination = (route.parent / local).resolve()
+            if (
+                destination.is_relative_to(skill.resolve())
+                and destination.is_file()
+                and destination.suffix == ".md"
+                and destination not in {entry.resolve(), route.resolve()}
+                and not (route.parent / local).is_symlink()
+            ):
+                routes.append(local)
         if not routes:
-            errors.append(f"{route.relative_to(root)}: routing index has no procedure targets")
+            errors.append(f"{route.relative_to(root)}: routing index has no local procedure targets")
 
     for page in sorted(skill.rglob("*.md")):
         if page.is_symlink():
@@ -123,7 +138,11 @@ def validate(root: Path) -> list[str]:
         return body
 
     def require_link(body: str, target: str, index: Path) -> None:
-        if f"({target})" not in body:
+        targets = {
+            unquote(link.split("#", 1)[0].split("?", 1)[0])
+            for link in _link_targets(body)
+        }
+        if target not in targets:
             errors.append(f"{index.relative_to(root)}: missing index link to {target}")
 
     readme = source / "README.md"
