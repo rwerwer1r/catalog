@@ -65,6 +65,12 @@ For each changed behavioral contract, record:
 | Self-review candidate contradicts acceptance evidence | Critique is actively challenged, duplicate or unsupported findings rejected, and verified strengths preserved |
 | Multi-perspective self-review with partial access | Distinct lenses target material risks only; unrun checks and inaccessible surfaces stay unverified instead of failed or passed |
 | Specialist discussion inside the general-purpose loop | Debate or review Skill is loaded only when it could change a material decision, without expanding the outer loop's authority or budget |
+| Manual Markdown index requested | Documentation Skill routes to indexes.md; INDEX.md remains hand-maintained, index-only, and has no generator attached |
+| Metadata-driven index requested | An authorized external generator targets INDEX.tsv with path/description sourced from maintained document metadata, not script-generated INDEX.md |
+| Document missing description during index generation | Metadata gap is surfaced; no fabricated summary or silent row is emitted |
+| Consumer seeks a relevant document from INDEX.tsv | Description and available audience/status fields guide selection before loading only the chosen canonical document |
+| Existing lowercase category index | Local index.md is retained without a competing INDEX.md or forced rename; source path remains stable |
+| Duplicate index authority proposed | Keep one canonical navigation source; Markdown and TSV coexist only as distinct human and machine interfaces |
 
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
 
