@@ -19,6 +19,8 @@ Use lowercase kebab-case names. The nearest `src/<kind>/index.md` provides a des
 
 Each asset explains its purpose and the requirements necessary to use it. Operational assets should state triggers, inputs, outputs, dependencies and limitations. Avoid hidden setup, implicit permissions or internal-only context.
 
+Each `SKILL.md` must begin with Agent Skills YAML frontmatter containing a `name` matching the Skill directory and a concise `description` explaining what it does and when it applies. These fields support discovery before the Markdown relevance gate loads. Keep the main entrypoint lightweight; detailed instructions can be linked on demand. See the [Agent Skills specification](https://agentskills.io/specification) for the full metadata contract.
+
 ## Entrypoints and on-demand routing
 
 A Skill's `SKILL.md` is a lightweight **relevance gate**: include activation and exclusion criteria, essential permissions and dependencies, and a clear route for accepted tasks. If the request does not match, stop before loading further files.
