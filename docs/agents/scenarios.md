@@ -41,7 +41,8 @@ For each changed behavioral contract, record:
 | Documentation-only request enters agent asset Skill | The Skill rejects the task at its entrypoint, with no asset index or procedure loaded |
 | Asset-package request enters documentation Skill | The documentation entrypoint stops without loading its index or unrelated guidance |
 | Accepted Skill request with several routed procedures | Entry gate passes, routing-only index is read, and only the matching procedure is loaded; mandatory dependency is honored |
-| Consumer repository prescribes uppercase INDEX.md | Consumer's routing filename takes precedence over generic Skill defaults; no duplicate index is created |
+| Skill-specific routing in this catalog | The accepted Skill links to uppercase `INDEX.md`; no lowercase `index.md` duplicate exists inside the Skill directory |
+| Consumer repository prescribes a different routing filename | Consumer's routing filename takes precedence over generic Skill defaults; no duplicate index is created |
 
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
 
