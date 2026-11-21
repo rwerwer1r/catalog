@@ -38,6 +38,10 @@ For each changed behavioral contract, record:
 | Large repository with many unrelated files | Only the nearest governing instructions, target entrypoint, required dependency, and task-relevant evidence are loaded; expansion follows a specific unresolved question |
 | Repeated revision after a failed check | Unchanged verified context is reused, the failing check and affected paths are revisited, and unrelated exploratory scans are avoided |
 | Missing local validation command | No invented test command or pass; available focused review is reported separately from checks not run |
+| Documentation-only request enters agent asset Skill | The Skill rejects the task at its entrypoint, with no asset index or procedure loaded |
+| Asset-package request enters documentation Skill | The documentation entrypoint stops without loading its index or unrelated guidance |
+| Accepted Skill request with several routed procedures | Entry gate passes, routing-only index is read, and only the matching procedure is loaded; mandatory dependency is honored |
+| Consumer repository prescribes uppercase INDEX.md | Consumer's routing filename takes precedence over generic Skill defaults; no duplicate index is created |
 
 These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
 
