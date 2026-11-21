@@ -1,6 +1,6 @@
 # Inspect and challenge material risks
 
-Use after [scope.md](scope.md) selects evidence-bearing review checks. Operate only on the authorized artifact and selected relevant lenses.
+Inspect only the authorized artifact and selected evidence-bearing lenses.
 
 1. **Inspect actual evidence.** Compare the artifact or diff to applicable instructions, acceptance criteria, source contracts, and tests. Prefer direct inspection, deterministic checks, and reproducible counterexamples over conjecture.
 2. **Make a candidate issue testable.** Identify the exact location or decision, the violated requirement or credible failure path, user-visible impact, and the observation needed to confirm or refute it. Distinguish known bug, plausible concern, and unverified hypothesis.
