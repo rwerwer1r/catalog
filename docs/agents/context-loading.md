@@ -7,10 +7,10 @@ description: "Select authoritative context for catalog maintenance without loadi
 ## Source selection
 
 1. Confirm the repository, account, branch, request and permissions.
-2. Read [AGENTS.md](../../AGENTS.md) and the [documentation index](../README.md).
-3. Apply the [repository policy](../policies/repository.md) and task-relevant policies from the [policy index](../policies/README.md).
-4. Choose the appropriate [development](../development/README.md) or [documentation](../documentation/README.md) procedure.
-5. If editing a reusable asset, find it through `src/index.md` and the relevant category `index.md`; read only its entrypoint and necessary dependencies.
+2. Read [AGENTS.md](../../AGENTS.md) and applicable scoped instructions first; it directs which repository policies must be consulted.
+3. Apply [repository policy](../policies/repository.md) and only task-relevant policies from the [policy index](../policies/README.md).
+4. For source work, locate the category through `src/index.md` and its nearest `index.md`, then read the affected asset gate and required dependencies. Do not load the documentation area index for a source-only task.
+5. For documentation work, use the [documentation entrypoint](../documentation/README.md) and its appropriate procedure; for implementation work, use the [development entrypoint](../development/README.md). Expand only on concrete need.
 
 ## Precedence
 
