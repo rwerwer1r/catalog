@@ -5,12 +5,12 @@ This is `rwerwer1r/catalog`, a maintained source library for reusable assets. Co
 ## Discover source and rules
 
 1. Read [repository policy](docs/policies/repository.md) and the relevant [policy index](docs/policies/README.md).
-2. For source changes, read [asset policy](docs/policies/assets.md), the corresponding `src/<kind>/index.md` and the affected asset.
+2. For source changes, read [asset policy](docs/policies/assets.md) and the affected asset. Use the corresponding `src/<kind>/index.md` when discovering assets or updating category navigation; skip rediscovery if the target path is already known.
 3. For documentation changes, follow [documentation policy](docs/policies/documentation.md) and the relevant [authoring guide](docs/documentation/README.md).
 4. For agent work, use [operating model](docs/agents/operating-model.md) and [document-first harness](docs/agents/harness.md).
 5. Follow [English language policy](docs/policies/language.md) for all committed content.
 
-Source discovery is directory-first: use `src/index.md` and the relevant category index. Do not create a duplicate machine-readable asset registry.
+When the target is unknown, discover directory-first through `src/index.md` and the relevant category index. When known, go directly to its entrypoint after applicable rules. Do not create a duplicate machine-readable asset registry.
 
 ## Verify
 
