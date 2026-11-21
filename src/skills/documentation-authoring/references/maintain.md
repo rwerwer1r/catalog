@@ -1,6 +1,6 @@
 # Maintain or audit documentation
 
-1. Read applicable local repository rules, the nearest introduction and routing index, the affected page, and any directly relevant sources. Avoid unrelated directories.
+1. Read applicable rules and the **known target directly**, plus evidence relevant to its maintenance. Consult a README or INDEX.md only to locate an unknown target, evaluate discoverability, or repair affected navigation; do not preload unrelated directories.
 2. When the target is an entrypoint, use [entrypoint guidance](entrypoints.md) to test reader relevance, exclusions, and the stop-before-load gate.
 3. When the target is a manual or metadata-based index, use [index guidance](indexes.md) for the format, consumer discovery, and source-of-truth contract.
 4. Check accuracy, task completeness, headings, metadata, relative links, examples, accessibility, and safe handling of secrets or permissions.

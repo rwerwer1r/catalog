@@ -4,7 +4,7 @@ After [SKILL.md](../SKILL.md) accepts the task, load **only** the relevant proce
 
 | Task | Load next |
 | --- | --- |
-| Design or audit README.md, SKILL.md, relevance gates, or discovery metadata | [Entrypoints](entrypoints.md) |
+| Create, revise, or audit README.md, SKILL.md, relevance gates, or discovery metadata | [Entrypoints](entrypoints.md) |
 | Create or maintain manual INDEX.md or metadata-generated INDEX.tsv | [Indexes](indexes.md) |
 | Draft, rewrite, or correct other document content | [Write](write.md) |
 | Audit, relocate, deprecate, or repair other documentation | [Maintain](maintain.md) |

@@ -71,6 +71,10 @@ def _skill_errors(skill: Path, root: Path) -> list[str]:
     body = entry.read_text(encoding="utf-8")
     errors.extend(_skill_frontmatter_errors(entry, root, body))
 
+    for extra in skill.iterdir():
+        if extra.is_file() and extra.suffix == ".md" and extra.name != "SKILL.md":
+            errors.append(f"{extra.relative_to(root)}: Skill support Markdown belongs in references/")
+
     route = skill / "references" / "INDEX.md"
     legacy = (skill / "INDEX.md", skill / "index.md", skill / "references" / "index.md")
     for old in legacy:
@@ -92,7 +96,7 @@ def _skill_errors(skill: Path, root: Path) -> list[str]:
                 continue
             destination = (route.parent / local).resolve()
             if (
-                destination.is_relative_to(skill.resolve())
+                destination.is_relative_to(route.parent.resolve())
                 and destination.is_file()
                 and destination.suffix == ".md"
                 and destination not in {entry.resolve(), route.resolve()}
