@@ -9,4 +9,4 @@ After [SKILL.md](SKILL.md) accepts the task, load **only** the current stage.
 | Review identifies a separable, worthwhile child question | [Focus](focus.md) |
 | Review nominates completion, limit, or blocker | [Close](close.md) |
 
-Prepare must precede any cycle. A blocked Prepare stops directly; after a cycle, Close gates terminal claims. Never preload all stages.
+Prepare must precede any cycle. A blocked Prepare stops directly; after a cycle, Close gates terminal claims. For context economy, do not preload all stages.
