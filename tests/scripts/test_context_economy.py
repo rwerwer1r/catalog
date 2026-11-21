@@ -10,7 +10,7 @@ from pathlib import Path
 SKILLS = Path(__file__).resolve().parents[2] / "src" / "skills"
 ROUTES = {
     "agent-asset-authoring": ("author.md", "review.md"),
-    "documentation-authoring": ("write.md", "maintain.md"),
+    "documentation-authoring": ("entrypoints.md", "indexes.md", "write.md", "maintain.md"),
     "general-purpose-loop": ("prepare.md", "cycle.md", "focus.md", "close.md"),
     "self-debate": ("frame.md", "examine.md", "resolve.md"),
     "self-review": ("scope.md", "inspect.md", "adjudicate.md"),
