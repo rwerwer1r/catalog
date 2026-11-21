@@ -54,6 +54,16 @@ class RepositoryReadinessContractTests(unittest.TestCase):
             with self.subTest(state=term):
                 self.assertIn(term, self.body)
 
+    def test_current_revision_and_environment_are_tracked(self):
+        self.assertIn("target commit, working-tree changes", self.body)
+        self.assertIn("execution environment", self.body)
+        self.assertIn("Note source, revision, and environment", self.body)
+        self.assertIn("command, revision, environment, result", self.body)
+
+    def test_ready_requires_sufficient_current_or_equivalent_evidence(self):
+        self.assertIn("critical requirements supported by current or equivalent evidence", self.body)
+        self.assertIn("critical evidence or authority missing", self.body)
+
     def test_report_and_entrypoint_remain_bounded(self):
         self.assertLessEqual(len(self.body), 2000)
         self.assertIn("Report target and task, verdict, evidence, performed checks", self.body)
