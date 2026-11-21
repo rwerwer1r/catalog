@@ -1,26 +1,46 @@
 ---
-description: "Rules for lightweight README introductions and index.md navigation."
+description: "Define lightweight entrypoint gates and routing-only index documents for catalog navigation."
 ---
 
 # Documentation entrypoints and indexes
 
 ## Separation of responsibilities
 
-Keep **`README.md` short**: state the directory's purpose, who should use it, and link to `index.md`. Put the maintained **list of pages and assets in `index.md`**. Do not maintain competing lists in both files.
+An entrypoint is a **small decision gate**, not the full content of a directory or Skill. A reader or agent who arrived at the wrong entrypoint should be able to reject it **before loading detailed context**.
 
-- Root `README.md`: concise repository purpose and links to the source and documentation indexes.
-- `src/README.md`: brief introduction to reusable source; `src/index.md` lists asset categories.
-- Each `src/<kind>/README.md`: category scope; its `index.md` lists all published entrypoints in that category.
+- **`README.md`:** briefly state directory purpose, intended audience, boundaries, and link to its `index.md`. Keep inventories and detailed procedures out of the README.
+- **`SKILL.md`:** state when to use the Skill, when **not** to use it, indispensable authority or dependency requirements, and the next route. If the task is out of scope, stop without opening its index or supporting references.
+- **`index.md`:** route accepted readers to distinct task-specific pages using short descriptions and relative links. It is a map, not another guide or policy copy. Read the selected target **only when needed**, not every link.
+- **`AGENTS.md`:** select applicable repository maintenance rules and source, not a duplicate asset inventory or an unrestricted command to load everything.
+
+For a catalog Skill with multiple workflows, a lightweight `SKILL.md` can link to a sibling `index.md`, which links to on-demand procedures. A small Skill need not be split just to create routing layers. Never hide essential activation, permission, or safety gates exclusively in a deep document.
+
+## Canonical entrypoints in this repository
+
+- Root `README.md`: concise repository purpose and links to source and documentation indexes.
+- `src/README.md`: brief source introduction; `src/index.md` lists asset categories.
+- `src/<kind>/README.md`: category scope; `src/<kind>/index.md` lists published assets.
 - `docs/README.md`: purpose of repository documentation; `docs/index.md` lists documentation areas.
-- Each `docs/<area>/README.md`: area scope; its `index.md` lists immediate pages and child area indexes.
-- Root `AGENTS.md`: repository-maintenance instructions. It selects task-relevant policies and sources, not a duplicate asset inventory.
+- `docs/<area>/README.md`: area scope; its `index.md` lists immediate pages and child indexes.
+- `src/skills/<name>/SKILL.md`: Skill activation gate; optional sibling `index.md` routes to supporting files.
+
+This catalog standardizes on lowercase **`index.md`**. Other repositories may require `INDEX.md` or a different filename; reusable Skills must obey the **target repository's** convention, not impose this one. Never maintain lowercase and uppercase duplicates as competing authorities.
+
+## Gate before routing
+
+1. Read only the entrypoint and applicable higher-priority/local rules needed to decide relevance.
+2. If the reader's task does not match the stated scope, stop or redirect **without reading the index, procedures, or unrelated references**.
+3. If it matches, follow the entrypoint to the routing index, choose one task-relevant destination, and load that file.
+4. Expand to another route only for a concrete separate task or unresolved requirement. Reuse unchanged context for the same revision.
+
+Keep the gate concise, but explicit about the triggers, exclusions, essential dependency, authority, and where to continue. A small cost saving never justifies omitting a mandatory safety or permission check.
 
 ## Index maintenance
 
-Use descriptive relative links and a single canonical index in each directory. Link directly to each immediate published asset or document from its nearest index; link child directories to their own `index.md`. Avoid repeating a flat list of every file at the repository root.
+Use a descriptive relative link and short intent label for each immediate published asset, page, or selected workflow. Link child directories to their own `index.md`; do not duplicate the entire subtree at the root. Avoid writing full procedures, lengthy summaries, or competing policies in a routing index.
 
-When adding, moving or removing an item, update its nearest index and any affected inbound links in the same change. An index is for discovery; it does not assert that a Skill, module or procedure has been behaviorally verified.
+When adding, moving, or removing a document, update its nearest index and affected inbound links together. An index proves discoverability, not readiness or behavioral correctness.
 
 ## Verification
 
-Run `python3 scripts/validate_catalog.py` for source entrypoints and `python3 scripts/validate_docs.py` for document indexes and local links. Check heading anchors, external URLs and navigation clarity manually; these are not fully covered by the scripts.
+Run `python3 scripts/validate_catalog.py` for source entrypoints and `python3 scripts/validate_docs.py` for documentation metadata and local links. Manually test a matching request, a nonmatching request, and a route selection: a mismatch should stop before deeper context loads. Automated checks do not currently establish correct agent routing, external links, or technical truth.
