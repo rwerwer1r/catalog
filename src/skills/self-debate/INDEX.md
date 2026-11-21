@@ -1,11 +1,11 @@
 # Self-debate routes
 
-Read only after [SKILL.md](SKILL.md) accepts the task. Select one procedure for the current stage; avoid loading all three up front.
+After [SKILL.md](SKILL.md) accepts the task, load **only** the current stage.
 
-| Stage or need | Load next |
+| Decision stage | Load next |
 | --- | --- |
-| Establish decision, source quality, and whether a meaningful debate is warranted | [Frame](frame.md) |
-| Examine a real competing claim, trade-off, or alternative | [Examine](examine.md) |
-| Judge arguments, handle unresolved differences, or close with no disagreement | [Resolve](resolve.md) |
+| Determine if decision-changing disagreement exists | [Frame](frame.md) |
+| Test credible competing claims or trade-offs | [Examine](examine.md) |
+| Weigh evidence and conclude, including no dispute | [Resolve](resolve.md) |
 
-A failed materiality gate may route directly from framing to resolution without generating opposition. No fixed perspective count or rounds are required.
+No forced opposition or fixed number of perspectives. When the materiality gate fails, skip Examine and resolve without invented arguments.
