@@ -1,7 +1,5 @@
 # Scope the self-review
 
-Use after the [Skill gate](SKILL.md) and [route index](INDEX.md) select scoping.
-
 1. **Fix the review target.** Identify the exact artifact, version or diff, expected behavior, actual change scope, relevant rules, authorized checks, and acceptance criteria. Do not critique imagined code or unseen documents.
 2. **Capture a neutral baseline.** Record what already works, checks already passed, limitations, and the material acceptance conditions. Treat the prior author's intent and reviewer's suspicion as hypotheses, not evidence.
 3. **Select lenses by plausible failure.** Candidates include correctness, security, usability, accessibility, performance, maintainability, operations, compatibility, cost, and documentation. For each chosen lens, name the distinct acceptance condition or material risk it could affect.
