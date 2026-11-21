@@ -1,6 +1,6 @@
 ---
 name: self-review
-description: Review existing work against material acceptance risks using evidence-backed perspectives; reject fabricated or unproductive criticism.
+description: Use when self-review or targeted artifact quality review is requested, or material acceptance risks remain; never force defects or revisions.
 ---
 
 # Self-review
