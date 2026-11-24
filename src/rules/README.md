@@ -1,3 +1,3 @@
 # Rules
 
-Scoped, reusable operational guidance. See the [Rules index](index.md).
+Scoped, reusable operational guidance. See the [Rules index](INDEX.md).

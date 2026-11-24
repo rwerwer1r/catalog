@@ -14,13 +14,13 @@ python3 scripts/validate_docs.py
 python3 -m unittest discover -s tests/scripts -v
 ```
 
-The PR template's validation commands must match the executable CI checks; a unit test guards against drift in the current one-line workflow format. The source validator checks canonical asset paths, naming, entrypoint headings and category index link coverage. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest index coverage. Unit tests exercise validation edge cases. [CI](../../.github/workflows/validate.yml) runs the same commands.
+The PR template's validation commands must match the executable CI checks; a unit test guards against drift in the current one-line workflow format. The source validator checks canonical asset paths, naming, entrypoint headings, category index link coverage, required Skill frontmatter fields, and local Markdown links within Skill directories. For Skills with `INDEX.md`, it requires a real Markdown link from the entrypoint and at least one existing **local** procedure route. Plain link-like text, remote-only routes, and paths outside the Skill's `references/` do not satisfy routing. Extra Markdown procedures at the Skill root are rejected. Its metadata check covers the catalog's simple scalar frontmatter convention, not every valid YAML construction. The documentation validator checks supported frontmatter syntax, single H1, local Markdown file targets and nearest index coverage. Unit tests exercise validation edge cases and guard lightweight Skill entrypoints, routing indexes, and one-procedure loading paths with **character-count proxies**. These are maintainability bounds, not measured model token use, latency, or behavioral compliance. [CI](../../.github/workflows/validate.yml) runs the same commands.
 
 ## Manual and behavioral review
 
 The documentation validator does not check external URLs, heading anchors, full Markdown/YAML parsing or the truth of claims. Review [documentation quality](../documentation/review.md) and run representative [agent scenarios](../agents/scenarios.md) when instructions change behavior.
 
-Scenario execution is **not automated in the current CI**. Integration tests are consumer-specific and require explicit access. Record actual results using [verification evidence](../agents/verification.md) and avoid implying that missing checks passed.
+No metadata-driven `INDEX.tsv` generator or generated index is introduced by the current work; future generators must validate source-backed descriptions, destinations and reproducible output under the [documentation Skill index contract](../../src/skills/documentation-authoring/references/indexes.md). Scenario execution is **not automated in the current CI**. Integration tests are consumer-specific and require explicit access. Record actual results using [verification evidence](../agents/verification.md) and avoid implying that missing checks passed.
 
 ## Decision rules
 

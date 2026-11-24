@@ -18,13 +18,13 @@ description: "Define the catalog's purpose, source directory ownership, and repo
 | `src/agents/` | Agent role definitions |
 | `src/modules/` | Reusable implementation code |
 | `src/templates/` | Document templates |
-| `src/index.md` and category `index.md` files | Canonical source discovery and published entrypoint links |
+| `src/INDEX.md` and category `INDEX.md` files | Canonical source discovery and published entrypoint links |
 | `src/README.md` and category `README.md` files | Brief introductions linking to the corresponding indexes |
 | `docs/` | Repository policies, development and agent maintenance guidance |
 | `scripts/`, `tests/scripts/` | Verification utilities and tests |
 | `.github/workflows/` | Repository CI |
 
-**The directory `index.md` files are the canonical source discovery interface; READMEs are concise introductions.** Do not introduce a second registry that duplicates the same asset inventory. Keep canonical source under its owner; documentation should link to it rather than copy it.
+**The directory `INDEX.md` files are the canonical source discovery interface; READMEs are concise introductions.** Do not introduce a second registry that duplicates the same asset inventory. Keep canonical source under its owner; documentation should link to it rather than copy it.
 
 ## Content boundaries
 

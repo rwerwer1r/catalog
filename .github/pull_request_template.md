@@ -5,7 +5,7 @@ Describe the affected catalog assets or documentation contracts, why this change
 ## Policy and documentation review
 
 - [ ] Relevant [repository policy](../docs/policies/repository.md), [asset policy](../docs/policies/assets.md) and [documentation policy](../docs/policies/documentation.md) reviewed as applicable
-- [ ] [Language policy](../docs/policies/language.md), canonical source ownership, and nearest `index.md` links checked
+- [ ] [Language policy](../docs/policies/language.md), canonical source ownership, and nearest `INDEX.md` links checked
 - [ ] Permissions, dependencies, consumer compatibility and migration impact assessed
 
 ## Validation

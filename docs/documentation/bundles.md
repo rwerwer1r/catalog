@@ -10,12 +10,12 @@ Use a bundle when a topic requires several closely related pages with shared pre
 
 ## Layout
 
-Each bundle has a **short `README.md` introduction** and a separate `index.md` listing its member pages in the intended reading order:
+Each bundle has a **short `README.md` introduction** and a separate `INDEX.md` listing its member pages in the intended reading order:
 
 ```text
 docs/<area>/<topic>/
   README.md
-  index.md
+  INDEX.md
   overview.md
   procedure.md
   verification.md
@@ -25,7 +25,7 @@ The README states the goal, audience and an index link. The index links to every
 
 ## Ownership and reuse
 
-Give the bundle one canonical home. Reusable Skills, modules and references belong under `src/` and are discovered through their category `index.md`; bundles may link to them but must not copy authoritative source. A bundle cannot change repository permissions or automatically install assets.
+Give the bundle one canonical home. Reusable Skills, modules and references belong under `src/` and are discovered through their category `INDEX.md`; bundles may link to them but must not copy authoritative source. A bundle cannot change repository permissions or automatically install assets.
 
 ## Review
 

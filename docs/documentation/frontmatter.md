@@ -18,7 +18,7 @@ description: "How to select and review documentation entrypoints."
 ---
 ```
 
-- **Required:** `description` — one nonempty, plain-English sentence describing the document's purpose.
+- **Required:** `description` — one nonempty, plain-English sentence telling a consumer **when and why to read** the document, with enough distinction from neighboring pages to choose before loading their full contents.
 - **Optional:** `status` — `draft`, `active`, or `deprecated` when relevant.
 - **Optional:** `audience` — a short intended reader group where necessary.
 - Do not add timestamps, personal identifiers, generated metadata or unreviewed keys.
@@ -26,7 +26,7 @@ description: "How to select and review documentation entrypoints."
 
 ## Consistency
 
-Metadata aids discovery but never overrides policies, displayed text or the canonical source files. Keep the description accurate after substantive changes. Write a clear H1 and logical subordinate headings.
+Metadata aids discovery but never overrides policies, displayed text or canonical source files. Keep the description accurate after changes. If an authorized generator derives `INDEX.tsv` from frontmatter, use these maintained fields as its source; do not generate `INDEX.md` or infer missing descriptions. The reusable [index contract](../../src/skills/documentation-authoring/references/indexes.md) owns generated-versus-manual behavior. Write a clear H1 and logical subordinate headings.
 
 ## Verification
 
