@@ -111,9 +111,10 @@ def validate(root: Path) -> list[str]:
 
     for directory in [docs, *[d for d in docs.rglob("*") if d.is_dir()]]:
         readme, index = directory / "README.md", directory / "INDEX.md"
-        if (directory / "index.md").exists():
+        names = {item.name for item in directory.iterdir()}
+        if "index.md" in names:
             errors.append(f"{directory.relative_to(root)}: legacy index.md; use INDEX.md")
-        if not readme.is_file() or not index.is_file():
+        if not {"README.md", "INDEX.md"}.issubset(names) or not readme.is_file() or not index.is_file():
             errors.append(f"{directory.relative_to(root)}: missing README.md or INDEX.md")
             continue
         intro = without_fences(readme.read_text(encoding="utf-8"))

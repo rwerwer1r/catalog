@@ -119,6 +119,13 @@ class SkillRoutingTests(unittest.TestCase):
         (self.skill / "index.md").write_text("# Duplicate routes\n")
         self.assertTrue(any("Skill routes belong in references/INDEX.md" in e for e in self.issues()))
 
+    def test_legacy_reference_index_is_rejected(self):
+        index = self.skill / "references" / "INDEX.md"
+        temporary = index.with_name("temporary.md")
+        index.rename(temporary)
+        temporary.rename(index.with_name("index.md"))
+        self.assertTrue(any("Skill routes belong in references/INDEX.md" in e for e in self.issues()))
+
     def test_legacy_root_skill_index_is_rejected(self):
         (self.skill / "INDEX.md").write_text("# Legacy routes\n")
         self.assertTrue(any(

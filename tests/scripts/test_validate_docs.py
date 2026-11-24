@@ -27,6 +27,13 @@ class DocumentationTests(unittest.TestCase):
     def test_valid(self):
         self.assertEqual(validate(self.root), [])
 
+    def test_legacy_index_is_rejected(self):
+        index = self.root / "docs/INDEX.md"
+        temporary = index.with_name("temporary.md")
+        index.rename(temporary)
+        temporary.rename(index.with_name("index.md"))
+        self.assertTrue(any("legacy index.md" in e for e in validate(self.root)))
+
     def test_frontmatter(self):
         (self.root / "docs/topic.md").write_text("# Topic\n")
         self.assertTrue(any("frontmatter" in e for e in validate(self.root)))

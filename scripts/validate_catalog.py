@@ -63,6 +63,10 @@ def _skill_frontmatter_errors(entry: Path, root: Path, content: str) -> list[str
     return errors
 
 
+def _has_exact_entry(path: Path) -> bool:
+    return path.parent.is_dir() and any(item.name == path.name for item in path.parent.iterdir())
+
+
 def _skill_errors(skill: Path, root: Path) -> list[str]:
     entry = skill / "SKILL.md"
     if not entry.is_file() or entry.is_symlink():
@@ -78,7 +82,7 @@ def _skill_errors(skill: Path, root: Path) -> list[str]:
     route = skill / "references" / "INDEX.md"
     legacy = (skill / "INDEX.md", skill / "index.md", skill / "references" / "index.md")
     for old in legacy:
-        if old.exists():
+        if _has_exact_entry(old):
             errors.append(f"{old.relative_to(root)}: Skill routes belong in references/INDEX.md")
     if route.is_file():
         entry_links = {
@@ -134,7 +138,7 @@ def validate(root: Path) -> list[str]:
     source = root / "src"
 
     def read_markdown(path: Path) -> str:
-        if not path.is_file() or path.is_symlink():
+        if not _has_exact_entry(path) or not path.is_file() or path.is_symlink():
             errors.append(f"{path.relative_to(root)}: missing or unsafe entrypoint")
             return ""
         body = path.read_text(encoding="utf-8")
@@ -152,6 +156,8 @@ def validate(root: Path) -> list[str]:
 
     readme = source / "README.md"
     home = source / "INDEX.md"
+    if _has_exact_entry(source / "index.md"):
+        errors.append("src: remove legacy index.md; use INDEX.md")
     intro = read_markdown(readme)
     home_body = read_markdown(home)
     require_link(intro, "INDEX.md", readme)
@@ -162,7 +168,7 @@ def validate(root: Path) -> list[str]:
             errors.append(f"src/{kind}: missing category directory")
             continue
         readme, index = folder / "README.md", folder / "INDEX.md"
-        if (folder / "index.md").exists():
+        if _has_exact_entry(folder / "index.md"):
             errors.append(f"src/{kind}: remove legacy index.md; use INDEX.md")
         if not readme.is_file() or not index.is_file() or readme.is_symlink() or index.is_symlink():
             errors.append(f"src/{kind}: missing or unsafe category entrypoint")

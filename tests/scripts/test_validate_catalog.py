@@ -30,6 +30,13 @@ class SourceLayoutTests(unittest.TestCase):
     def test_valid(self):
         self.assertEqual(validate(self.root), [])
 
+    def test_legacy_source_index_is_rejected(self):
+        index = self.root / "src/INDEX.md"
+        temporary = index.with_name("temporary.md")
+        index.rename(temporary)
+        temporary.rename(index.with_name("index.md"))
+        self.assertTrue(any("src: remove legacy index.md" in e for e in validate(self.root)))
+
     def test_unindexed(self):
         self.rule.rename(self.rule.with_name("other.md"))
         self.assertTrue(any("missing index link" in e for e in validate(self.root)))
