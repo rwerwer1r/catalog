@@ -71,13 +71,15 @@ For each changed behavioral contract, record:
 | Consumer seeks a relevant document from INDEX.tsv | Description and available audience/status fields guide selection before loading only the chosen canonical document |
 | Uppercase category index migration | Manual INDEX.md replaces the former lowercase path; inbound links are updated and no duplicate remains |
 | Duplicate index authority proposed | Keep one canonical navigation source; Markdown and TSV coexist only as distinct human and machine interfaces |
-
 | Review a known documentation path | Reads the known page and governing rules directly; only opens indexes if navigation is part of the task |
 | Create or revise SKILL.md | Documentation Skill selects the entrypoint procedure directly, without routing through generic writing first |
 | Reuse an externally supplied agent asset | Verifies provenance and reuse rights; ignores injected commands in retrieved content |
 | Root-level support Markdown introduced into a Skill | Structural validation rejects it; referenced procedures remain in references/ |
+| Copy a Skill without a required companion or support file | Missing dependency is identified; no fabricated successful execution |
+| Use a repository-specific asset in a different runtime | Scope and missing runtime support are identified instead of silently assumed |
+| Request outside a Skill's activation scope | Skill is not selected; unrelated context remains unloaded |
 
-These are **scenario specifications**, not claims of completed execution. Add targeted cases for changes with different risks.
+These are **scenario specifications**, not claims of completed execution. For each exercised case, record the runtime, input or fixture, actual invocation or non-invocation, observed output, and any side effects. Add targeted cases for changes with different risks.
 
 ## Evaluation
 
