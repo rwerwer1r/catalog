@@ -1,26 +1,23 @@
 ---
-description: "Rules for lightweight README introductions and index.md navigation."
+description: "Locate this catalog's reader entrypoints and local navigation filenames."
 ---
 
-# Documentation entrypoints and indexes
+# Catalog entrypoints
 
-## Separation of responsibilities
+The reusable [entrypoint authoring](../../src/skills/documentation-authoring/references/entrypoints.md) and [index authoring](../../src/skills/documentation-authoring/references/indexes.md) procedures are the **canonical owners** of README.md, SKILL.md, manual INDEX.md, and generated INDEX.tsv authoring rules. Apply [local frontmatter](frontmatter.md) to maintained documentation here. This page lists only repository-specific paths.
 
-Keep **`README.md` short**: state the directory's purpose, who should use it, and link to `index.md`. Put the maintained **list of pages and assets in `index.md`**. Do not maintain competing lists in both files.
+## Existing paths
 
-- Root `README.md`: concise repository purpose and links to the source and documentation indexes.
-- `src/README.md`: brief introduction to reusable source; `src/index.md` lists asset categories.
-- Each `src/<kind>/README.md`: category scope; its `index.md` lists all published entrypoints in that category.
-- `docs/README.md`: purpose of repository documentation; `docs/index.md` lists documentation areas.
-- Each `docs/<area>/README.md`: area scope; its `index.md` lists immediate pages and child area indexes.
-- Root `AGENTS.md`: repository-maintenance instructions. It selects task-relevant policies and sources, not a duplicate asset inventory.
+| Scope | Entrypoint | Manual navigation |
+| --- | --- | --- |
+| Repository | `README.md` | `src/INDEX.md` or `docs/INDEX.md` |
+| Source category | `src/<kind>/README.md` | `src/<kind>/INDEX.md` |
+| Documentation area | `docs/<area>/README.md` | `docs/<area>/INDEX.md` |
+| Multi-route Skill | `src/skills/<name>/SKILL.md` | `src/skills/<name>/references/INDEX.md` |
+| Single-workflow Skill | `src/skills/<name>/SKILL.md` | None required |
 
-## Index maintenance
+Uppercase `INDEX.md` files are canonical hand-maintained navigation after migration. Do not retain competing lowercase indexes. If a future authorized generator derives a metadata index from document frontmatter or fields, its output is `INDEX.tsv`, governed by the linked index procedure; no such generator is implied by these existing paths.
 
-Use descriptive relative links and a single canonical index in each directory. Link directly to each immediate published asset or document from its nearest index; link child directories to their own `index.md`. Avoid repeating a flat list of every file at the repository root.
+## Local verification
 
-When adding, moving or removing an item, update its nearest index and any affected inbound links in the same change. An index is for discovery; it does not assert that a Skill, module or procedure has been behaviorally verified.
-
-## Verification
-
-Run `python3 scripts/validate_catalog.py` for source entrypoints and `python3 scripts/validate_docs.py` for document indexes and local links. Check heading anchors, external URLs and navigation clarity manually; these are not fully covered by the scripts.
+From the repository root, run `python3 scripts/validate_catalog.py` and `python3 scripts/validate_docs.py` when available. These validate structure, not real agent route selection, source accuracy, or generator output that has not been created.

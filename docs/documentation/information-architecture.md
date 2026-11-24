@@ -23,15 +23,15 @@ A document should have one clear question it answers and one canonical location.
 - **Section:** the information is short, has the same owner and audience, and would not be useful independently.
 - **Standalone page:** a distinct task or concept deserves a stable entrypoint and can be read independently.
 - **Bundle:** several pages share a single reader journey, prerequisites and lifecycle; follow [bundle guidance](bundles.md).
-- **Reusable source asset:** another repository will consume the material as a Skill, rule, reference, module or template; publish under `src/` and link it from its category `index.md`.
+- **Reusable source asset:** another repository will consume the material as a Skill, rule, reference, module or template; publish under `src/` and link it from its category `INDEX.md`.
 
 Avoid directory hierarchies created only for anticipated future content. Split a page when independent maintenance, discoverability or task focus justifies it, not because it reached an arbitrary word count.
 
 ## Naming and structure
 
-Use lowercase kebab-case names for topic pages, `README.md` for introductions and `index.md` for lists, and descriptive headings. Prefer stable conceptual names over dates, vague labels (`misc`, `notes`, `new`) or author names. Do not encode a release version into the filename unless multiple versions must be maintained concurrently.
+Use lowercase kebab-case names for topic pages, `README.md` for introductions and the existing manual `INDEX.md` for directory lists. Reusable [entrypoint](../../src/skills/documentation-authoring/references/entrypoints.md) and [index](../../src/skills/documentation-authoring/references/indexes.md) guidance owns the authoring contract; metadata-generated listings, when authorized, use `INDEX.tsv` instead of generated Markdown. Use descriptive headings. Prefer stable conceptual names over dates, vague labels (`misc`, `notes`, `new`) or author names. Do not encode a release version into the filename unless multiple versions must be maintained concurrently.
 
-Keep the path from `README.md` to a typical page short: repository index → domain index → topic. Link nearby detail pages from their owner instead of forcing unrelated readers through a large global index. Use [entrypoint conventions](entrypoints.md) for navigation.
+Keep the path from `README.md` to a typical page short: repository index → domain index → topic. Link nearby detail pages from their owner instead of forcing unrelated readers through a large global index. See [local entrypoint paths](entrypoints.md).
 
 ## Expansion and change control
 

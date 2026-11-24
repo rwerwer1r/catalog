@@ -6,7 +6,7 @@ description: "Select, pin, integrate, and upgrade catalog assets in authorized c
 
 ## Selection
 
-Start from `src/index.md` and the appropriate category `index.md` to find a candidate, then read the complete entrypoint and any explicitly referenced prerequisites. Choose the **smallest asset set** that solves the consumer task; do not fetch or install the entire catalog by default.
+Start from `src/INDEX.md` and the appropriate category `INDEX.md` to find a candidate, then read the complete entrypoint and any explicitly referenced prerequisites. Choose the **smallest asset set** that solves the consumer task; do not fetch or install the entire catalog by default.
 
 ## Ownership and installation
 
@@ -21,6 +21,17 @@ Record the selected asset ID, catalog commit SHA or immutable release reference,
 ## Compatibility and upgrades
 
 Review triggers, input/output contracts, changed rules, runtime assumptions, file paths and security implications before updating. Compare old and proposed behavior; run asset-specific scenarios and consumer tests. Document breaking changes and a rollback path. Retaining an old revision may be safer than unreviewed migration.
+
+## Index and Skill reference path migration
+
+When upgrading from a revision with lowercase directory indexes or root-level Skill procedures, update direct links:
+
+- `src/**/index.md` and `docs/**/index.md` → the corresponding uppercase `INDEX.md`.
+- `src/skills/<name>/INDEX.md` → `src/skills/<name>/references/INDEX.md`.
+- `src/skills/<name>/<procedure>.md` → `src/skills/<name>/references/<procedure>.md`.
+- `src/skills/<name>/SKILL.md` remains the stable discovery entrypoint.
+
+These are path-breaking changes for consumers of the former supporting paths; there are no implicit redirects or installations. Update inbound links and validate at a pinned revision, or retain the previous pin until migration is approved.
 
 ## Evidence
 

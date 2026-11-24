@@ -12,13 +12,13 @@ class DocumentationTests(unittest.TestCase):
         docs = self.root / "docs"
         docs.mkdir()
         (docs / "README.md").write_text(
-            '---\ndescription: "Intro."\n---\n\n# Docs\n\n[Index](index.md)\n'
+            '---\ndescription: "Intro."\n---\n\n# Docs\n\n[Index](INDEX.md)\n'
         )
-        (docs / "index.md").write_text(
+        (docs / "INDEX.md").write_text(
             '---\ndescription: "Index."\n---\n\n# Index\n\n[Topic](topic.md)\n'
         )
         (docs / "topic.md").write_text(
-            '---\ndescription: "Topic."\n---\n\n# Topic\n\n[Back](index.md)\n'
+            '---\ndescription: "Topic."\n---\n\n# Topic\n\n[Back](INDEX.md)\n'
         )
 
     def tearDown(self):
@@ -26,6 +26,13 @@ class DocumentationTests(unittest.TestCase):
 
     def test_valid(self):
         self.assertEqual(validate(self.root), [])
+
+    def test_legacy_index_is_rejected(self):
+        index = self.root / "docs/INDEX.md"
+        temporary = index.with_name("temporary.md")
+        index.rename(temporary)
+        temporary.rename(index.with_name("index.md"))
+        self.assertTrue(any("legacy index.md" in e for e in validate(self.root)))
 
     def test_frontmatter(self):
         (self.root / "docs/topic.md").write_text("# Topic\n")
@@ -43,8 +50,8 @@ class DocumentationTests(unittest.TestCase):
         self.assertTrue(any("not linked" in e for e in validate(self.root)))
 
     def test_missing_index(self):
-        (self.root / "docs/index.md").unlink()
-        self.assertTrue(any("missing README.md or index.md" in e for e in validate(self.root)))
+        (self.root / "docs/INDEX.md").unlink()
+        self.assertTrue(any("missing README.md or INDEX.md" in e for e in validate(self.root)))
 
     def test_fenced_link(self):
         with (self.root / "docs/topic.md").open("a") as f:
